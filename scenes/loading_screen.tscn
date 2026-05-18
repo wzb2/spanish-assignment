@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://crbwkyp1r0wtx"]
+
+[ext_resource type="Script" uid="uid://dqhi5ct0u5da0" path="res://scripts/loading_screen.gd" id="1_ep5rh"]
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=198839474]
+process_mode = 3
+visible = false
+script = ExtResource("1_ep5rh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=937002965]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ProgressLabel" type="Label" parent="." unique_id=18432000]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -33.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2

@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4lit7fhio811"]
+
+[ext_resource type="Shader" uid="uid://lw2kgab2h7xv" path="res://scripts/shaders/crosshair.gdshader" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://jef6ejm2865d" path="res://scripts/hud.gd" id="1_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://bvwq6fipxsi3o" path="res://images/wheel.png" id="3_5ysmq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oo0fn"]
+shader = ExtResource("1_ahhtf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+bg_color = Color(0.588235, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fi6k"]
+bg_color = Color(0.414217, 0.286833, 0.141181, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oo0fn")
+
+[node name="Red" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(128.498, 0, 0, 0)
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Crosshair" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oo0fn")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 4
+texture_progress = ExtResource("3_5ysmq")
+tint_progress = Color(1, 1, 1, 0.627451)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 142.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_5ysmq")
+metadata/_edit_use_anchors_ = true
+
+[node name="HungerBar" type="ProgressBar" parent="."]
+offset_top = 30.0
+offset_right = 142.0
+offset_bottom = 57.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_6fi6k")

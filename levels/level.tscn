@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://lvpid85stlmx"]
+
+[ext_resource type="Script" uid="uid://djlyx43ftxfhb" path="res://levels/level.gd" id="1_safpt"]
+[ext_resource type="PackedScene" uid="uid://ktlub607ewbx" path="res://levels/lobby.tscn" id="2_safpt"]
+[ext_resource type="PackedScene" uid="uid://c4lit7fhio811" path="res://scenes/hud.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://cnsw8qc66sbli" path="res://inventory/inventory_ui.tscn" id="4_d5x7l"]
+[ext_resource type="PackedScene" uid="uid://bh72ys7p3i0qi" path="res://multiplayer/connecting_screen.tscn" id="5_rtcij"]
+[ext_resource type="PackedScene" uid="uid://8xgcpbjjyy82" path="res://scenes/day_night_cycle.tscn" id="6_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://crbwkyp1r0wtx" path="res://scenes/loading_screen.tscn" id="7_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://dd0lvw1ongh7y" path="res://scenes/end_screen.tscn" id="8_d5x7l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0, 0.20862, 0.176309, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sun_angle_max = 8.05
+sun_curve = 0.643064
+
+[sub_resource type="Sky" id="Sky_vnv7o"]
+sky_material = SubResource("ProceduralSkyMaterial_w7c3h")
+
+[sub_resource type="Environment" id="Environment_mx8sn"]
+background_mode = 2
+sky = SubResource("Sky_vnv7o")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_sun_scatter = 0.2
+fog_density = 0.001
+fog_sky_affect = 0.3
+volumetric_fog_density = 0.0079
+volumetric_fog_albedo = Color(0.7735, 0.8245, 0.85, 1)
+volumetric_fog_ambient_inject = 1.09
+volumetric_fog_sky_affect = 0.5
+
+[node name="Level" type="Node3D" unique_id=1485558631 node_paths=PackedStringArray("inventory_ui", "hud", "day_night_cycle", "loading_screen", "lobby")]
+script = ExtResource("1_safpt")
+inventory_ui = NodePath("InventoryUI")
+hud = NodePath("HUD")
+day_night_cycle = NodePath("DayNightCycle")
+loading_screen = NodePath("LoadingScreen")
+lobby = NodePath("Lobby")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=944463497]
+_spawnable_scenes = PackedStringArray("uid://bf2yp6nc5785d", "uid://phctd7wwaxyq", "uid://dxngx2j6d5hgy", "uid://b4qswahy65ixi", "uid://c6v0k4cg1p765", "uid://drvkc04yto6ri", "uid://1ui0sa187b0u", "uid://cp2ywm1vxlptk", "uid://ct4cwl717854b", "uid://v50tjuu3aj6q", "uid://bdijkc4xdbr31")
+spawn_path = NodePath("..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=856829236]
+environment = SubResource("Environment_mx8sn")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=165824602]
+transform = Transform3D(-0.9537168, 0.2289992, 0.19489351, -5.666044e-08, -0.6481199, 0.7615382, 0.300706, 0.7262919, 0.6181229, 0, 0, 0)
+light_color = Color(1, 1, 0.913725, 1)
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="." unique_id=736125572]
+transform = Transform3D(0.96818167, -0.22526963, 0.108986504, 0.22899912, 0.97315866, -0.022843786, -0.10091515, 0.047074746, 0.99378073, 0, 0, 0)
+light_color = Color(1, 1, 0.913725, 1)
+shadow_enabled = true
+
+[node name="Lobby" parent="." unique_id=411108373 instance=ExtResource("2_safpt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="HUD" parent="." unique_id=888819659 instance=ExtResource("3_vnv7o")]
+
+[node name="InventoryUI" parent="." unique_id=1873385793 instance=ExtResource("4_d5x7l")]
+
+[node name="ConnectingScreen" parent="." unique_id=1247734211 instance=ExtResource("5_rtcij")]
+
+[node name="DayNightCycle" parent="." unique_id=1677352032 node_paths=PackedStringArray("sun", "moon", "world_environment") instance=ExtResource("6_gjl0y")]
+freeze = true
+sun = NodePath("../Sun")
+moon = NodePath("../Moon")
+world_environment = NodePath("../WorldEnvironment")
+
+[node name="LoadingScreen" parent="." unique_id=198839474 instance=ExtResource("7_vnv7o")]
+
+[node name="EndScreen" parent="." unique_id=1455924895 instance=ExtResource("8_d5x7l")]
+visible = false
+
+[connection signal="start_game" from="Lobby" to="." method="_on_lobby_start_game"]

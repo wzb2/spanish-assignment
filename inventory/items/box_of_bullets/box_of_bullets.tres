@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://jxyithxpvcp2"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_u3grp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u3grp"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_u3grp")
+physical_item_path = "res://inventory/items/box_of_bullets/box_of_bullets.tscn"
+name = "Box of Bullets"
+description = "Remaining bullets: $remaining_ammo$"
+texture = SubResource("PlaceholderTexture2D_u3grp")
+data = Dictionary[String, Variant]({
+"remaining_ammo": 20
+})
+path = "uid://jxyithxpvcp2"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

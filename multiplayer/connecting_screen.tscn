@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bh72ys7p3i0qi"]
+
+[ext_resource type="Script" uid="uid://b4kvgt5yb4qnj" path="res://multiplayer/connecting_screen.gd" id="1_xx4jc"]
+
+[node name="ConnectingScreen" type="CanvasLayer" unique_id=1510035970]
+layer = 2
+script = ExtResource("1_xx4jc")
+
+[node name="Control" type="Control" parent="." unique_id=1452856766]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=231051926]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel" unique_id=674607864]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.5
+offset_top = -65.5
+offset_right = 144.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Panel/VBoxContainer" unique_id=588290941]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Connecting..."
+horizontal_alignment = 1
+
+[node name="CancelButton" type="Button" parent="Control/Panel/VBoxContainer" unique_id=1660012170]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
+
+[node name="WarningLabel" type="Label" parent="Control/Panel/VBoxContainer" unique_id=1356252235]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9445, 0.63, 1)
+theme_override_font_sizes/font_size = 34
+text = "Are you sure the join code is correct?"
+horizontal_alignment = 1
+
+[node name="MessageTimer" type="Timer" parent="Control" unique_id=1882724149]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="Control/Panel/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

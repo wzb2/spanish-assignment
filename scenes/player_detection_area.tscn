@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dnnfypyera0ec"]
+
+[ext_resource type="Script" uid="uid://bfehyp5xp0qqp" path="res://scripts/player_detection_area.gd" id="1_syckj"]
+
+[node name="PlayerDetectionArea" type="Area3D" unique_id=2128464926]
+script = ExtResource("1_syckj")

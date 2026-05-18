@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://dmxq1tn8qfq85"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_wpjto"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wpjto"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_wpjto")
+physical_item_path = "res://inventory/items/pistol/pistol.tscn"
+name = "Pistol"
+description = "Bullets: $remaining_ammo$/6"
+texture = SubResource("PlaceholderTexture2D_wpjto")
+data = Dictionary[String, Variant]({
+"remaining_ammo": 6
+})
+path = "uid://dmxq1tn8qfq85"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

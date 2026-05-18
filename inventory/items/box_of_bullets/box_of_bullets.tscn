@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://b4qswahy65ixi"]
+
+[ext_resource type="Script" uid="uid://cunjvnfxq8vr3" path="res://inventory/items/box_of_bullets/box_of_bullets.gd" id="1_a0fvh"]
+[ext_resource type="Resource" uid="uid://jxyithxpvcp2" path="res://inventory/items/box_of_bullets/box_of_bullets.tres" id="2_s78js"]
+[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="3_yghwf"]
+[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="4_tgmwp"]
+[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="5_0qty2"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_tgmwp"]
+properties/0/path = NodePath(".:current_hand")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:synced_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:synced_rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s78js"]
+albedo_color = Color(0.599186, 0.759555, 0.89019, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s78js"]
+material = SubResource("StandardMaterial3D_s78js")
+size = Vector3(0.3, 0.2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s78js"]
+size = Vector3(0.3, 0.2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yghwf"]
+size = Vector3(0.4, 0.3, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tgmwp"]
+size = Vector3(0.3, 0.2, 0.1)
+
+[node name="BoxOfBullets" type="RigidBody3D" unique_id=1512539090 node_paths=PackedStringArray("mesh_instances", "interact_area")]
+mass = 0.03
+script = ExtResource("1_a0fvh")
+item_resource = ExtResource("2_s78js")
+mesh_instances = [NodePath("MeshInstance3D")]
+interact_area = NodePath("Area3D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1428716664]
+replication_config = SubResource("SceneReplicationConfig_tgmwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1122493092]
+mesh = SubResource("BoxMesh_s78js")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=515891103]
+shape = SubResource("BoxShape3D_s78js")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=250540390]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1945802430]
+shape = SubResource("BoxShape3D_yghwf")
+
+[node name="Floater" type="Node3D" parent="." unique_id=1785612719]
+script = ExtResource("3_yghwf")
+max_bouyancy_depth = 1.0
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="Floater" unique_id=1793308239]
+mesh = SubResource("BoxMesh_tgmwp")
+script = ExtResource("4_tgmwp")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint8" parent="Floater" unique_id=672838437 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.1, -0.05)
+is_generated = true
+
+[node name="FloaterPoint7" parent="Floater" unique_id=800480206 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.1, 0.05)
+is_generated = true
+
+[node name="FloaterPoint6" parent="Floater" unique_id=1796985057 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.1, -0.05)
+is_generated = true
+
+[node name="FloaterPoint5" parent="Floater" unique_id=148591019 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.1, 0.05)
+is_generated = true
+
+[node name="FloaterPoint4" parent="Floater" unique_id=460125554 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.1, -0.05)
+is_generated = true
+
+[node name="FloaterPoint3" parent="Floater" unique_id=757099965 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.1, 0.05)
+is_generated = true
+
+[node name="FloaterPoint2" parent="Floater" unique_id=1431068059 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.1, -0.05)
+is_generated = true
+
+[node name="FloaterPoint" parent="Floater" unique_id=69918154 instance=ExtResource("5_0qty2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.1, 0.05)
+is_generated = true

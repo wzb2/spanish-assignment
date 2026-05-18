@@ -1,0 +1,164 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnsw8qc66sbli"]
+
+[ext_resource type="Script" uid="uid://d088s4m3ob618" path="res://inventory/inventory_ui.gd" id="1_hfbh7"]
+[ext_resource type="PackedScene" uid="uid://sim4dv0a85yg" path="res://inventory/inventory_slot_ui.tscn" id="2_2hut1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hut1"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 0.960784)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="InventoryUI" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_hfbh7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0962047, 0.0962048, 0.0962047, 0.509804)
+
+[node name="ColorRect" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.8
+offset_top = -259.2
+offset_right = 460.8
+offset_bottom = 259.2
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_2hut1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.8
+offset_top = -57.2
+offset_right = -308.8
+offset_bottom = 5.79999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="displaySprite" type="Sprite2D" parent="Control/ColorRect/VBoxContainer"]
+position = Vector2(12, -16)
+scale = Vector2(2, 2)
+
+[node name="NameLabel" type="Label" parent="Control/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Name"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
+text = "Description
+"
+fit_content = true
+scroll_active = false
+
+[node name="NormalSlotGridContainer" type="GridContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -680.6
+offset_top = 10.0
+offset_right = -9.60004
+offset_bottom = 262.0
+grow_horizontal = 0
+columns = 5
+
+[node name="InventorySlot1" parent="Control/ColorRect/NormalSlotGridContainer" instance=ExtResource("2_2hut1")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/ColorRect/NormalSlotGridContainer" instance=ExtResource("2_2hut1")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/ColorRect/NormalSlotGridContainer" instance=ExtResource("2_2hut1")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/ColorRect/NormalSlotGridContainer" instance=ExtResource("2_2hut1")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/ColorRect/NormalSlotGridContainer" instance=ExtResource("2_2hut1")]
+layout_mode = 2
+
+[node name="ContainerSlotGridContainer" type="GridContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -680.6
+offset_top = 200.0
+offset_right = -9.60004
+offset_bottom = 452.0
+grow_horizontal = 0
+columns = 5
+
+[node name="HandSlotGridContainer" type="GridContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -901.6
+offset_top = 300.0
+offset_right = -697.6
+offset_bottom = 400.0
+grow_horizontal = 0
+columns = 2
+
+[node name="LeftSlotUI" parent="Control/ColorRect/HandSlotGridContainer" instance=ExtResource("2_2hut1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightSlotUI" parent="Control/ColorRect/HandSlotGridContainer" instance=ExtResource("2_2hut1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MouseDisplaySprite" type="Sprite2D" parent="Control"]
+
+[node name="Label" type="Label" parent="Control/MouseDisplaySprite"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -36.0
+offset_right = 18.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 2

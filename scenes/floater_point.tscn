@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://tsvbndyft63a"]
+
+[ext_resource type="Script" uid="uid://dbbyntncuvrnf" path="res://scripts/floater_point.gd" id="1_kmais"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmais"]
+albedo_color = Color(1, 0.16, 0.16, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kmais"]
+material = SubResource("StandardMaterial3D_kmais")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="FloaterPoint" type="Marker3D" unique_id=1158466977]
+process_mode = 4
+physics_interpolation_mode = 2
+script = ExtResource("1_kmais")
+
+[node name="DebugMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1231350570]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_kmais")

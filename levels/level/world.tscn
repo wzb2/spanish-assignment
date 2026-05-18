@@ -1,0 +1,415 @@
+[gd_scene format=3 uid="uid://cl87o577f5aup"]
+
+[ext_resource type="NavigationMesh" uid="uid://b5kbbhoikrfeb" path="res://levels/level/nav_data.res" id="1_430os"]
+[ext_resource type="Script" uid="uid://bstgq58j0hxuu" path="res://levels/world.gd" id="1_xw7nq"]
+[ext_resource type="Script" uid="uid://d3v6q68b8qljm" path="res://addons/proton_scatter/src/scatter.gd" id="3_8dsq4"]
+[ext_resource type="Terrain3DAssets" uid="uid://ccpihyss61hex" path="res://levels/terrain_assets/terrain_assets.tres" id="3_xw7nq"]
+[ext_resource type="Script" uid="uid://dwj82uvv4dbkm" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_6pk81"]
+[ext_resource type="Script" uid="uid://b87luduuaqmd6" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="6_430os"]
+[ext_resource type="Script" uid="uid://brrputee4vvtb" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="7_84omo"]
+[ext_resource type="Script" uid="uid://bm7yn4t6lklw" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="8_5xn7m"]
+[ext_resource type="Script" uid="uid://i186nqen8gdj" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="9_e0j10"]
+[ext_resource type="Script" uid="uid://ckfwapgax0pk0" path="res://addons/proton_scatter/src/scatter_item.gd" id="10_sf4ix"]
+[ext_resource type="Script" uid="uid://y6fm1s6evjxi" path="res://addons/proton_scatter/src/scatter_shape.gd" id="11_b5xmf"]
+[ext_resource type="Script" uid="uid://clpw1m3b8qci1" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="13_ljmvl"]
+[ext_resource type="Script" uid="uid://g3opjh3m3iww" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="14_c45hi"]
+[ext_resource type="NavigationMesh" uid="uid://b8jwa3fxtdjs8" path="res://levels/level/water_nav_data.res" id="14_muo8d"]
+[ext_resource type="Material" uid="uid://dsqvx617l683r" path="res://materials/water.tres" id="15_8dsq4"]
+[ext_resource type="Script" uid="uid://c42gs3rnpx3yg" path="res://multiplayer/spawn_placeholder.gd" id="16_5wgw0"]
+[ext_resource type="Script" uid="uid://bpfwbqkl7ck68" path="res://scripts/wavy_water.gd" id="17_e0j10"]
+[ext_resource type="PackedScene" uid="uid://drvkc04yto6ri" path="res://inventory/items/pistol/pistol.tscn" id="17_jv2ad"]
+[ext_resource type="PackedScene" uid="uid://ct4cwl717854b" path="res://scenes/giant_chicken.tscn" id="18_2hwbf"]
+[ext_resource type="PackedScene" uid="uid://b4qswahy65ixi" path="res://inventory/items/box_of_bullets/box_of_bullets.tscn" id="19_f0lqv"]
+[ext_resource type="PackedScene" uid="uid://cp2ywm1vxlptk" path="res://inventory/items/sword/sword.tscn" id="20_1vorj"]
+[ext_resource type="PackedScene" uid="uid://c6v0k4cg1p765" path="res://inventory/items/flashlight/flashlight.tscn" id="20_8dsq4"]
+[ext_resource type="PackedScene" uid="uid://v50tjuu3aj6q" path="res://scenes/backpack.tscn" id="21_e2uyj"]
+[ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
+[ext_resource type="PackedScene" uid="uid://bdijkc4xdbr31" path="res://scenes/boat.tscn" id="24_84omo"]
+
+[sub_resource type="Gradient" id="Gradient_ujtx7"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8dsq4"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_84omo"]
+noise = SubResource("FastNoiseLite_8dsq4")
+color_ramp = SubResource("Gradient_ujtx7")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_5xn7m"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.5,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"flat_terrain_normals": false,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_84omo"),
+&"projection_threshold": 0.8
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sk3dq"]
+friction = 0.8
+
+[sub_resource type="Resource" id="Resource_hmxa1"]
+script = ExtResource("7_84omo")
+amount = 20
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_sf4ix"]
+script = ExtResource("8_5xn7m")
+position = Vector3(0.15, 0.15, 0.15)
+scale = Vector3(1, 1, 1)
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_b5xmf"]
+script = ExtResource("9_e0j10")
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+restrict_height = true
+
+[sub_resource type="Resource" id="Resource_8dsq4"]
+script = ExtResource("14_c45hi")
+terrain_node = NodePath("..")
+
+[sub_resource type="Resource" id="Resource_ljmvl"]
+script = ExtResource("5_6pk81")
+stack = Array[ExtResource("6_430os")]([SubResource("Resource_hmxa1"), SubResource("Resource_sf4ix"), SubResource("Resource_b5xmf"), SubResource("Resource_8dsq4")])
+
+[sub_resource type="Resource" id="Resource_g8bsm"]
+script = ExtResource("13_ljmvl")
+radius = 5.0
+
+[sub_resource type="Resource" id="Resource_muo8d"]
+script = ExtResource("7_84omo")
+amount = 75
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_qkka1"]
+script = ExtResource("14_c45hi")
+terrain_node = NodePath("..")
+
+[sub_resource type="Resource" id="Resource_5wgw0"]
+script = ExtResource("5_6pk81")
+stack = Array[ExtResource("6_430os")]([SubResource("Resource_muo8d"), SubResource("Resource_qkka1")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84omo"]
+size = Vector3(7, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xn7m"]
+size = Vector3(7, 1, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2q6dc"]
+material = ExtResource("15_8dsq4")
+size = Vector2(30, 30)
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w1puk"]
+material = ExtResource("15_8dsq4")
+size = Vector2(50, 200)
+subdivide_width = 256
+subdivide_depth = 512
+
+[node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("terrain", "spawn_orgin_marker", "water_navigation_region")]
+script = ExtResource("1_xw7nq")
+terrain = NodePath("NavigationRegion3D/Terrain3D")
+spawn_orgin_marker = NodePath("Marker3D")
+water_navigation_region = NodePath("WaterNavigationRegion3D")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1684043325]
+navigation_mesh = ExtResource("1_430os")
+
+[node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D" unique_id=201626717 groups=["navigation_mesh_source_group"]]
+data_directory = "res://levels/level/terrain_data"
+material = SubResource("Terrain3DMaterial_5xn7m")
+assets = ExtResource("3_xw7nq")
+collision_mode = 3
+physics_material = SubResource("PhysicsMaterial_sk3dq")
+cast_shadows = 2
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="TreeScatter" type="Node3D" parent="NavigationRegion3D/Terrain3D" unique_id=2057117047 groups=["navigation_mesh_source_group"]]
+script = ExtResource("3_8dsq4")
+render_mode = 1
+keep_static_colliders = true
+force_rebuild_on_load = false
+modifier_stack = SubResource("Resource_ljmvl")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://d3v6q68b8qljm"
+
+[node name="ScatterItem" type="Node3D" parent="NavigationRegion3D/Terrain3D/TreeScatter" unique_id=1507558182]
+script = ExtResource("10_sf4ix")
+path = "uid://vnxf34507pow"
+
+[node name="ScatterShape" type="Node3D" parent="NavigationRegion3D/Terrain3D/TreeScatter" unique_id=1570974244]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 5)
+script = ExtResource("11_b5xmf")
+shape = SubResource("Resource_g8bsm")
+
+[node name="BushScatter" type="Node3D" parent="NavigationRegion3D/Terrain3D" unique_id=1401182739]
+script = ExtResource("3_8dsq4")
+render_mode = 1
+force_rebuild_on_load = false
+modifier_stack = SubResource("Resource_5wgw0")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://d3v6q68b8qljm"
+
+[node name="ScatterItem" type="Node3D" parent="NavigationRegion3D/Terrain3D/BushScatter" unique_id=1242777773]
+script = ExtResource("10_sf4ix")
+path = "uid://v5ggjdc238dt"
+
+[node name="ScatterShape" type="Node3D" parent="NavigationRegion3D/Terrain3D/BushScatter" unique_id=365846152]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -15.070566, 0, -6.51626)
+script = ExtResource("11_b5xmf")
+shape = SubResource("Resource_g8bsm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Terrain3D" unique_id=221129650 groups=["navigation_mesh_source_group"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, 7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Terrain3D/StaticBody3D" unique_id=1653249571]
+shape = SubResource("BoxShape3D_84omo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Terrain3D/StaticBody3D" unique_id=2053237961]
+mesh = SubResource("BoxMesh_5xn7m")
+
+[node name="WaterNavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1737085209]
+navigation_mesh = ExtResource("14_muo8d")
+travel_cost = 2.0
+
+[node name="Water" type="MeshInstance3D" parent="WaterNavigationRegion3D" unique_id=620263447]
+transform = Transform3D(1.00441, 0, 0, 0, 1.00441, 0, 0, 0, 1.00441, -27.4171, -0.16705872, 9.71999)
+mesh = SubResource("PlaneMesh_2q6dc")
+script = ExtResource("17_e0j10")
+metadata/_custom_type_script = "uid://bpfwbqkl7ck68"
+
+[node name="Water2" type="MeshInstance3D" parent="WaterNavigationRegion3D" unique_id=391005475]
+transform = Transform3D(0.888621, 0, 0.46818, 0, 1.00441, 0, -0.46818, 0, 0.888621, -87.497, -0.05, 9.72)
+mesh = SubResource("PlaneMesh_w1puk")
+script = ExtResource("17_e0j10")
+metadata/_custom_type_script = "uid://bpfwbqkl7ck68"
+
+[node name="BackpackPlaceholder" type="Marker3D" parent="." unique_id=1507781535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.58964, 2.5737, -8.52846)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("21_e2uyj")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="PistolPlaceholder" type="Marker3D" parent="." unique_id=677211505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88068, -3.2957)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("17_jv2ad")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="FlashlightPlaceholder" type="Marker3D" parent="." unique_id=1811755845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76366925, 1.6378605, -2.6902688)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("20_8dsq4")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="BoxOfBulltesPlaceholder" type="Marker3D" parent="." unique_id=1788278226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29842, -2.74027)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("19_f0lqv")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="SwordPlaceholder" type="Marker3D" parent="." unique_id=262367419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2819, 4, -1)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("20_1vorj")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="ChickenPlaceholder" type="Marker3D" parent="." unique_id=762624597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 2, 7)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("18_2hwbf")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="BoatPlaceholder" type="Marker3D" parent="." unique_id=171314151]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -23.508383, 0.5387783, 7)
+script = ExtResource("16_5wgw0")
+spawn_scene = ExtResource("24_84omo")
+metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1150581307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1432705, 1.29434, -2)
+
+[node name="ProtonScatterCache" type="Node" parent="." unique_id=587278032]
+script = ExtResource("23_ujtx7")
+cache_file = "res://addons/proton_scatter/cache/world_3961314550_scatter_cache.res"
+metadata/_custom_type_script = "uid://bvs42qalh6tb"
+
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush2" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush2" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush2" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush2" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush3" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush3" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush3" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush3" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush4" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush4" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush4" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush4" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush5" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush5" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush5" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush5" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush6" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush6" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush6" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush6" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush7" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush7" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush7" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush7" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush8" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush8" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush8" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush8" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush9" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush9" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush9" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush9" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush10" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush10" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush10" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush10" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush11" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush11" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush11" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush11" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush12" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush12" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush12" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush12" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush13" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush13" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush13" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush13" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush14" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush14" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush14" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush14" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush15" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush15" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush15" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush15" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush16" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush16" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush16" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush16" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush17" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush17" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush17" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush17" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush18" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush18" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush18" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush18" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush19" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush19" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush19" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush19" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush20" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush20" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush20" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush20" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush21" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush21" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush21" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush21" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush22" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush22" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush22" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush22" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush23" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush23" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush23" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush23" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush24" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush24" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush24" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush24" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush25" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush25" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush25" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush25" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush26" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush26" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush26" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush26" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush27" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush27" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush27" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush27" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush28" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush28" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush28" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush28" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush29" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush29" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush29" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush29" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush30" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush30" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush30" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush30" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush31" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush31" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush31" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush31" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush32" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush32" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush32" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush32" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush33" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush33" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush33" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush33" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush34" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush34" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush34" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush34" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush35" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush35" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush35" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush35" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush36" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush36" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush36" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush36" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush37" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush37" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush37" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush37" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush38" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush38" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush38" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush38" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush39" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush39" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush39" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush39" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush40" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush40" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush40" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush40" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush41" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush41" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush41" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush41" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush42" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush42" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush42" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush42" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush43" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush43" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush43" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush43" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush44" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush44" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush44" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush44" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush45" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush45" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush45" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush45" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush46" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush46" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush46" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush46" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush47" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush47" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush47" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush47" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush48" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush48" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush48" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush48" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush49" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush49" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush49" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush49" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush50" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush50" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush50" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush50" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush51" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush51" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush51" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush51" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush52" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush52" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush52" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush52" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush53" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush53" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush53" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush53" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush54" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush54" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush54" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush54" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush55" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush55" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush55" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush55" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush56" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush56" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush56" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush56" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush57" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush57" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush57" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush57" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush58" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush58" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush58" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush58" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush59" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush59" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush59" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush59" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush60" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush60" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush60" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush60" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush61" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush61" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush61" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush61" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush62" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush62" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush62" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush62" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush63" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush63" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush63" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush63" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush64" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush64" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush64" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush64" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush65" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush65" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush65" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush65" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush66" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush66" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush66" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush66" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush67" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush67" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush67" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush67" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush68" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush68" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush68" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush68" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush69" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush69" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush69" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush69" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush70" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush70" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush70" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush70" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush71" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush71" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush71" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush71" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush72" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush72" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush72" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush72" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush73" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush73" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush73" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush73" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush74" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush74" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush74" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush74" method="_on_body_exited"]
+[connection signal="body_entered" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush75" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush75" method="_on_body_entered"]
+[connection signal="body_exited" from="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush75" to="NavigationRegion3D/Terrain3D/BushScatter/ScatterOutput/ScatterItem/Bush75" method="_on_body_exited"]

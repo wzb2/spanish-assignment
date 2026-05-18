@@ -1,0 +1,1186 @@
+[gd_scene load_steps=34 format=3 uid="uid://ct4cwl717854b"]
+
+[ext_resource type="PackedScene" uid="uid://cx0v34w54rgsw" path="res://models/Giant_Chicken.glb" id="1_xmadd"]
+[ext_resource type="Script" uid="uid://61oetb1ukjhv" path="res://scripts/giant_chicken.gd" id="1_y8115"]
+[ext_resource type="AnimationLibrary" uid="uid://dnc01qoegycex" path="res://models/Giant_Chicken_Animations.glb" id="3_k3e8t"]
+[ext_resource type="Script" uid="uid://bajgrihi0owix" path="res://scripts/damagable_bone.gd" id="3_wf7cr"]
+[ext_resource type="Script" uid="uid://br1ese6frohr1" path="res://scripts/pointy_rigidbody.gd" id="4_8sdw6"]
+[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="4_m7f5j"]
+[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="5_2xhtu"]
+[ext_resource type="Script" uid="uid://vwa00jlqqm7a" path="res://scripts/targeting_component.gd" id="6_2xhtu"]
+[ext_resource type="Script" uid="uid://jyqyhvpbcn1g" path="res://scripts/grass_pusher.gd" id="6_o43sf"]
+[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="6_qlj8e"]
+[ext_resource type="PackedScene" uid="uid://cb6gax4oiwj00" path="res://scenes/health_component.tscn" id="9_2xhtu"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m7f5j"]
+properties/0/path = NodePath(".:packed_bone_positions")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:packed_bone_rotations")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3e8t"]
+albedo_color = Color(1, 0.717647, 0.145098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rji5n"]
+albedo_color = Color(0.44, 0.2915, 0.11, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8115"]
+cull_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf7cr"]
+albedo_color = Color(1, 0.537255, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sdw6"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8115"]
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_m7f5j"]
+radial_segments = 4
+rings = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_an42x"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_2xhtu"]
+radius = 0.3
+height = 0.6
+radial_segments = 4
+rings = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3e8t"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_qlj8e"]
+radius = 0.15
+height = 0.3
+radial_segments = 4
+rings = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rji5n"]
+radius = 0.125
+height = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_o43sf"]
+radius = 0.15
+height = 0.3
+radial_segments = 4
+rings = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m7f5j"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_xyd8p"]
+radius = 0.3
+height = 0.6
+radial_segments = 4
+rings = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wf7cr"]
+radius = 0.1
+height = 0.462304
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nd6qm"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.4
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8sdw6"]
+radius = 0.1
+height = 0.462304
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y8115"]
+radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m7f5j"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.4
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf7cr"]
+size = Vector3(0.3, 0.2, 0.25)
+
+[node name="GiantChicken" type="Node3D" node_paths=PackedStringArray("animated_skeleton", "physics_skeleton", "physics_skeleton_simulator", "root_bone", "movement_bones", "feet_shapecasts")]
+script = ExtResource("1_y8115")
+animated_skeleton = NodePath("AnimatedChicken/Armature/Skeleton3D")
+physics_skeleton = NodePath("PhysicsChicken/Armature/Skeleton3D")
+physics_skeleton_simulator = NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D")
+default_angular_spring_stiffness = 7000.0
+angular_spring_damping = 60.0
+root_bone = NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip")
+movement_bones = [NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"), NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L"), NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"), NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L"), NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R")]
+feet_shapecasts = [NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/ShapeCast3D"), NodePath("PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/ShapeCast3D")]
+
+[node name="TransformSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_m7f5j")
+
+[node name="AnimatedChicken" parent="." instance=ExtResource("1_xmadd")]
+
+[node name="Armature" parent="AnimatedChicken" index="0"]
+visible = false
+
+[node name="Skeleton3D" parent="AnimatedChicken/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0415586, -6.06984e-15, -9.90835e-09, 0.999136)
+bones/4/rotation = Quaternion(0.00361452, -0.0116239, 0.999926, -4.2025e-05)
+bones/5/rotation = Quaternion(0.229282, 2.6118e-08, -0.00165769, 0.973359)
+bones/6/rotation = Quaternion(-0.803883, 1.41644e-14, -1.91661e-07, 0.594787)
+bones/7/rotation = Quaternion(-0.0036147, -0.0116239, 0.999926, 4.20123e-05)
+bones/8/rotation = Quaternion(0.229282, 2.93772e-08, 0.00165766, 0.973359)
+
+[node name="Beak" parent="AnimatedChicken/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_k3e8t")
+
+[node name="Body" parent="AnimatedChicken/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rji5n")
+
+[node name="Eyes" parent="AnimatedChicken/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y8115")
+
+[node name="Legs" parent="AnimatedChicken/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wf7cr")
+
+[node name="Poof" parent="AnimatedChicken/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rji5n")
+
+[node name="Pupils" parent="AnimatedChicken/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8sdw6")
+
+[node name="PhysicsChicken" parent="." instance=ExtResource("1_xmadd")]
+
+[node name="Beak" parent="PhysicsChicken/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_k3e8t")
+
+[node name="Body" parent="PhysicsChicken/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rji5n")
+
+[node name="Eyes" parent="PhysicsChicken/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y8115")
+
+[node name="Legs" parent="PhysicsChicken/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wf7cr")
+
+[node name="Poof" parent="PhysicsChicken/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rji5n")
+
+[node name="Pupils" parent="PhysicsChicken/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8sdw6")
+
+[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="PhysicsChicken/Armature/Skeleton3D" index="6"]
+
+[node name="Physical Bone Hip" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(1, 2.38419e-07, 7.10547e-15, 7.3786e-08, -0.309481, -0.950906, -2.26713e-07, 0.950906, -0.309481, 1.72448e-08, 1.3819, 0.109509)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72444e-08, -1.35486e-06, 0.353842)
+body_offset = Transform3D(1, 2.84217e-14, 6.39488e-14, 5.68434e-14, -2.68221e-07, -1, -5.68434e-14, 1, -2.98023e-07, 1.72444e-08, 0.353842, 1.46031e-06)
+linear_damp = 0.2
+angular_damp = 10.0
+bone_name = "Hip"
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_y8115")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.25
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater"]
+transform = Transform3D(1, 1.52056e-12, 0, -1.5774e-12, 1, 0, 7.10543e-15, 0, 1, 1.28369e-09, -0.00539428, -0.011072)
+mesh = SubResource("SphereMesh_m7f5j")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint20" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28293e-09, -0.505394, -0.011072)
+is_generated = true
+
+[node name="FloaterPoint19" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.433013, -0.255394, -0.011072)
+is_generated = true
+
+[node name="FloaterPoint18" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28331e-09, -0.255394, -0.444085)
+is_generated = true
+
+[node name="FloaterPoint17" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433013, -0.255394, -0.011072)
+is_generated = true
+
+[node name="FloaterPoint16" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28331e-09, -0.255394, 0.421941)
+is_generated = true
+
+[node name="FloaterPoint15" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.433013, 0.244606, -0.011072)
+is_generated = true
+
+[node name="FloaterPoint14" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28407e-09, 0.244606, -0.444085)
+is_generated = true
+
+[node name="FloaterPoint13" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433013, 0.244606, -0.011072)
+is_generated = true
+
+[node name="FloaterPoint12" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28407e-09, 0.244606, 0.421941)
+is_generated = true
+
+[node name="FloaterPoint11" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28445e-09, 0.494606, -0.011072)
+is_generated = true
+
+[node name="GrassPusher" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"]
+script = ExtResource("6_o43sf")
+radius = 1.7
+metadata/_custom_type_script = "uid://jyqyhvpbcn1g"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"]
+path_desired_distance = 3.0
+target_desired_distance = 2.0
+radius = 1.0
+debug_enabled = true
+
+[node name="Physical Bone Tail" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(1, 2.38419e-07, 1.75548e-12, -2.38381e-07, 0.999841, -0.0178446, -4.25624e-09, 0.0178446, 0.999841, -1.19266e-07, 1.5, -0.135109)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57048e-08, 0.224651, 0.35017)
+body_offset = Transform3D(1, -2.00742e-14, 1.20792e-13, 5.68434e-14, 7.12276e-06, -1, -5.24303e-14, 1, 7.09668e-06, -6.57048e-08, 0.350168, -0.224653)
+mass = 0.75
+linear_damp = 0.2
+angular_damp = 10.0
+bone_name = "Tail"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 30.0
+joint_constraints/x/angular_limit_lower = -30.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 15.0
+joint_constraints/y/angular_limit_lower = -15.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 15.0
+joint_constraints/z/angular_limit_lower = -15.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail"]
+transform = Transform3D(1, 0, -3.68386e-14, -3.64014e-14, 9.49949e-08, 1, 1.77636e-15, -1, 9.49949e-08, 8.63878e-10, -0.003618, -0.55273)
+shape = SubResource("CapsuleShape3D_an42x")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.25
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater"]
+transform = Transform3D(1, 1.52676e-12, 0, -1.54326e-12, 1, 0, 4.44089e-16, 0, 1, 1.7707e-09, -0.00741172, -0.56755)
+mesh = SubResource("SphereMesh_2xhtu")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77024e-09, -0.307412, -0.56755)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.00741172, -0.56755)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7707e-09, -0.00741172, -0.86755)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.00741172, -0.56755)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7707e-09, -0.00741172, -0.26755)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77116e-09, 0.292588, -0.56755)
+is_generated = true
+
+[node name="Physical Bone Chest" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(1, 2.39079e-07, -2.57567e-13, 1.98541e-08, -0.0830453, -0.996546, -2.38253e-07, 0.996546, -0.0830453, 3.14767e-09, 1.86961, 0.231619)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14727e-09, -1.60706e-06, 0.151769)
+body_offset = Transform3D(1, 6.60322e-10, -2.4869e-13, -2.55795e-13, -2.23517e-08, -1, -6.60364e-10, 1, -1.49012e-08, 3.14731e-09, 0.151769, 1.60933e-06)
+angular_damp = 5.0
+bone_name = "Chest"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 100.0
+joint_constraints/x/angular_limit_lower = -100.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 5.0
+joint_constraints/y/angular_limit_lower = -5.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 5.0
+joint_constraints/z/angular_limit_lower = -5.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.49012e-08, 1, 3.24471e-09, -0.0135746, -0.162896)
+shape = SubResource("CapsuleShape3D_k3e8t")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.25
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater"]
+transform = Transform3D(1, 2.25953e-12, -1.77636e-15, -2.25953e-12, 1, 0, -1.77636e-15, -7.45058e-09, 1, 1.52861e-09, -0.00639385, -0.168043)
+mesh = SubResource("SphereMesh_qlj8e")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint12" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52827e-09, -0.156394, -0.168043)
+is_generated = true
+
+[node name="FloaterPoint11" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.00639385, -0.168043)
+is_generated = true
+
+[node name="FloaterPoint10" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52861e-09, -0.00639385, -0.318043)
+is_generated = true
+
+[node name="FloaterPoint9" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.00639385, -0.168043)
+is_generated = true
+
+[node name="FloaterPoint8" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52861e-09, -0.00639385, -0.018043)
+is_generated = true
+
+[node name="FloaterPoint7" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52895e-09, 0.143606, -0.168043)
+is_generated = true
+
+[node name="Physical Bone Neck" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(1, 2.12342e-07, 7.52745e-15, -1.79116e-14, 1.19802e-07, -1, -2.12342e-07, 1, 1.19802e-07, -1.90427e-14, 2.22409, 0.244221)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47081e-15, -1.0479e-08, 0.203235)
+body_offset = Transform3D(1, -2.6077e-08, 2.33733e-14, 1.18424e-14, -3.66598e-08, -1, 2.6077e-08, 1, -2.17587e-08, -3.55271e-15, 0.203235, 1.49012e-08)
+mass = 0.75
+angular_damp = 10.0
+bone_name = "Neck"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 15.0
+joint_constraints/x/angular_limit_lower = -15.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 5.0
+joint_constraints/y/angular_limit_lower = -5.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 5.0
+joint_constraints/z/angular_limit_lower = -5.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck"]
+transform = Transform3D(1, 5.96856e-13, -8.63974e-20, -5.96856e-13, 1, 0, 8.63974e-20, 0, 1, 0, 1.49012e-08, -0.0931761)
+shape = SubResource("CapsuleShape3D_rji5n")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.25
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater"]
+transform = Transform3D(1, 2.25953e-12, -3.10014e-19, -2.25953e-12, 1, 0, 3.10014e-19, 0, 1, -7.10543e-15, 1.49012e-08, -0.0913165)
+mesh = SubResource("SphereMesh_o43sf")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46035e-13, -0.15, -0.0913165)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.49015e-08, -0.0913165)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.08701e-15, 1.49012e-08, -0.241316)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.49009e-08, -0.0913165)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10548e-15, 1.49012e-08, 0.0586835)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31824e-13, 0.15, -0.0913165)
+is_generated = true
+
+[node name="Physical Bone Head" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(1, 2.12334e-07, -7.24644e-12, -7.27188e-12, 1.19801e-07, -1, -2.12334e-07, 1, 1.19801e-07, 5.31731e-09, 2.92733, 0.245624)
+joint_type = 2
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.01596e-09, -0.0014022, 0.5)
+body_offset = Transform3D(1, -2.60843e-08, -7.2306e-12, -7.24213e-12, -3.66616e-08, -1, 2.60843e-08, 1, -2.17604e-08, 4.983e-09, 0.5, 0.00140221)
+mass = 0.75
+angular_damp = 5.0
+bone_name = "Head"
+joint_constraints/swing_span = 15.0
+joint_constraints/twist_span = 90.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head"]
+transform = Transform3D(1, -2.0837e-19, 5.54223e-13, -5.54223e-13, 0, 1, 1.42302e-19, -1, 0, 1.42109e-13, -1.49012e-08, 0.0379655)
+shape = SubResource("CapsuleShape3D_m7f5j")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.25
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater"]
+transform = Transform3D(1, 3.45324e-12, -4.74338e-19, -3.45324e-12, 1, 0, 4.74338e-19, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_xyd8p")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03597e-12, -0.3, 0)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.03599e-12, -5.52496e-17)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.68805e-17, 1.83691e-17, -0.3)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -1.03595e-12, 1.85114e-17)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42301e-19, 1.83691e-17, 0.3)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03597e-12, 0.3, 0)
+is_generated = true
+
+[node name="TargetingComponent" type="Marker3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head"]
+transform = Transform3D(1, -2.44501e-14, -2.16513e-07, 2.16513e-07, 1.19802e-07, 1, 1.48868e-15, -1, 1.19802e-07, -6.13736e-08, 0.273339, -0.108898)
+script = ExtResource("6_2xhtu")
+metadata/_custom_type_script = "uid://vwa00jlqqm7a"
+
+[node name="Physical Bone Upper Leg_L" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(-0.999974, 0.00722576, 1.59992e-08, 1.67838e-08, 1.08523e-07, 1, 0.00722576, 0.999974, -1.08641e-07, -0.245999, 0.676318, 1.3145e-07)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45434e-09, -9.8929e-08, 0.231152)
+body_offset = Transform3D(1, 3.95626e-06, -2.35946e-08, -2.33052e-08, 4.27918e-07, -1, -3.9544e-06, 0.999997, 4.27981e-07, 0, 0.231152, 0)
+linear_damp = 0.2
+angular_damp = 10.0
+bone_name = "Upper Leg.L"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 15.0
+joint_constraints/x/angular_limit_lower = -15.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 15.0
+joint_constraints/y/angular_limit_lower = -15.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 15.0
+joint_constraints/z/angular_limit_lower = -15.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wf7cr")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.4
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater"]
+transform = Transform3D(1, 8.88178e-16, 0, 0, -4.37223e-08, -1, 2.44249e-15, 1, -4.37223e-08, 0, 5.33182e-08, -0.00479555)
+mesh = SubResource("CylinderMesh_nd6qm")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint8" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint7" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6539e-16, 0.1, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77636e-16, -0.0999999, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89882e-16, 0.1, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77636e-16, -0.1, 0.195204)
+is_generated = true
+
+[node name="Physical Bone Upper Leg_R" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(-0.999974, -0.00722576, 1.77467e-08, 1.09344e-08, 9.4282e-07, 1, -0.00722576, 0.999974, -9.42716e-07, 0.245999, 0.676318, 1.3145e-07)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.22148e-09, 9.39514e-08, 0.231152)
+body_offset = Transform3D(1, -3.83845e-06, -2.25874e-08, -2.32722e-08, -3.76577e-07, -1, 3.83565e-06, 0.999997, -4.06447e-07, 0, 0.231152, 0)
+linear_damp = 0.2
+angular_damp = 10.0
+bone_name = "Upper Leg.R"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 15.0
+joint_constraints/x/angular_limit_lower = -15.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 15.0
+joint_constraints/y/angular_limit_lower = -15.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 15.0
+joint_constraints/z/angular_limit_lower = -15.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_8sdw6")
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.4
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater"]
+transform = Transform3D(1, 8.88178e-16, 0, 0, -4.37223e-08, -1, 2.44249e-15, 1, -4.37223e-08, 0, 5.33182e-08, -0.00479555)
+mesh = SubResource("CylinderMesh_nd6qm")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint8" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint7" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6539e-16, 0.1, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77636e-16, -0.0999999, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89882e-16, 0.1, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77636e-16, -0.1, 0.195204)
+is_generated = true
+
+[node name="Physical Bone Lower Leg_L" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(1, 3.87337e-06, -2.47563e-08, -2.47573e-08, 2.59569e-07, -1, -3.87337e-06, 1, 2.5957e-07, -0.246005, 0.219, -0.00199997)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73105e-06, 0.00200028, -0.226166)
+body_offset = Transform3D(-0.999974, 0.00722578, 2.43664e-08, 2.58608e-08, 2.47008e-07, 1, 0.00722576, 0.999971, -2.47252e-07, -8.71718e-06, 0.226166, -0.00200032)
+mass = 0.75
+friction = 0.9
+linear_damp = 0.2
+angular_damp = 10.0
+bone_name = "Lower Leg.L"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 45.0
+joint_constraints/x/angular_limit_lower = -45.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 0.0
+joint_constraints/y/angular_limit_lower = 0.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 0.0
+joint_constraints/z/angular_limit_lower = 0.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wf7cr")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L"]
+transform = Transform3D(1, 1.50546e-13, 0, 0, -4.37113e-08, -1, -1.52767e-13, 1, -4.37114e-08, 0, 0, 0.075)
+shape = SubResource("SphereShape3D_y8115")
+target_position = Vector3(0, 0.1, 0)
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.4
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater"]
+transform = Transform3D(1, 8.88178e-16, 0, 0, -4.37223e-08, -1, 2.44249e-15, 1, -4.37223e-08, 0, 5.33182e-08, -0.00479555)
+mesh = SubResource("CylinderMesh_m7f5j")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint8" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint7" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6539e-16, 0.1, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77636e-16, -0.0999999, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89882e-16, 0.1, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77636e-16, -0.1, 0.195204)
+is_generated = true
+
+[node name="Physical Bone Lower Leg_R" type="PhysicalBone3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(-0.999974, -0.00722576, 3.47263e-08, 3.08482e-08, 5.36818e-07, 1, -0.00722576, 0.999974, -5.36581e-07, 0.245999, 0.21875, 2.49719e-07)
+joint_type = 5
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47124e-09, 1.27324e-07, 0.226416)
+body_offset = Transform3D(1, -3.89665e-06, -3.29957e-08, -3.3679e-08, -3.09853e-10, -1, 3.89386e-06, 0.999997, -3.01813e-08, 0, 0.226416, -1.2049e-07)
+mass = 0.75
+friction = 0.9
+linear_damp = 0.2
+angular_damp = 10.0
+bone_name = "Lower Leg.R"
+joint_constraints/x/linear_limit_enabled = true
+joint_constraints/x/linear_limit_upper = 0.0
+joint_constraints/x/linear_limit_lower = 0.0
+joint_constraints/x/linear_limit_softness = 0.7
+joint_constraints/x/linear_spring_enabled = false
+joint_constraints/x/linear_spring_stiffness = 0.0
+joint_constraints/x/linear_spring_damping = 0.0
+joint_constraints/x/linear_equilibrium_point = 0.0
+joint_constraints/x/linear_restitution = 0.5
+joint_constraints/x/linear_damping = 1.0
+joint_constraints/x/angular_limit_enabled = true
+joint_constraints/x/angular_limit_upper = 45.0
+joint_constraints/x/angular_limit_lower = -45.0
+joint_constraints/x/angular_limit_softness = 0.5
+joint_constraints/x/angular_restitution = 0.0
+joint_constraints/x/angular_damping = 1.0
+joint_constraints/x/erp = 0.5
+joint_constraints/x/angular_spring_enabled = false
+joint_constraints/x/angular_spring_stiffness = 0.0
+joint_constraints/x/angular_spring_damping = 0.0
+joint_constraints/x/angular_equilibrium_point = 0.0
+joint_constraints/y/linear_limit_enabled = true
+joint_constraints/y/linear_limit_upper = 0.0
+joint_constraints/y/linear_limit_lower = 0.0
+joint_constraints/y/linear_limit_softness = 0.7
+joint_constraints/y/linear_spring_enabled = false
+joint_constraints/y/linear_spring_stiffness = 0.0
+joint_constraints/y/linear_spring_damping = 0.0
+joint_constraints/y/linear_equilibrium_point = 0.0
+joint_constraints/y/linear_restitution = 0.5
+joint_constraints/y/linear_damping = 1.0
+joint_constraints/y/angular_limit_enabled = true
+joint_constraints/y/angular_limit_upper = 0.0
+joint_constraints/y/angular_limit_lower = 0.0
+joint_constraints/y/angular_limit_softness = 0.5
+joint_constraints/y/angular_restitution = 0.0
+joint_constraints/y/angular_damping = 1.0
+joint_constraints/y/erp = 0.5
+joint_constraints/y/angular_spring_enabled = false
+joint_constraints/y/angular_spring_stiffness = 0.0
+joint_constraints/y/angular_spring_damping = 0.0
+joint_constraints/y/angular_equilibrium_point = 0.0
+joint_constraints/z/linear_limit_enabled = true
+joint_constraints/z/linear_limit_upper = 0.0
+joint_constraints/z/linear_limit_lower = 0.0
+joint_constraints/z/linear_limit_softness = 0.7
+joint_constraints/z/linear_spring_enabled = false
+joint_constraints/z/linear_spring_stiffness = 0.0
+joint_constraints/z/linear_spring_damping = 0.0
+joint_constraints/z/linear_equilibrium_point = 0.0
+joint_constraints/z/linear_restitution = 0.5
+joint_constraints/z/linear_damping = 1.0
+joint_constraints/z/angular_limit_enabled = true
+joint_constraints/z/angular_limit_upper = 0.0
+joint_constraints/z/angular_limit_lower = 0.0
+joint_constraints/z/angular_limit_softness = 0.5
+joint_constraints/z/angular_restitution = 0.0
+joint_constraints/z/angular_damping = 1.0
+joint_constraints/z/erp = 0.5
+joint_constraints/z/angular_spring_enabled = false
+joint_constraints/z/angular_spring_stiffness = 0.0
+joint_constraints/z/angular_spring_damping = 0.0
+joint_constraints/z/angular_equilibrium_point = 0.0
+script = ExtResource("3_wf7cr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_8sdw6")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R"]
+transform = Transform3D(1, 1.50546e-13, 0, 0, -4.37113e-08, -1, -1.52767e-13, 1, -4.37114e-08, 0, 0, -0.075)
+shape = SubResource("SphereShape3D_y8115")
+target_position = Vector3(0, -0.1, 0)
+
+[node name="Floater" type="Node3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R"]
+script = ExtResource("4_m7f5j")
+relative_density = 0.4
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater"]
+transform = Transform3D(1, 8.88178e-16, 0, 0, -4.37223e-08, -1, 2.44249e-15, 1, -4.37223e-08, 0, 5.33182e-08, -0.00479555)
+mesh = SubResource("CylinderMesh_m7f5j")
+script = ExtResource("5_2xhtu")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint8" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint7" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6539e-16, 0.1, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint6" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 6.20627e-08, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint5" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77636e-16, -0.0999999, -0.204796)
+is_generated = true
+
+[node name="FloaterPoint4" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint3" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89882e-16, 0.1, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint2" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 4.45737e-08, 0.195204)
+is_generated = true
+
+[node name="FloaterPoint" parent="PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R/Floater" instance=ExtResource("6_qlj8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77636e-16, -0.1, 0.195204)
+is_generated = true
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="PhysicsChicken/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 1.06581e-14, 2.38418e-07, -3.3834e-14, 1, 1.56462e-07, -2.38419e-07, -1.41561e-07, 1, -1.47995e-14, 2.42733, 0.244221)
+bone_name = "Head"
+bone_idx = 3
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PhysicsChicken/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, -2.03288e-20, -8.52651e-14, 1.69407e-20, 1, 8.52651e-14, 9.9476e-14, 8.52651e-14, 1, -9.13506e-08, 0.339131, 0.383152)
+remote_path = NodePath("../../../../../Beak")
+
+[node name="Beak" type="RigidBody3D" parent="." node_paths=PackedStringArray("immune_health_component")]
+transform = Transform3D(1, 1.06581e-14, 2.38418e-07, -3.3834e-14, 1, 1.56462e-07, -2.38418e-07, -1.41561e-07, 1, -8.58538e-14, 2.76646, 0.627373)
+collision_layer = 0
+custom_integrator = true
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("4_8sdw6")
+immune_health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Beak"]
+transform = Transform3D(1, -2.37169e-20, -1.56319e-13, 3.72694e-20, 1, 1.56319e-13, 1.7053e-13, 1.56319e-13, 1, -1.03934e-08, -0.00505662, 0.0435929)
+shape = SubResource("BoxShape3D_wf7cr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedChicken")
+libraries = {
+&"Giant_Chicken_Animations": ExtResource("3_k3e8t")
+}
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("vital_bones", "non_vital_bones") instance=ExtResource("9_2xhtu")]
+vital_bones = [NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest"), NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck")]
+non_vital_bones = [NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"), NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Tail"), NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_R"), NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Lower Leg_L"), NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"), NodePath("../PhysicsChicken/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L")]
+damage_acceleration_threshold = 0.08
+pointy_thing_damage_force_threshold = 0.03
+vital_bone_damage_multiplier = 1.25
+
+[editable path="AnimatedChicken"]
+[editable path="PhysicsChicken"]

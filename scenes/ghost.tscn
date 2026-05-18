@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://x6o16ycnam2f"]
+
+[ext_resource type="PackedScene" uid="uid://bahhcif16603x" path="res://models/Ghost.glb" id="1_t76o2"]
+[ext_resource type="Script" uid="uid://bu3qhx2oqiit6" path="res://scripts/multiplayer_node_3D.gd" id="2_l5lq6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t76o2"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.01
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5lq6"]
+next_pass = SubResource("StandardMaterial3D_t76o2")
+transparency = 1
+albedo_color = Color(1, 0.22745098, 0.19215687, 0.8784314)
+emission_enabled = true
+emission = Color(1, 0.18039216, 0.1254902, 1)
+emission_energy_multiplier = 0.1
+subsurf_scatter_transmittance_color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+subsurf_scatter_transmittance_depth = 6.235
+subsurf_scatter_transmittance_boost = 0.14
+backlight_enabled = true
+backlight = Color(0.36282945, 0.36282945, 0.36282945, 1)
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbnym"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_veat2"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+
+[node name="Ghost" unique_id=838141487 instance=ExtResource("1_t76o2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("2_l5lq6")
+
+[node name="Body" parent="." index="0" unique_id=384040413]
+surface_material_override/0 = SubResource("StandardMaterial3D_l5lq6")
+
+[node name="Eyes" parent="." index="1" unique_id=101116865]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_bbnym")
+
+[node name="Pupils" parent="." index="2" unique_id=260743756]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_veat2")

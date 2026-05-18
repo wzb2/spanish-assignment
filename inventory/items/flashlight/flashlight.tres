@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://bhnio8282u5xx"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_5uplx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5uplx"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_5uplx")
+physical_item_path = "res://inventory/items/flashlight/Flashlight.tscn"
+name = "Flashlight"
+texture = SubResource("PlaceholderTexture2D_5uplx")
+data = Dictionary[String, Variant]({
+"battery": 1.0
+})
+path = "uid://bhnio8282u5xx"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

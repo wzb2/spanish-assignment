@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://dg2asm0pjukgr"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_uglvg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uglvg"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_uglvg")
+physical_item_path = "res://inventory/items/sword/sword.tscn"
+name = "Sword"
+description = "stabby"
+texture = SubResource("PlaceholderTexture2D_uglvg")
+path = "uid://dg2asm0pjukgr"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

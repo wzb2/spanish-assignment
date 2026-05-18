@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://1ui0sa187b0u"]
+
+[ext_resource type="Script" uid="uid://cnd7chn2otrm8" path="res://inventory/items/stick/stick.gd" id="1_t53ky"]
+[ext_resource type="Resource" uid="uid://bvumwha5jfria" path="res://inventory/items/stick/stick.tres" id="2_edi5t"]
+[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="3_sve5t"]
+[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="4_gkp5b"]
+[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="5_dqsyn"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gkp5b"]
+properties/0/path = NodePath(".:current_hand")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:synced_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:synced_rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edi5t"]
+albedo_color = Color(0.413173, 0.34628, 0.114523, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sve5t"]
+material = SubResource("StandardMaterial3D_edi5t")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.4
+radial_segments = 16
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gkp5b"]
+height = 0.4
+radius = 0.03
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_edi5t"]
+height = 0.45
+radius = 0.04
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gkp5b"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.4
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[node name="Stick" type="RigidBody3D" unique_id=165407614 node_paths=PackedStringArray("mesh_instances", "interact_area")]
+mass = 0.01
+continuous_cd = true
+script = ExtResource("1_t53ky")
+item_resource = ExtResource("2_edi5t")
+mesh_instances = [NodePath("MeshInstance3D")]
+interact_area = NodePath("Area3D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1922526864]
+replication_config = SubResource("SceneReplicationConfig_gkp5b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1837051167]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sve5t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1249772544]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gkp5b")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=888935169]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1049608232]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_edi5t")
+
+[node name="Floater" type="Node3D" parent="." unique_id=1927712703]
+script = ExtResource("3_sve5t")
+relative_density = 0.2
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="Floater" unique_id=1539608588]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_gkp5b")
+script = ExtResource("4_gkp5b")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint8" parent="Floater" unique_id=1655221356 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 8.74228e-09, -0.2)
+is_generated = true
+
+[node name="FloaterPoint7" parent="Floater" unique_id=1981625093 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67382e-18, 0.03, -0.2)
+is_generated = true
+
+[node name="FloaterPoint6" parent="Floater" unique_id=288431558 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 8.74228e-09, -0.2)
+is_generated = true
+
+[node name="FloaterPoint5" parent="Floater" unique_id=1620275068 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, -0.2)
+is_generated = true
+
+[node name="FloaterPoint4" parent="Floater" unique_id=118582781 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -8.74228e-09, 0.2)
+is_generated = true
+
+[node name="FloaterPoint3" parent="Floater" unique_id=255132859 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67382e-18, 0.03, 0.2)
+is_generated = true
+
+[node name="FloaterPoint2" parent="Floater" unique_id=547471300 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, -8.74228e-09, 0.2)
+is_generated = true
+
+[node name="FloaterPoint" parent="Floater" unique_id=615992368 instance=ExtResource("5_dqsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0.2)
+is_generated = true

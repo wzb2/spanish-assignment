@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://cp2ywm1vxlptk"]
+
+[ext_resource type="Script" uid="uid://bdwa04yye65ir" path="res://inventory/items/sword/sword.gd" id="1_gw6o5"]
+[ext_resource type="Resource" uid="uid://dg2asm0pjukgr" path="res://inventory/items/sword/sword.tres" id="2_v5184"]
+[ext_resource type="PackedScene" uid="uid://kl7b8ujdagwg" path="res://inventory/items/sword/stabby_stick.glb" id="3_k188e"]
+[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="4_kiia2"]
+[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="5_0cyla"]
+[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="5_31ufm"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0cyla"]
+properties/0/path = NodePath(".:current_hand")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:synced_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:synced_rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k188e"]
+albedo_color = Color(0.47788, 0.47788, 0.47788, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kiia2"]
+albedo_color = Color(0.42, 0.3416, 0.126, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k188e"]
+size = Vector3(0.188, 1.206, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31ufm"]
+size = Vector3(0.488, 1.688, 0.225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kiia2"]
+size = Vector3(0.375, 0.276, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0cyla"]
+size = Vector3(0.3, 1.5, 0.075)
+
+[node name="Sword" type="RigidBody3D" unique_id=1186309983 node_paths=PackedStringArray("mesh_instances", "interact_area")]
+mass = 0.1
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_gw6o5")
+item_resource = ExtResource("2_v5184")
+mesh_instances = [NodePath("stabby_stick/Cube"), NodePath("stabby_stick/Cube_001")]
+interact_area = NodePath("Area3D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1788295573]
+replication_config = SubResource("SceneReplicationConfig_0cyla")
+
+[node name="stabby_stick" parent="." unique_id=583644361 instance=ExtResource("3_k188e")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.167, 0)
+
+[node name="Cube" parent="stabby_stick" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_k188e")
+
+[node name="Cube_001" parent="stabby_stick" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kiia2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1362511744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828349, 0)
+shape = SubResource("BoxShape3D_k188e")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1011659220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1305029235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.486953, 0)
+shape = SubResource("BoxShape3D_31ufm")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=296288043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127, 0)
+shape = SubResource("BoxShape3D_kiia2")
+
+[node name="Floater" type="Node3D" parent="." unique_id=461184496]
+script = ExtResource("4_kiia2")
+relative_density = 4.0
+metadata/_custom_type_script = "uid://bckobx7fm17y8"
+
+[node name="FloaterMesh" type="MeshInstance3D" parent="Floater" unique_id=1054040364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.668592, 0)
+mesh = SubResource("BoxMesh_0cyla")
+script = ExtResource("5_0cyla")
+metadata/_custom_type_script = "uid://beckuqbvjtgr7"
+
+[node name="FloaterPoint12" parent="Floater" unique_id=1380920453 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.081408, -0.0375)
+is_generated = true
+
+[node name="FloaterPoint11" parent="Floater" unique_id=1536286484 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.081408, 0.0375)
+is_generated = true
+
+[node name="FloaterPoint10" parent="Floater" unique_id=258055323 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.081408, -0.0375)
+is_generated = true
+
+[node name="FloaterPoint9" parent="Floater" unique_id=2074196628 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.081408, 0.0375)
+is_generated = true
+
+[node name="FloaterPoint8" parent="Floater" unique_id=165807560 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.41859, -0.0375)
+is_generated = true
+
+[node name="FloaterPoint7" parent="Floater" unique_id=1122418868 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.41859, 0.0375)
+is_generated = true
+
+[node name="FloaterPoint6" parent="Floater" unique_id=467319340 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.41859, -0.0375)
+is_generated = true
+
+[node name="FloaterPoint5" parent="Floater" unique_id=611218613 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.41859, 0.0375)
+is_generated = true
+
+[node name="FloaterPoint" parent="Floater" unique_id=771902266 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.1, 0)
+
+[node name="FloaterPoint2" parent="Floater" unique_id=507460433 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
+
+[node name="FloaterPoint3" parent="Floater" unique_id=1256683523 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.1, 0)
+
+[node name="FloaterPoint4" parent="Floater" unique_id=67414988 instance=ExtResource("5_31ufm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
+
+[editable path="stabby_stick"]

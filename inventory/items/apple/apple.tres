@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://fhb7tthyx4wo"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_4u5rk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4u5rk"]
+size = Vector2(50, 50)
+
+[resource]
+script = ExtResource("1_4u5rk")
+physical_item_path = "res://inventory/items/apple/apple.tscn"
+name = "Apple"
+description = "yummy"
+texture = SubResource("PlaceholderTexture2D_4u5rk")
+stack_size = 3
+path = "uid://fhb7tthyx4wo"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

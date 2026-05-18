@@ -1,0 +1,27 @@
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://tn82llyplrdk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
+animation = &"Guy - Animated/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
+animation = &"Guy - Animated/Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuyoq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjrip"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smehm"]
+xfade_time = 0.25
+advance_mode = 2
+advance_expression = "!walking"
+
+[resource]
+"states/Guy - Animated_Idle/node" = SubResource("AnimationNodeAnimation_dqkch")
+"states/Guy - Animated_Idle/position" = Vector2(373, 62)
+"states/Guy - Animated_Walk/node" = SubResource("AnimationNodeAnimation_qlg0r")
+"states/Guy - Animated_Walk/position" = Vector2(379, 168)
+transitions = ["Start", "Guy - Animated_Idle", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "Guy - Animated_Idle", "Guy - Animated_Walk", SubResource("AnimationNodeStateMachineTransition_fjrip"), "Guy - Animated_Walk", "Guy - Animated_Idle", SubResource("AnimationNodeStateMachineTransition_smehm")]
