@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctmv6ewtnqusd"]
+[gd_scene format=3 uid="uid://ctmv6ewtnqusd"]
 
 [ext_resource type="Script" uid="uid://d0gwbfkj0mlqi" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=714406594]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1393765468]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,20 +26,18 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="WorldOptionButton" type="OptionButton" parent="VBoxContainer"]
+[node name="WorldOptionButton" type="OptionButton" parent="VBoxContainer" unique_id=108998843]
 layout_mode = 2
 selected = 0
-item_count = 2
+item_count = 1
 popup/item_0/text = "Test"
 popup/item_0/id = 0
-popup/item_1/text = "Forest"
-popup/item_1/id = 1
 
-[node name="Join" type="Button" parent="VBoxContainer"]
+[node name="Join" type="Button" parent="VBoxContainer" unique_id=1661308866]
 layout_mode = 2
 text = "Join"
 
-[node name="JoinCode" type="LineEdit" parent="VBoxContainer"]
+[node name="JoinCode" type="LineEdit" parent="VBoxContainer" unique_id=467349833]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "BCHKAKAKBLGFDG"
@@ -48,30 +46,30 @@ context_menu_enabled = false
 emoji_menu_enabled = false
 caret_blink = true
 
-[node name="Host" type="Button" parent="VBoxContainer"]
+[node name="Host" type="Button" parent="VBoxContainer" unique_id=379557575]
 layout_mode = 2
 text = "Host"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1043463365]
 layout_mode = 2
 alignment = 1
 
-[node name="LocalButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="LocalButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2070173418]
 layout_mode = 2
 toggle_mode = true
 text = "Local"
 
-[node name="LANButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="LANButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=279403857]
 layout_mode = 2
 toggle_mode = true
 text = "LAN"
 
-[node name="PublicButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="PublicButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=624545645]
 layout_mode = 2
 toggle_mode = true
 text = "Public"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=111713114]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -80,7 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=1988700807]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

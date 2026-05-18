@@ -72,6 +72,7 @@ freeze = true
 sun = NodePath("../Sun")
 moon = NodePath("../Moon")
 world_environment = NodePath("../WorldEnvironment")
+seconds_per_day = 1000.0
 
 [node name="LoadingScreen" parent="." unique_id=198839474 instance=ExtResource("7_vnv7o")]
 

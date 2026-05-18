@@ -7,7 +7,7 @@ extends Control
 @onready var lan_button: Button = $VBoxContainer/HBoxContainer/LANButton
 @onready var public_button: Button = $VBoxContainer/HBoxContainer/PublicButton
 @onready var world_option_button: OptionButton = $VBoxContainer/WorldOptionButton
-var world_option_paths: Array[String] = ["res://levels/level/world.tscn", "res://levels/forest/world.tscn"]
+var world_option_paths: Array[String] = ["res://levels/level/world.tscn"]
 
 
 func _ready() -> void:
