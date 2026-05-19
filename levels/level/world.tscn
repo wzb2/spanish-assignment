@@ -173,16 +173,25 @@ operation = 2
 size = Vector3(2, 3, 2)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2" unique_id=1319643019]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2.783, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.783, 0)
 operation = 2
-size = Vector3(2, 3, 2)
+size = Vector3(5, 7, 25)
 
 [node name="Label3D" type="Label3D" parent="CSGBox3D2" unique_id=930308136]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.097816, 2.893571, 0)
-text = "El Resturante"
+text = "El Estación Del Tren"
 font_size = 400
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D2" unique_id=3508154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
 light_energy = 5.0
 omni_range = 20.0
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D2" unique_id=207668200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2006226, -3.6, 0)
+size = Vector3(7.401245, 1, 20)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D2" unique_id=1781752707]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.587967, 0)
+operation = 2
+size = Vector3(10, 1, 2)
