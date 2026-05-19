@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://be6omltk7vn7s" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="14_8dsq4"]
 [ext_resource type="Texture2D" uid="uid://chxdthcim6caj" path="res://images/runway.png" id="14_084d6"]
 [ext_resource type="Script" uid="uid://c1loybq7rxdri" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="15_84omo"]
+[ext_resource type="Texture2D" uid="uid://c61ndhkfblcf4" path="res://images/Train tracks.png" id="16_o0h44"]
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
@@ -195,3 +196,53 @@ size = Vector3(7.401245, 1, 20)
 transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.587967, 0)
 operation = 2
 size = Vector3(10, 1, 2)
+
+[node name="Sprite3D" type="Sprite3D" parent="CSGBox3D2" unique_id=157463820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, -31.617928)
+pixel_size = 0.05
+axis = 1
+texture = ExtResource("16_o0h44")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1345936112]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -99, 4, -183)
+use_collision = true
+size = Vector3(20, 10, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D3" unique_id=490784577]
+operation = 2
+size = Vector3(18, 9, 18)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D3" unique_id=1409366730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.7828093, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D3" unique_id=1860570345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.783, 0)
+operation = 2
+size = Vector3(5, 7, 25)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D3" unique_id=1590247510]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.097816, 2.893571, 0)
+text = "El Estación Del Tren"
+font_size = 400
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D3" unique_id=971734357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D3" unique_id=176727421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2006226, -3.6, 0)
+size = Vector3(7.401245, 1, 20)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D3" unique_id=1484694557]
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.587967, 0)
+operation = 2
+size = Vector3(10, 1, 2)
+
+[node name="Sprite3D" type="Sprite3D" parent="CSGBox3D3" unique_id=995285589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, -31.617928)
+pixel_size = 0.05
+axis = 1
+texture = ExtResource("16_o0h44")
