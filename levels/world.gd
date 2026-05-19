@@ -2,7 +2,6 @@ extends Node3D
 
 class_name World
 
-@export var terrain: Terrain3D
 @export var spawn_orgin_marker: Marker3D
 @export var water_navigation_region: NavigationRegion3D
 

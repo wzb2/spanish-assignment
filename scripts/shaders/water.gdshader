@@ -68,7 +68,7 @@ void fragment() {
 	float depth_diff = scene_depth - water_depth;
 	float foaminess = smoothstep(foam_width, 0.0, depth_diff);
 	
-	ALBEDO = mix(mix(mix(color.rgb/* + (0.01 * fresnel)*/, refraction, 1.0 - color.a), fog_color, clamp(fogginess * depth_diff, 0.0, 1.0)), vec3(1.0, 1.0, 1.0), foaminess);
+	ALBEDO = mix(mix(color.rgb/* + (0.01 * fresnel)*/, refraction, 1.0 - color.a), fog_color, clamp(fogginess * depth_diff, 0.0, 1.0));
 	ROUGHNESS = mix(clamp(roughness/* * (1.0 - fresnel)*/, 0.0, 1.0), 1.0, foaminess);
 }
 

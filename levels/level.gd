@@ -20,22 +20,22 @@ var ids_ready: Array[int] = []
 
 var world: World
 
-func _process(_delta: float) -> void:
-	if local_player and local_player.is_inside_tree() and world:
-		var grass_pushers: Array[Node] = get_tree().get_nodes_in_group("grass_pushers")
-		var grass_material: ShaderMaterial = world.terrain.assets.get_mesh_asset(terrain_grass_mesh_asset_id).material_override
-		
-		grass_material.set_shader_parameter("num_push_objects", min(len(grass_pushers), max_grass_pushers))
-		
-		grass_pushers.sort_custom(func(p1: Node, p2: Node) -> float: return p1.global_position.distance_squared_to(local_player.camera.global_position) < p2.global_position.distance_squared_to(local_player.camera.global_position))
-		
-		grass_pushers.resize(max_grass_pushers)
-		
-		var grass_pusher_positions: Array = grass_pushers.map(func(p: Node) -> Vector3: return p.global_position if p else Vector3.ZERO)
-		var grass_pusher_radii: Array = grass_pushers.map(func(p: Node) -> float: return p.radius if p else 0.0)
-		
-		grass_material.set_shader_parameter("push_object_positions", grass_pusher_positions)
-		grass_material.set_shader_parameter("push_object_radii", grass_pusher_radii)
+#func _process(_delta: float) -> void:
+	#if local_player and local_player.is_inside_tree() and world:
+		#var grass_pushers: Array[Node] = get_tree().get_nodes_in_group("grass_pushers")
+		#var grass_material: ShaderMaterial = world.terrain.assets.get_mesh_asset(terrain_grass_mesh_asset_id).material_override
+		#
+		#grass_material.set_shader_parameter("num_push_objects", min(len(grass_pushers), max_grass_pushers))
+		#
+		#grass_pushers.sort_custom(func(p1: Node, p2: Node) -> float: return p1.global_position.distance_squared_to(local_player.camera.global_position) < p2.global_position.distance_squared_to(local_player.camera.global_position))
+		#
+		#grass_pushers.resize(max_grass_pushers)
+		#
+		#var grass_pusher_positions: Array = grass_pushers.map(func(p: Node) -> Vector3: return p.global_position if p else Vector3.ZERO)
+		#var grass_pusher_radii: Array = grass_pushers.map(func(p: Node) -> float: return p.radius if p else 0.0)
+		#
+		#grass_material.set_shader_parameter("push_object_positions", grass_pusher_positions)
+		#grass_material.set_shader_parameter("push_object_radii", grass_pusher_radii)
 		
 	
 

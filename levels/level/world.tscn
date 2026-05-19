@@ -1,18 +1,6 @@
 [gd_scene format=3 uid="uid://cl87o577f5aup"]
 
-[ext_resource type="NavigationMesh" uid="uid://b5kbbhoikrfeb" path="res://levels/level/nav_data.res" id="1_430os"]
 [ext_resource type="Script" uid="uid://bstgq58j0hxuu" path="res://levels/world.gd" id="1_xw7nq"]
-[ext_resource type="Script" uid="uid://d3v6q68b8qljm" path="res://addons/proton_scatter/src/scatter.gd" id="3_8dsq4"]
-[ext_resource type="Terrain3DAssets" uid="uid://ccpihyss61hex" path="res://levels/terrain_assets/terrain_assets.tres" id="3_xw7nq"]
-[ext_resource type="Script" uid="uid://dwj82uvv4dbkm" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_6pk81"]
-[ext_resource type="Script" uid="uid://b87luduuaqmd6" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="6_430os"]
-[ext_resource type="Script" uid="uid://brrputee4vvtb" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="7_84omo"]
-[ext_resource type="Script" uid="uid://bm7yn4t6lklw" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="8_5xn7m"]
-[ext_resource type="Script" uid="uid://i186nqen8gdj" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="9_e0j10"]
-[ext_resource type="Script" uid="uid://ckfwapgax0pk0" path="res://addons/proton_scatter/src/scatter_item.gd" id="10_sf4ix"]
-[ext_resource type="Script" uid="uid://y6fm1s6evjxi" path="res://addons/proton_scatter/src/scatter_shape.gd" id="11_b5xmf"]
-[ext_resource type="Script" uid="uid://clpw1m3b8qci1" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="13_ljmvl"]
-[ext_resource type="Script" uid="uid://g3opjh3m3iww" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="14_c45hi"]
 [ext_resource type="NavigationMesh" uid="uid://b8jwa3fxtdjs8" path="res://levels/level/water_nav_data.res" id="14_muo8d"]
 [ext_resource type="Material" uid="uid://dsqvx617l683r" path="res://materials/water.tres" id="15_8dsq4"]
 [ext_resource type="Script" uid="uid://c42gs3rnpx3yg" path="res://multiplayer/spawn_placeholder.gd" id="16_5wgw0"]
@@ -26,100 +14,6 @@
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
 [ext_resource type="PackedScene" uid="uid://bdijkc4xdbr31" path="res://scenes/boat.tscn" id="24_84omo"]
 
-[sub_resource type="Gradient" id="Gradient_ujtx7"]
-offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8dsq4"]
-noise_type = 2
-frequency = 0.03
-cellular_jitter = 3.0
-cellular_return_type = 0
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 50.0
-domain_warp_fractal_type = 2
-domain_warp_fractal_lacunarity = 1.5
-domain_warp_fractal_gain = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_84omo"]
-noise = SubResource("FastNoiseLite_8dsq4")
-color_ramp = SubResource("Gradient_ujtx7")
-seamless = true
-
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_5xn7m"]
-_shader_parameters = {
-&"bias_distance": 512.0,
-&"blend_sharpness": 0.5,
-&"depth_blur": 0.0,
-&"enable_macro_variation": true,
-&"enable_projection": true,
-&"flat_terrain_normals": false,
-&"macro_variation1": Color(1, 1, 1, 1),
-&"macro_variation2": Color(1, 1, 1, 1),
-&"macro_variation_slope": 0.333,
-&"mipmap_bias": 1.0,
-&"noise1_angle": 0.0,
-&"noise1_offset": Vector2(0.5, 0.5),
-&"noise1_scale": 0.04,
-&"noise2_scale": 0.076,
-&"noise_texture": SubResource("NoiseTexture2D_84omo"),
-&"projection_threshold": 0.8
-}
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sk3dq"]
-friction = 0.8
-
-[sub_resource type="Resource" id="Resource_hmxa1"]
-script = ExtResource("7_84omo")
-amount = 20
-restrict_height = true
-reference_frame = 1
-
-[sub_resource type="Resource" id="Resource_sf4ix"]
-script = ExtResource("8_5xn7m")
-position = Vector3(0.15, 0.15, 0.15)
-scale = Vector3(1, 1, 1)
-reference_frame = 2
-
-[sub_resource type="Resource" id="Resource_b5xmf"]
-script = ExtResource("9_e0j10")
-offset_step = 0.2
-consecutive_step_multiplier = 0.75
-restrict_height = true
-
-[sub_resource type="Resource" id="Resource_8dsq4"]
-script = ExtResource("14_c45hi")
-terrain_node = NodePath("..")
-
-[sub_resource type="Resource" id="Resource_ljmvl"]
-script = ExtResource("5_6pk81")
-stack = Array[ExtResource("6_430os")]([SubResource("Resource_hmxa1"), SubResource("Resource_sf4ix"), SubResource("Resource_b5xmf"), SubResource("Resource_8dsq4")])
-
-[sub_resource type="Resource" id="Resource_g8bsm"]
-script = ExtResource("13_ljmvl")
-radius = 5.0
-
-[sub_resource type="Resource" id="Resource_muo8d"]
-script = ExtResource("7_84omo")
-amount = 75
-restrict_height = true
-reference_frame = 1
-
-[sub_resource type="Resource" id="Resource_qkka1"]
-script = ExtResource("14_c45hi")
-terrain_node = NodePath("..")
-
-[sub_resource type="Resource" id="Resource_5wgw0"]
-script = ExtResource("5_6pk81")
-stack = Array[ExtResource("6_430os")]([SubResource("Resource_muo8d"), SubResource("Resource_qkka1")])
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_84omo"]
-size = Vector3(7, 1, 3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5xn7m"]
-size = Vector3(7, 1, 3)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_2q6dc"]
 material = ExtResource("15_8dsq4")
 size = Vector2(30, 30)
@@ -132,70 +26,10 @@ size = Vector2(50, 200)
 subdivide_width = 256
 subdivide_depth = 512
 
-[node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("terrain", "spawn_orgin_marker", "water_navigation_region")]
+[node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("spawn_orgin_marker", "water_navigation_region")]
 script = ExtResource("1_xw7nq")
-terrain = NodePath("NavigationRegion3D/Terrain3D")
 spawn_orgin_marker = NodePath("Marker3D")
 water_navigation_region = NodePath("WaterNavigationRegion3D")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1684043325]
-navigation_mesh = ExtResource("1_430os")
-
-[node name="Terrain3D" type="Terrain3D" parent="NavigationRegion3D" unique_id=201626717 groups=["navigation_mesh_source_group"]]
-data_directory = "res://levels/level/terrain_data"
-material = SubResource("Terrain3DMaterial_5xn7m")
-assets = ExtResource("3_xw7nq")
-collision_mode = 3
-physics_material = SubResource("PhysicsMaterial_sk3dq")
-cast_shadows = 2
-top_level = true
-metadata/_edit_lock_ = true
-
-[node name="TreeScatter" type="Node3D" parent="NavigationRegion3D/Terrain3D" unique_id=2057117047 groups=["navigation_mesh_source_group"]]
-script = ExtResource("3_8dsq4")
-render_mode = 1
-keep_static_colliders = true
-force_rebuild_on_load = false
-modifier_stack = SubResource("Resource_ljmvl")
-Performance/use_chunks = true
-Performance/chunk_dimensions = Vector3(15, 15, 15)
-metadata/_custom_type_script = "uid://d3v6q68b8qljm"
-
-[node name="ScatterItem" type="Node3D" parent="NavigationRegion3D/Terrain3D/TreeScatter" unique_id=1507558182]
-script = ExtResource("10_sf4ix")
-path = "uid://vnxf34507pow"
-
-[node name="ScatterShape" type="Node3D" parent="NavigationRegion3D/Terrain3D/TreeScatter" unique_id=1570974244]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 5)
-script = ExtResource("11_b5xmf")
-shape = SubResource("Resource_g8bsm")
-
-[node name="BushScatter" type="Node3D" parent="NavigationRegion3D/Terrain3D" unique_id=1401182739]
-script = ExtResource("3_8dsq4")
-render_mode = 1
-force_rebuild_on_load = false
-modifier_stack = SubResource("Resource_5wgw0")
-Performance/use_chunks = true
-Performance/chunk_dimensions = Vector3(15, 15, 15)
-metadata/_custom_type_script = "uid://d3v6q68b8qljm"
-
-[node name="ScatterItem" type="Node3D" parent="NavigationRegion3D/Terrain3D/BushScatter" unique_id=1242777773]
-script = ExtResource("10_sf4ix")
-path = "uid://v5ggjdc238dt"
-
-[node name="ScatterShape" type="Node3D" parent="NavigationRegion3D/Terrain3D/BushScatter" unique_id=365846152]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -15.070566, 0, -6.51626)
-script = ExtResource("11_b5xmf")
-shape = SubResource("Resource_g8bsm")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Terrain3D" unique_id=221129650 groups=["navigation_mesh_source_group"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, 7)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Terrain3D/StaticBody3D" unique_id=1653249571]
-shape = SubResource("BoxShape3D_84omo")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Terrain3D/StaticBody3D" unique_id=2053237961]
-mesh = SubResource("BoxMesh_5xn7m")
 
 [node name="WaterNavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1737085209]
 navigation_mesh = ExtResource("14_muo8d")

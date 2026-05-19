@@ -412,7 +412,7 @@ func grab(joint: Joint3D, collider: Node3D) -> void:
 		if not (is_own_bone(collider) or get_grabbed_node(joint)):
 			joint.node_a = joint.get_parent_node_3d().get_path()
 			
-			if not collider is Terrain3D:
+			if not collider is CSGShape3D:
 				joint.node_b = collider.get_path()
 			else:
 				joint.node_b = NodePath()
