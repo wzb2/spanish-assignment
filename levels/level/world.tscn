@@ -1,93 +1,82 @@
 [gd_scene format=3 uid="uid://cl87o577f5aup"]
 
 [ext_resource type="Script" uid="uid://bstgq58j0hxuu" path="res://levels/world.gd" id="1_xw7nq"]
-[ext_resource type="NavigationMesh" uid="uid://b8jwa3fxtdjs8" path="res://levels/level/water_nav_data.res" id="14_muo8d"]
-[ext_resource type="Material" uid="uid://dsqvx617l683r" path="res://materials/water.tres" id="15_8dsq4"]
-[ext_resource type="Script" uid="uid://c42gs3rnpx3yg" path="res://multiplayer/spawn_placeholder.gd" id="16_5wgw0"]
-[ext_resource type="Script" uid="uid://bpfwbqkl7ck68" path="res://scripts/wavy_water.gd" id="17_e0j10"]
-[ext_resource type="PackedScene" uid="uid://drvkc04yto6ri" path="res://inventory/items/pistol/pistol.tscn" id="17_jv2ad"]
-[ext_resource type="PackedScene" uid="uid://ct4cwl717854b" path="res://scenes/giant_chicken.tscn" id="18_2hwbf"]
-[ext_resource type="PackedScene" uid="uid://b4qswahy65ixi" path="res://inventory/items/box_of_bullets/box_of_bullets.tscn" id="19_f0lqv"]
-[ext_resource type="PackedScene" uid="uid://cp2ywm1vxlptk" path="res://inventory/items/sword/sword.tscn" id="20_1vorj"]
-[ext_resource type="PackedScene" uid="uid://c6v0k4cg1p765" path="res://inventory/items/flashlight/flashlight.tscn" id="20_8dsq4"]
-[ext_resource type="PackedScene" uid="uid://v50tjuu3aj6q" path="res://scenes/backpack.tscn" id="21_e2uyj"]
+[ext_resource type="PackedScene" uid="uid://c3pm2kf5m56vo" path="res://models/plane.glb" id="4_65juv"]
+[ext_resource type="Script" uid="uid://d3v6q68b8qljm" path="res://addons/proton_scatter/src/scatter.gd" id="5_rvvqk"]
+[ext_resource type="Script" uid="uid://dwj82uvv4dbkm" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="6_o0h44"]
+[ext_resource type="Script" uid="uid://b87luduuaqmd6" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="7_s1rbi"]
+[ext_resource type="Script" uid="uid://brrputee4vvtb" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="8_jp2kq"]
+[ext_resource type="Script" uid="uid://bm7yn4t6lklw" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="9_vslsc"]
+[ext_resource type="Script" uid="uid://i186nqen8gdj" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="10_xw7nq"]
+[ext_resource type="Script" uid="uid://dr15d4mufef52" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="11_6pk81"]
+[ext_resource type="Script" uid="uid://ckfwapgax0pk0" path="res://addons/proton_scatter/src/scatter_item.gd" id="12_430os"]
+[ext_resource type="Script" uid="uid://y6fm1s6evjxi" path="res://addons/proton_scatter/src/scatter_shape.gd" id="13_ujtx7"]
+[ext_resource type="Script" uid="uid://be6omltk7vn7s" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="14_8dsq4"]
+[ext_resource type="Texture2D" uid="uid://chxdthcim6caj" path="res://images/runway.png" id="14_084d6"]
+[ext_resource type="Script" uid="uid://c1loybq7rxdri" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="15_84omo"]
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
-[ext_resource type="PackedScene" uid="uid://bdijkc4xdbr31" path="res://scenes/boat.tscn" id="24_84omo"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2q6dc"]
-material = ExtResource("15_8dsq4")
-size = Vector2(30, 30)
-subdivide_width = 128
-subdivide_depth = 128
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
+size = Vector3(1000, 1, 1000)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_w1puk"]
-material = ExtResource("15_8dsq4")
-size = Vector2(50, 200)
-subdivide_width = 256
-subdivide_depth = 512
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4l3xp"]
+albedo_color = Color(0.50980395, 0.7137255, 0.36078432, 1)
 
-[node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("spawn_orgin_marker", "water_navigation_region")]
+[sub_resource type="BoxMesh" id="BoxMesh_o0h44"]
+material = SubResource("StandardMaterial3D_4l3xp")
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="Resource" id="Resource_5xn7m"]
+script = ExtResource("8_jp2kq")
+amount = 1000
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_e0j10"]
+script = ExtResource("9_vslsc")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(1, 360, 1)
+scale = Vector3(2, 2, 2)
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_0jpq5"]
+script = ExtResource("10_xw7nq")
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+restrict_height = true
+
+[sub_resource type="Resource" id="Resource_c45hi"]
+script = ExtResource("11_6pk81")
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+
+[sub_resource type="Resource" id="Resource_hmxa1"]
+script = ExtResource("6_o0h44")
+stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_5xn7m"), SubResource("Resource_e0j10"), SubResource("Resource_0jpq5"), SubResource("Resource_c45hi")])
+
+[sub_resource type="Resource" id="Resource_sf4ix"]
+script = ExtResource("14_8dsq4")
+size = Vector3(62.255135, 1, 116.127846)
+metadata/_custom_type_script = "uid://be6omltk7vn7s"
+
+[sub_resource type="Curve3D" id="Curve3D_rvvqk"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -26.22487, 1.9073486e-06, -4.9061203, 0, 0, 0, 0, 0, 0, -25.28145, -1.9073486e-06, 0.5691336, 0, 0, 0, 0, 0, 0, -28.65095, 0, -1.7880454, 0, 0, 0, 0, 0, 0, -34.436947, 0, -1.3449063, 0, 0, 0, 0, 0, 0, -42.202328, 0, -0.599144, 0, 0, 0, 0, 0, 0, -45.812305, 0, 8.624937, 0, 0, 0, 0, 0, 0, -54.75975, 0, 13.633268, 0, 0, 0, 0, 0, 0, -64.960976, 0, 5.9306555, 0, 0, 0, 0, 0, 0, -63.427307, 0, -3.9762607, 0, 0, 0, 0, 0, 0, -70.00032, 0, -14.565411, 0, 0, 0, 0, 0, 0, -62.045845, 0, -24.694633, 0, 0, 0, 0, 0, 0, -54.947086, 0, -30.024572, 0, 0, 0, 0, 0, 0, -50.364803, 0, -27.546034, 0, 0, 0, 0, 0, 0, -49.847878, 0, -21.727165, 0, 0, 0, 0, 0, 0, -54.774208, 0, -19.397032, 0, 0, 0, 0, 0, 0, -60.679222, 0, -16.57819, 0, 0, 0, 0, 0, 0, -56.94027, 0, -23.254877, 0, 0, 0, 0, 0, 0, -57.53931, 0, -24.793446, 0, 0, 0, 0, 0, 0, -53.397903, 0, -25.12234, 0, 0, 0, 0, 0, 0, -69.63303, 0, -19.429209, 0, 0, 0, 0, 0, 0, -57.850002, 0, -28.916088, 0, 0, 0, 0, 0, 0, -58.694397, 0, -30.330004, 0, 0, 0, 0, 0, 0, -61.2249, 0, -34.756104, 0, 0, 0, 0, 0, 0, -67.166954, 0, -39.33117, 0, 0, 0, 0, 0, 0, -76.666985, 0, -38.975983, 0, 0, 0, 0, 0, 0, -86.74944, 0, -34.958065, 0, 0, 0, 0, 0, 0, -85.49766, 0, -39.457127, 0, 0, 0, 0, 0, 0, -81.1032, 0, -39.390026, 0, 0, 0, 0, 0, 0, -149.41971, 7.6293945e-06, 9.203194),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 29
+
+[sub_resource type="Resource" id="Resource_vhhrm"]
+script = ExtResource("15_84omo")
+closed = false
+thickness = 7.0
+curve = SubResource("Curve3D_rvvqk")
+metadata/_custom_type_script = "uid://c1loybq7rxdri"
+
+[node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("spawn_orgin_marker")]
 script = ExtResource("1_xw7nq")
 spawn_orgin_marker = NodePath("Marker3D")
-water_navigation_region = NodePath("WaterNavigationRegion3D")
-
-[node name="WaterNavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1737085209]
-navigation_mesh = ExtResource("14_muo8d")
-travel_cost = 2.0
-
-[node name="Water" type="MeshInstance3D" parent="WaterNavigationRegion3D" unique_id=620263447]
-transform = Transform3D(1.00441, 0, 0, 0, 1.00441, 0, 0, 0, 1.00441, -27.4171, -0.16705872, 9.71999)
-mesh = SubResource("PlaneMesh_2q6dc")
-script = ExtResource("17_e0j10")
-metadata/_custom_type_script = "uid://bpfwbqkl7ck68"
-
-[node name="Water2" type="MeshInstance3D" parent="WaterNavigationRegion3D" unique_id=391005475]
-transform = Transform3D(0.888621, 0, 0.46818, 0, 1.00441, 0, -0.46818, 0, 0.888621, -87.497, -0.05, 9.72)
-mesh = SubResource("PlaneMesh_w1puk")
-script = ExtResource("17_e0j10")
-metadata/_custom_type_script = "uid://bpfwbqkl7ck68"
-
-[node name="BackpackPlaceholder" type="Marker3D" parent="." unique_id=1507781535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.58964, 2.5737, -8.52846)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("21_e2uyj")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
-
-[node name="PistolPlaceholder" type="Marker3D" parent="." unique_id=677211505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88068, -3.2957)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("17_jv2ad")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
-
-[node name="FlashlightPlaceholder" type="Marker3D" parent="." unique_id=1811755845]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76366925, 1.6378605, -2.6902688)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("20_8dsq4")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
-
-[node name="BoxOfBulltesPlaceholder" type="Marker3D" parent="." unique_id=1788278226]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29842, -2.74027)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("19_f0lqv")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
-
-[node name="SwordPlaceholder" type="Marker3D" parent="." unique_id=262367419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2819, 4, -1)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("20_1vorj")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
-
-[node name="ChickenPlaceholder" type="Marker3D" parent="." unique_id=762624597]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 2, 7)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("18_2hwbf")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
-
-[node name="BoatPlaceholder" type="Marker3D" parent="." unique_id=171314151]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -23.508383, 0.5387783, 7)
-script = ExtResource("16_5wgw0")
-spawn_scene = ExtResource("24_84omo")
-metadata/_custom_type_script = "uid://c42gs3rnpx3yg"
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1150581307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1432705, 1.29434, -2)
@@ -96,3 +85,104 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1432705, 1.29434, -2)
 script = ExtResource("23_ujtx7")
 cache_file = "res://addons/proton_scatter/cache/world_3961314550_scatter_cache.res"
 metadata/_custom_type_script = "uid://bvs42qalh6tb"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=373276826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 128)
+cast_shadow = 0
+pixel_size = 0.2
+axis = 1
+shaded = true
+texture = ExtResource("14_084d6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2024882755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1569595420]
+shape = SubResource("BoxShape3D_rvvqk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1974897930]
+mesh = SubResource("BoxMesh_o0h44")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=303432062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4, -2)
+use_collision = true
+size = Vector3(20, 10, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=403682029]
+operation = 2
+size = Vector3(18, 9, 18)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=481897024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.7828093, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=770521155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2.783, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D" unique_id=71362562]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.097816, 2.893571, 0)
+text = "El Aeropuerto"
+font_size = 400
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D" unique_id=632808018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="plane" parent="." unique_id=207164142 instance=ExtResource("4_65juv")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.250378, 0.96265125, -12.899706)
+
+[node name="ProtonScatter" type="Node3D" parent="." unique_id=1881091739]
+script = ExtResource("5_rvvqk")
+render_mode = 1
+modifier_stack = SubResource("Resource_hmxa1")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://d3v6q68b8qljm"
+
+[node name="ScatterItem" type="Node3D" parent="ProtonScatter" unique_id=582639030]
+script = ExtResource("12_430os")
+path = "uid://vnxf34507pow"
+
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter" unique_id=1730535818]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -56.462585, 0, 0)
+script = ExtResource("13_ujtx7")
+shape = SubResource("Resource_sf4ix")
+
+[node name="ProtonScatterShape" type="Node3D" parent="ProtonScatter" unique_id=427606921]
+script = ExtResource("13_ujtx7")
+negative = true
+shape = SubResource("Resource_vhhrm")
+metadata/_custom_type_script = "uid://y6fm1s6evjxi"
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1764540375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 4, -36)
+use_collision = true
+size = Vector3(20, 10, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=40126383]
+operation = 2
+size = Vector3(18, 9, 18)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2" unique_id=1350957926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.7828093, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2" unique_id=1319643019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2.783, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D2" unique_id=930308136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.097816, 2.893571, 0)
+text = "El Resturante"
+font_size = 400
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D2" unique_id=3508154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
+light_energy = 5.0
+omni_range = 20.0
