@@ -1,62 +1,23 @@
-[gd_scene format=4 uid="uid://bf2yp6nc5785d"]
+[gd_scene format=4 uid="uid://dr3hnnvvf5v5l"]
 
-[ext_resource type="Script" uid="uid://4o2blw1qtiqi" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="PackedScene" uid="uid://dmjc8ocde5hsg" path="res://models/Guy.glb" id="3_qhqgy"]
-[ext_resource type="AnimationLibrary" uid="uid://fa6bavnau8b2" path="res://models/Guy - Animated.glb" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://n15gp45bq52e" path="res://multiplayer/input_synchronizer.gd" id="4_jej6c"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://tn82llyplrdk" path="res://animation_tree_stuff/idle_and_walk.tres" id="4_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://uwmmul824px8" path="res://models/Guy_Head Texture.png" id="5_f1ej7"]
-[ext_resource type="Script" uid="uid://bajgrihi0owix" path="res://scripts/damagable_bone.gd" id="5_y4r1p"]
-[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="6_3v2ag"]
-[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="7_jej6c"]
-[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="8_jej6c"]
-[ext_resource type="PackedScene" uid="uid://cb6gax4oiwj00" path="res://scenes/health_component.tscn" id="8_smehm"]
-[ext_resource type="Script" uid="uid://jyqyhvpbcn1g" path="res://scripts/grass_pusher.gd" id="9_f1ej7"]
-[ext_resource type="PackedScene" uid="uid://x6o16ycnam2f" path="res://scenes/ghost.tscn" id="14_f1ej7"]
-[ext_resource type="PackedScene" uid="uid://bouys3y25pqq8" path="res://scenes/hunger_component.tscn" id="15_oprun"]
+[ext_resource type="Script" uid="uid://cxdd65aa3cowd" path="res://scripts/dummy.gd" id="1_otm3d"]
+[ext_resource type="PackedScene" uid="uid://dmjc8ocde5hsg" path="res://models/Guy.glb" id="3_8vtrf"]
+[ext_resource type="Script" uid="uid://bajgrihi0owix" path="res://scripts/damagable_bone.gd" id="4_islal"]
+[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="5_qlhqv"]
+[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="6_urkt2"]
+[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="7_x21k3"]
+[ext_resource type="Script" uid="uid://jyqyhvpbcn1g" path="res://scripts/grass_pusher.gd" id="8_pjmn2"]
+[ext_resource type="Texture2D" uid="uid://uwmmul824px8" path="res://models/Guy_Head Texture.png" id="9_fdqwj"]
+[ext_resource type="AnimationLibrary" uid="uid://fa6bavnau8b2" path="res://models/Guy - Animated.glb" id="10_5gf44"]
+[ext_resource type="PackedScene" uid="uid://cb6gax4oiwj00" path="res://scenes/health_component.tscn" id="12_5rvqu"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oprun"]
-properties/0/path = NodePath(".:id")
-properties/0/spawn = true
-properties/0/replication_mode = 2
-properties/1/path = NodePath(".:packed_bone_positions")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:packed_bone_rotations")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:camera_rotation_offset")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath(".:display_use_button_held_percentage")
-properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath("Ghost:synced_position")
-properties/5/spawn = true
-properties/5/replication_mode = 1
-properties/6/path = NodePath("Ghost:synced_rotation")
-properties/6/spawn = true
-properties/6/replication_mode = 1
-properties/7/path = NodePath("Ghost:visible")
-properties/7/spawn = true
-properties/7/replication_mode = 2
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_f1ej7"]
-properties/0/path = NodePath("InputSynchronizer:interacting")
+properties/0/path = NodePath(".:packed_bone_positions")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("InputSynchronizer:jumping")
+properties/1/path = NodePath(".:packed_bone_rotations")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("InputSynchronizer:movement_input_vector")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("InputSynchronizer:mouse_velocity")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath("InputSynchronizer:crouching")
-properties/4/spawn = true
-properties/4/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dqkch"]
 radius = 0.1
@@ -122,7 +83,7 @@ rings = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sixrn"]
 resource_name = "Head"
 cull_mode = 2
-albedo_texture = ExtResource("5_f1ej7")
+albedo_texture = ExtResource("9_fdqwj")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2dirb"]
 resource_name = "Guy_Cube_001"
@@ -280,47 +241,37 @@ cap_bottom = false
 radius = 0.08
 height = 0.32
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dqkch"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qlg0r"]
-nodes/AnimationNodeStateMachine/node = ExtResource("4_qlg0r")
-nodes/AnimationNodeStateMachine/position = Vector2(-240, 120)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_dqkch")
-nodes/TimeScale/position = Vector2(80, 120)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
-
-[node name="Player" type="Node3D" unique_id=1885059936 node_paths=PackedStringArray("animated_skeleton", "physics_skeleton", "physics_skeleton_simulator", "root_bone", "movement_bones", "feet_shapecasts")]
-script = ExtResource("1_3vyb7")
+[node name="Dummy" type="Node3D" unique_id=1885059936 node_paths=PackedStringArray("animated_skeleton", "physics_skeleton", "physics_skeleton_simulator", "root_bone", "movement_bones", "feet_shapecasts")]
+script = ExtResource("1_otm3d")
 animated_skeleton = NodePath("AnimatedGuy/Armature/Skeleton3D")
 physics_skeleton = NodePath("PhysicsGuy/Armature/Skeleton3D")
 physics_skeleton_simulator = NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D")
+default_angular_spring_stiffness = 10000.0
 root_bone = NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip")
 movement_bones = [NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"), NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"), NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L"), NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R"), NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L")]
-feet_shapecasts = [NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/ShapeCast3D"), NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/ShapeCast3D")]
+feet_shapecasts = [NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/ShapeCast3D"), NodePath("PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/ShapeCast3D")]
+packed_bone_positions = PackedVector3Array(0, -0.2330426, 0, 0, -0.05428791, 0, 0, 0.14729548, 0, 0, 0.33230162, 0, 0, 0.5279988, 0, -0.15736952, 0.22455192, -7.547352e-08, -0.40419292, 0.20305026, 1.781459e-06, 0.15736952, 0.22455192, -7.547352e-08, 0.40419394, 0.20305026, -3.821378e-06, -0.14999999, -0.4939388, 1.0897948e-12, 0.14999999, -0.4939388, 1.0897948e-12, -0.5328868, 0.20305014, 5.208478e-08, 0.5328868, 0.20305014, 5.208478e-08, -0.14999999, -0.6498312, 1.8812006e-08, 0.14999999, -0.6498312, 1.8812006e-08)
+packed_bone_rotations = PackedVector3Array(1.5707964, 0, 0, 3.57636e-21, -1.5707964, -1.5707964, 1.5707964, 0, 0, 1.5707964, 3.679982e-08, 0, 1.5707964, 3.6799875e-08, 0, -0.17999254, 1.5707964, 1.5040979, 3.0716222e-07, 1.5707966, 1.5707957, -0.17999254, -1.5707964, -1.5040979, 3.034361e-07, -1.5707964, -1.5707957, -1.5707964, 1.5707965, 0, -1.5707964, -1.5707965, 0, -3.9798536e-13, 1.8628565e-09, 1.5707964, -5.165843e-07, -1.1036218e-07, -1.5707957, 0, -1.5707963, 3.1415927, 0, 1.5707963, 3.1415927)
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1537077404]
 replication_config = SubResource("SceneReplicationConfig_oprun")
 
-[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1678545460]
-replication_config = SubResource("SceneReplicationConfig_f1ej7")
-script = ExtResource("4_jej6c")
-
-[node name="AnimatedGuy" parent="." unique_id=1629192945 instance=ExtResource("3_qhqgy")]
+[node name="AnimatedGuy" parent="." unique_id=1629192945 instance=ExtResource("3_8vtrf")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 visible = false
 
 [node name="Skeleton3D" parent="AnimatedGuy/Armature" index="0"]
-bones/0/position = Vector3(0, 0.6701853, 0)
+bones/0/position = Vector3(0, 0.67113787, 0)
 bones/0/rotation = Quaternion(0.004363311, 0, 0, 0.99999046)
-bones/7/rotation = Quaternion(-0.02521824, 0.021865314, 0.75079846, 0.65968764)
-bones/10/rotation = Quaternion(-0.02521824, -0.021865314, -0.75079846, 0.65968764)
-bones/13/rotation = Quaternion(-0.70675796, -0.02220811, 0.70675796, 0.022208113)
-bones/14/rotation = Quaternion(9.212868e-10, 1.5866531e-08, 0.05796717, 0.99831855)
-bones/15/rotation = Quaternion(0.70675796, -0.022208115, 0.70675796, -0.022208119)
-bones/16/rotation = Quaternion(9.2128694e-10, -1.5866531e-08, -0.05796718, 0.99831855)
+bones/7/rotation = Quaternion(-0.025492014, 0.02150851, 0.7626515, 0.6459492)
+bones/10/rotation = Quaternion(-0.025492014, -0.02150851, -0.7626515, 0.6459492)
+bones/13/rotation = Quaternion(-0.70697325, -0.013745528, 0.70697325, 0.0137455305)
+bones/14/rotation = Quaternion(-4.1134225e-09, 1.588304e-08, 0.035854697, 0.99935704)
+bones/15/rotation = Quaternion(0.70697325, -0.01374553, 0.70697325, -0.013745533)
+bones/16/rotation = Quaternion(-4.1134216e-09, -1.588304e-08, -0.0358547, 0.99935704)
 
-[node name="PhysicsGuy" parent="." unique_id=428910971 instance=ExtResource("3_qhqgy")]
+[node name="PhysicsGuy" parent="." unique_id=428910971 instance=ExtResource("3_8vtrf")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
@@ -351,70 +302,73 @@ extra_cull_margin = 10000.0
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="PhysicsGuy/Armature/Skeleton3D" index="6" unique_id=562851863]
 
 [node name="Physical Bone Hip" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1433965438]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.7669574, 0)
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -0.2330426, 0)
+top_level = true
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08304149)
 body_offset = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.08304149, 0)
-mass = 0.75
+mass = 2.0
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.19833298, 0, 0)
 bone_name = "Hip"
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip" unique_id=1395541118]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_dqkch")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip" unique_id=720564444]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=827651329]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 5.33182e-08, 0.00535364)
 mesh = SubResource("CylinderMesh_f1ej7")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1455473940 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1455473940 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.0799999, 0.00535364)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=474525987 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=474525987 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.20605e-08, -0.0746464)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1033310911 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1033310911 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.0800001, 0.00535364)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1504825844 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1504825844 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.20605e-08, 0.0853536)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=279080051 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=279080051 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.08, 0.00535364)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1791041033 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1791041033 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 4.45759e-08, -0.0746464)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1010127790 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=1010127790 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.08, 0.00535364)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=284462656 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip/Floater" unique_id=284462656 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 4.45759e-08, 0.0853536)
 is_generated = true
 
 [node name="GrassPusher" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip" unique_id=1380757435]
-script = ExtResource("9_f1ej7")
+script = ExtResource("8_pjmn2")
 radius = 1.3
 metadata/_custom_type_script = "uid://jyqyhvpbcn1g"
 
 [node name="Physical Bone Back" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=514303916]
-transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, -3.57636e-21, -4.37114e-08, 1, -4.37114e-08, 0, 0.9457121, 0)
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, -3.57636e-21, -4.37114e-08, 1, -4.37114e-08, 0, -0.05428791, 0)
+top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095712185, 4.1837134e-09, 3.4455334e-22)
 body_offset = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, -3.57636e-21, -4.37114e-08, 1, -4.37114e-08, 0, 0.095712185, 0)
@@ -422,6 +376,7 @@ mass = 0.5
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.19833298, 0, 0)
 bone_name = "Back"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -486,57 +441,58 @@ joint_constraints/z/angular_spring_enabled = false
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back" unique_id=998244576]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.00964571, 4.21627e-10, 0)
 shape = SubResource("CapsuleShape3D_qlg0r")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back" unique_id=179276519]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=660376189]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.33182e-08, 0.00535364)
 mesh = SubResource("CylinderMesh_oprun")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=728060833 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=728060833 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 5.98749e-08, -0.144646)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1519223289 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1519223289 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79685e-18, 0.0800001, -0.144646)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1336727351 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1336727351 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 5.98749e-08, -0.144646)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=581478224 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=581478224 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0799999, -0.144646)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1117883407 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1117883407 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 4.67615e-08, 0.155354)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1086747528 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1086747528 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79685e-18, 0.08, 0.155354)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=2062458487 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=2062458487 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 4.67615e-08, 0.155354)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1325086790 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back/Floater" unique_id=1325086790 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 0.155354)
 is_generated = true
 
 [node name="Physical Bone Chest" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2074991005]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1.1472955, 0)
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.14729548, 0)
+top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.13659)
 body_offset = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.13659, 0)
@@ -544,6 +500,7 @@ mass = 0.3
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.19833298, 0, 0)
 bone_name = "Chest"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -608,52 +565,52 @@ joint_constraints/z/angular_spring_enabled = false
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest" unique_id=971394936]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 0, 0.0280327)
 shape = SubResource("CapsuleShape3D_tuyoq")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest" unique_id=652987683]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1641669805]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 5.33182e-08, 0.0267719)
 mesh = SubResource("CylinderMesh_a8ls1")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=2043014344 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=2043014344 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.0799999, 0.0267719)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1013331231 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1013331231 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.20605e-08, -0.0532281)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=515302329 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=515302329 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.0800001, 0.0267719)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1528779489 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1528779489 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.20605e-08, 0.106772)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=180033655 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=180033655 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.08, 0.0267719)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1365139965 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=1365139965 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 4.45759e-08, -0.0532281)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=175032363 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=175032363 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.08, 0.0267719)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=910148274 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest/Floater" unique_id=910148274 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 4.45759e-08, 0.106772)
 is_generated = true
 
@@ -664,14 +621,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.296817, 0.18433)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.188291, 0)
 
 [node name="Physical Bone Neck" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1958455968]
-transform = Transform3D(1, 3.728651e-08, 0, 0, 0, -1, -3.728651e-08, 1, 0, 0, 1.3323016, 0)
+transform = Transform3D(1, 3.679982e-08, 0, 0, 0, -1, -3.679982e-08, 1, 0, 0, 0.33230162, 0)
+top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04841446)
-body_offset = Transform3D(1, -2.01132e-07, 0, 0, 0, -1.0000001, 2.01132e-07, 1, 0, 0, 0.04841447, 0)
-mass = 0.25
+body_offset = Transform3D(1, -2.0161869e-07, 0, 0, 0, -1.0000001, 2.0161869e-07, 1, 0, 0, 0.04841447, 0)
+mass = 0.1
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.19833298, -3.2298616e-13, -5.046659e-15)
 bone_name = "Neck"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -736,71 +695,73 @@ joint_constraints/z/angular_spring_enabled = false
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck" unique_id=1237506310]
 transform = Transform3D(1, 0, 4.05009e-12, -4.05009e-12, 0, 1, 0, -1, 0, 0, 0, 0.0411741)
 shape = SubResource("CapsuleShape3D_fjrip")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck" unique_id=562490467]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1266256373]
 transform = Transform3D(1, -8.30092e-20, -1.89004e-12, -1.89004e-12, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0414313)
 mesh = SubResource("CylinderMesh_qfm1y")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1343032230 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1343032230 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 2.18566e-09, -0.0085687)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1099940679 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1099940679 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45081e-14, 0.05, -0.0085687)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1003329076 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1003329076 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 2.18548e-09, -0.0085687)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1678233420 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1678233420 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4502e-14, -0.05, -0.0085687)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=41615161 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=41615161 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -2.18548e-09, 0.0914313)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=374961915 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=374961915 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45081e-14, 0.05, 0.0914313)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1164355541 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1164355541 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -2.18566e-09, 0.0914313)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1146201135 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck/Floater" unique_id=1146201135 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4502e-14, -0.05, 0.0914313)
 is_generated = true
 
 [node name="Physical Bone Head" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1533160753]
-transform = Transform3D(1, 3.728657e-08, 0, 0, 0, -1, -3.728657e-08, 1, 0, 0, 1.5279988, 0)
+transform = Transform3D(1, 3.6799875e-08, 0, 0, 0, -1, -3.6799875e-08, 1, 0, 0, 0.5279988, 0)
+top_level = true
 joint_type = 2
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14728199)
-body_offset = Transform3D(1, -2.01132e-07, 0, 0, 0, -1.0000001, 2.01132e-07, 1, 0, 0, 0.147282, 0)
-mass = 0.25
+body_offset = Transform3D(1, -2.0161869e-07, 0, 0, 0, -1.0000001, 2.0161869e-07, 1, 0, 0, 0.147282, 0)
+mass = 0.1
 friction = 0.3
 linear_damp = 1.0
 angular_damp = 2.0
+angular_velocity = Vector3(0.19833298, 0, 0)
 bone_name = "Head_2"
 joint_constraints/swing_span = 90.0
 joint_constraints/twist_span = 180.0
 joint_constraints/bias = 0.3
 joint_constraints/softness = 0.8
 joint_constraints/relaxation = 1.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=1658198501]
 transform = Transform3D(1, 0, 1.35003e-11, -1.35003e-11, 0, 1, 0, -1, 0, 0, 0, -0.144192)
@@ -812,53 +773,53 @@ transform = Transform3D(1, 3.83693e-13, 0, -3.83693e-13, 1, 0, 0, 0, 1, 0, 0, -0
 rotation_order = 1
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=952055196]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=674448501]
 transform = Transform3D(-4.37107e-08, -1, 0, 1, -4.37107e-08, 0, 0, 0, 1, 3.55754e-20, 5.33182e-08, -0.146035)
 mesh = SubResource("SphereMesh_fulsm")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint10" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1335246034 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint10" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1335246034 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 6.64314e-08, -0.146035)
 is_generated = true
 
-[node name="FloaterPoint9" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1585281391 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint9" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1585281391 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.259808, -0.146035)
 is_generated = true
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1384598031 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1384598031 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 5.98748e-08, -0.405843)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=740205595 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=740205595 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.259808, -0.146035)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=693033477 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=693033477 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 5.98748e-08, 0.113773)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=624957966 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=624957966 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.259808, -0.146035)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1117388000 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1117388000 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 4.67616e-08, -0.405843)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=385343978 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=385343978 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.259808, -0.146035)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=62221557 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=62221557 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 4.67616e-08, 0.113773)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1422919593 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Floater" unique_id=1422919593 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 4.0205e-08, -0.146035)
 is_generated = true
 
@@ -869,15 +830,24 @@ mesh = SubResource("ArrayMesh_2dirb")
 skin = SubResource("Skin_f0y1q")
 skeleton = NodePath("../../../Head")
 
+[node name="Sprite3D" type="Sprite3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=1380379445]
+transform = Transform3D(1, 6.6791017e-12, 0, -6.6791017e-12, 1, 0, 0, 0, 1, 1.2099421e-08, -0.3272364, -0.13791227)
+axis = 1
+
+[node name="Label3D" type="Label3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=798865897]
+transform = Transform3D(-1, -8.742278e-08, -1.0196288e-12, 1.0231815e-12, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0, 0, -0.7260685)
+
 [node name="Physical Bone Shoulder_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1219766535]
-transform = Transform3D(-0.1786242, -0.01193154, 0.98384506, 0.9816575, 0.06557222, 0.17902224, -0.066648915, 0.9977765, -9.7507545e-08, -0.15736952, 1.2245519, -7.547352e-08)
+transform = Transform3D(-0.1786242, -0.01193154, 0.98384506, 0.9816575, 0.06557222, 0.17902224, -0.066648915, 0.9977765, -9.7507545e-08, -0.15736952, 0.22455192, -7.547352e-08)
+top_level = true
 joint_type = 3
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.039927e-06, 1.5689925e-07, 0.12010297)
 body_offset = Transform3D(1.0000001, 9.611249e-07, -9.780945e-08, -7.4009236e-08, -1.11742146e-07, -1.0000002, -9.536743e-07, 1, -1.12191906e-07, -1.0281801e-06, 0.120103, -1.4342368e-07)
-mass = 0.25
+mass = 0.1
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.19832581, -0.0021951392, -0.2515273)
 bone_name = "Shoulder.R"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 9.999996
@@ -885,21 +855,22 @@ joint_constraints/angular_limit_lower = -9.999996
 joint_constraints/angular_limit_bias = 0.3
 joint_constraints/angular_limit_softness = 0.9
 joint_constraints/angular_limit_relaxation = 1.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_R" unique_id=902178892]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ur7pv")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_R" unique_id=1500492302]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_R/Floater" unique_id=1725130656 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_R/Floater" unique_id=1725130656 instance=ExtResource("7_x21k3")]
 
 [node name="Physical Bone Upper Arm_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1361750590]
-transform = Transform3D(3.0716205e-07, 2.291057e-07, 1, 1, 6.8644283e-07, -3.0716222e-07, -6.864429e-07, 1, -2.2910548e-07, -0.40419292, 1.2030503, 1.781459e-06)
+transform = Transform3D(3.0716205e-07, 2.291057e-07, 1, 1, 6.8644283e-07, -3.0716222e-07, -6.864429e-07, 1, -2.2910548e-07, -0.40419292, 0.20305026, 1.781459e-06)
+top_level = true
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -8.336378e-08, -1.7578267e-06, 0.12865098)
 joint_rotation = Vector3(1.5707964, 0, 0)
@@ -907,68 +878,71 @@ body_offset = Transform3D(0.99999994, -6.461107e-09, -4.6973735e-08, -1.11759e-0
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 25.0
+angular_velocity = Vector3(0.1983261, -0.0021951664, -0.2515316)
 bone_name = "Upper Arm.R"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R" unique_id=1369688781]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_y4r1p")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R" unique_id=722813983]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1432872611]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.33182e-08, 0.00535364)
 mesh = SubResource("CylinderMesh_jej6c")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1657993978 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1657993978 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 5.768934e-08, -0.094646364)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1497544753 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1497544753 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.572245e-18, 0.07000006, -0.094646364)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1843348397 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1843348397 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 5.768934e-08, -0.094646364)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1851691159 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1851691159 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06999994, -0.094646364)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=55616865 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=55616865 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 4.8947058e-08, 0.10535364)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1593696788 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1593696788 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.572245e-18, 0.070000045, 0.10535364)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1931341304 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1931341304 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 4.8947058e-08, 0.10535364)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1110329479 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R/Floater" unique_id=1110329479 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.069999956, 0.10535364)
 is_generated = true
 
 [node name="Physical Bone Shoulder_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=154675999]
-transform = Transform3D(-0.1786242, 0.01193154, -0.98384506, -0.9816575, 0.06557222, 0.17902224, 0.066648915, 0.9977765, -9.7507545e-08, 0.15736952, 1.2245519, -7.547352e-08)
+transform = Transform3D(-0.1786242, 0.01193154, -0.98384506, -0.9816575, 0.06557222, 0.17902224, 0.066648915, 0.9977765, -9.7507545e-08, 0.15736952, 0.22455192, -7.547352e-08)
+top_level = true
 joint_type = 3
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.039927e-06, 1.5689925e-07, 0.12010297)
 body_offset = Transform3D(1.0000001, -9.611249e-07, 9.780945e-08, 7.4009236e-08, -1.11742146e-07, -1.0000002, 9.536743e-07, 1, -1.12191906e-07, 1.0281801e-06, 0.120103, -1.4342368e-07)
-mass = 0.25
+mass = 0.1
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.19832562, 0.0021951757, 0.25152698)
 bone_name = "Shoulder.L"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 9.999996
@@ -976,21 +950,22 @@ joint_constraints/angular_limit_lower = -9.999996
 joint_constraints/angular_limit_bias = 0.3
 joint_constraints/angular_limit_softness = 0.9
 joint_constraints/angular_limit_relaxation = 1.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_L" unique_id=236661736]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_d2wvv")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_L" unique_id=1317037318]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_L/Floater" unique_id=1815468477 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_L/Floater" unique_id=1815468477 instance=ExtResource("7_x21k3")]
 
 [node name="Physical Bone Upper Arm_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=920267375]
-transform = Transform3D(3.0343608e-07, -4.4330953e-08, -1, -1, 6.7154434e-07, -3.034361e-07, 6.7154434e-07, 1, -4.433075e-08, 0.40419394, 1.2030503, -3.821378e-06)
+transform = Transform3D(3.0343608e-07, -4.4330953e-08, -1, -1, 6.7154434e-07, -3.034361e-07, 6.7154434e-07, 1, -4.433075e-08, 0.40419394, 0.20305026, -3.821378e-06)
+top_level = true
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 8.384299e-08, 3.821239e-06, 0.12865199)
 joint_rotation = Vector3(-1.5707964, 0, 0)
@@ -998,68 +973,72 @@ body_offset = Transform3D(0.99999994, 2.1359654e-08, 4.324775e-08, 1.0803303e-07
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 25.0
+angular_velocity = Vector3(0.19832593, 0.0021952046, 0.25153124)
 bone_name = "Upper Arm.L"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L" unique_id=77721363]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_3v2ag")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L" unique_id=1329031532]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1858942925]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.33182e-08, 0.00535364)
 mesh = SubResource("CylinderMesh_jej6c")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint16" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=448303863 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint16" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=448303863 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 5.76893e-08, -0.0946464)
 is_generated = true
 
-[node name="FloaterPoint15" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=106106776 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint15" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=106106776 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57224e-18, 0.0700001, -0.0946464)
 is_generated = true
 
-[node name="FloaterPoint14" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=830453515 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint14" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=830453515 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 5.76893e-08, -0.0946464)
 is_generated = true
 
-[node name="FloaterPoint13" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1845313184 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint13" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1845313184 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0699999, -0.0946464)
 is_generated = true
 
-[node name="FloaterPoint12" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1558918663 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint12" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1558918663 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 4.89471e-08, 0.105354)
 is_generated = true
 
-[node name="FloaterPoint11" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1175124813 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint11" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=1175124813 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57224e-18, 0.07, 0.105354)
 is_generated = true
 
-[node name="FloaterPoint10" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=634113739 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint10" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=634113739 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 4.89471e-08, 0.105354)
 is_generated = true
 
-[node name="FloaterPoint9" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=451183107 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint9" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L/Floater" unique_id=451183107 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0.105354)
 is_generated = true
 
 [node name="Physical Bone Upper Leg_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=2119427086]
-transform = Transform3D(-1.1920932e-07, -1, 0, 0, 0, 1, -1, 1.1920932e-07, 0, -0.14999999, 0.5060612, 1.0897948e-12)
+transform = Transform3D(-1.1920932e-07, -1, 0, 0, 0, 1, -1, 1.1920932e-07, 0, -0.14999999, -0.4939388, 1.0897948e-12)
+top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.0915712e-12, 1.4901159e-08, 0.15589303)
 joint_rotation = Vector3(-1.5707964, 0, 0)
 body_offset = Transform3D(1.0000001, 5.960463e-08, 0, 0, 0, -1, 2.842171e-14, 1.0000001, 0, -1.0924595e-12, 0.15589303, -1.4901161e-08)
+mass = 1.5
 friction = 0.2
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.9731987, 1.7378843e-06, -2.1068362e-07)
 bone_name = "Upper Leg.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -1124,64 +1103,67 @@ joint_constraints/z/angular_spring_enabled = true
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R" unique_id=1330709355]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_jej6c")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R" unique_id=1167162444]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.25
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=836229742]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_fulsm")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=798925228 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=798925228 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 6.55671e-09, -0.15)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1945843921 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1945843921 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57224e-18, 0.07, -0.15)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1698708259 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1698708259 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 6.55671e-09, -0.15)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1268064877 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1268064877 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, -0.15)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1800714742 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1800714742 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, -6.55671e-09, 0.15)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=478860357 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=478860357 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57224e-18, 0.07, 0.15)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=164797909 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=164797909 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, -6.55671e-09, 0.15)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1372858185 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R/Floater" unique_id=1372858185 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0.15)
 is_generated = true
 
 [node name="Physical Bone Upper Leg_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1275967787]
-transform = Transform3D(-1.1920932e-07, 1, 0, 0, 0, 1, 1, 1.1920932e-07, 0, 0.14999999, 0.5060612, 1.0897948e-12)
+transform = Transform3D(-1.1920932e-07, 1, 0, 0, 0, 1, 1, 1.1920932e-07, 0, 0.14999999, -0.4939388, 1.0897948e-12)
+top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.0915712e-12, 1.4901159e-08, 0.15589303)
 joint_rotation = Vector3(1.5707964, 0, 0)
 body_offset = Transform3D(1.0000001, -5.960463e-08, 0, 0, 0, -1, -2.842171e-14, 1.0000001, 0, 1.0924595e-12, 0.15589303, -1.4901161e-08)
+mass = 1.5
 friction = 0.2
 linear_damp = 0.3
 angular_damp = 15.0
+angular_velocity = Vector3(0.97319895, -1.7378843e-06, 2.8184348e-07)
 bone_name = "Upper Leg.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -1246,57 +1228,58 @@ joint_constraints/z/angular_spring_enabled = true
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L" unique_id=479119268]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_f1ej7")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L" unique_id=841876860]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.25
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=789736854]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_fulsm")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=703971086 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=703971086 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 6.55671e-09, -0.15)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=1467401009 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=1467401009 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57224e-18, 0.07, -0.15)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=440697819 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=440697819 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 6.55671e-09, -0.15)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=1811674043 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=1811674043 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, -0.15)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=724861766 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=724861766 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, -6.55671e-09, 0.15)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=21810231 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=21810231 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57224e-18, 0.07, 0.15)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=2125997333 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=2125997333 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, -6.55671e-09, 0.15)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=1153115847 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L/Floater" unique_id=1153115847 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0.15)
 is_generated = true
 
 [node name="PhysicalBone Forearm_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1124580061]
-transform = Transform3D(-4.371133e-08, -1, 1.8628565e-09, 1, -4.371133e-08, 3.9798536e-13, -3.9790393e-13, 1.8628565e-09, 1, -0.5328868, 1.2030501, 5.208478e-08)
+transform = Transform3D(-4.371133e-08, -1, 1.8628565e-09, 1, -4.371133e-08, 3.9798536e-13, -3.9790393e-13, 1.8628565e-09, 1, -0.5328868, 0.20305014, 5.208478e-08)
+top_level = true
 joint_type = 3
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209275e-07, 5.96046e-08, -5.9604695e-08)
 body_offset = Transform3D(0.99999994, -3.118741e-07, -6.789945e-07, 2.4708896e-07, 1.0000004, -1.0244898e-08, 6.7154394e-07, 7.450584e-09, 1, -1.1920929e-07, -5.9604645e-08, 5.9604616e-08)
@@ -1304,6 +1287,7 @@ mass = 0.6
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 25.0
+angular_velocity = Vector3(0.19832632, -0.0021951245, -0.25153202)
 bone_name = "Forearm.R"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 90.0
@@ -1311,7 +1295,7 @@ joint_constraints/angular_limit_lower = -90.0
 joint_constraints/angular_limit_bias = 0.3
 joint_constraints/angular_limit_softness = 0.9
 joint_constraints/angular_limit_relaxation = 1.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R" unique_id=551657451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.47035e-08, 0.178919, 9.98583e-10)
@@ -1344,50 +1328,51 @@ transform = Transform3D(1, -3.68691e-22, 0, -3.68734e-22, 1, 1.07914e-13, 0, -1.
 shape = SubResource("SphereShape3D_qlg0r")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R" unique_id=1852123627]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1707424584]
 transform = Transform3D(1, -7.41238e-22, 0, -7.41238e-22, 1, 0, 0, 0, 1, -1.49012e-08, 0.18287, -3.40666e-10)
 mesh = SubResource("CylinderMesh_4r5pv")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1192371459 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1192371459 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=159020876 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=159020876 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=828196321 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=828196321 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1607837993 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1607837993 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, 0.07)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1763274568 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1763274568 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=658079853 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=658079853 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1976488748 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1976488748 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1287454424 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/Floater" unique_id=1287454424 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, 0.07)
 is_generated = true
 
 [node name="PhysicalBone Forearm_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=936978860]
-transform = Transform3D(6.951153e-07, 1, -1.1036218e-07, -1, 6.951154e-07, 5.165843e-07, 5.1658435e-07, 1.1036182e-07, 1, 0.5328868, 1.2030501, 5.208478e-08)
+transform = Transform3D(6.951153e-07, 1, -1.1036218e-07, -1, 6.951154e-07, 5.165843e-07, 5.1658435e-07, 1.1036182e-07, 1, 0.5328868, 0.20305014, 5.208478e-08)
+top_level = true
 joint_type = 3
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1920927e-07, 5.960468e-08, -5.960464e-08)
 body_offset = Transform3D(0.99999994, -4.2695248e-07, 1.6241063e-07, 4.917379e-07, 1.0000004, -1.18744154e-07, -1.5495999e-07, 1.15950044e-07, 1, 1.1920929e-07, -5.9604645e-08, 5.9604616e-08)
@@ -1395,6 +1380,7 @@ mass = 0.6
 friction = 0.3
 linear_damp = 0.3
 angular_damp = 25.0
+angular_velocity = Vector3(0.19832614, 0.002195162, 0.2515317)
 bone_name = "Forearm.L"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 90.0
@@ -1402,7 +1388,7 @@ joint_constraints/angular_limit_lower = -90.0
 joint_constraints/angular_limit_bias = 0.3
 joint_constraints/angular_limit_softness = 0.9
 joint_constraints/angular_limit_relaxation = 1.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L" unique_id=384188903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179, 0)
@@ -1435,57 +1421,59 @@ transform = Transform3D(1, -3.68691e-22, 0, -3.68734e-22, 1, 1.07914e-13, 0, -1.
 shape = SubResource("SphereShape3D_qlg0r")
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L" unique_id=1332960410]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.35
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=383944466]
 transform = Transform3D(1, -7.41238e-22, 0, -7.41238e-22, 1, 0, 0, 0, 1, -1.49012e-08, 0.18287, -3.40666e-10)
 mesh = SubResource("CylinderMesh_4r5pv")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1709413549 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1709413549 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1150196207 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1150196207 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1673612123 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1673612123 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=386439327 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=386439327 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, 0.07)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1872155075 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1872155075 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=278678457 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=278678457 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1160640394 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1160640394 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1079750745 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/Floater" unique_id=1079750745 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, 0.07)
 is_generated = true
 
 [node name="PhysicalBone Lower Leg_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=57479567]
-transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, 0.35016882, 1.875117e-08)
+transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, -0.6498312, 1.8812006e-08)
+top_level = true
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875117e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.8751173e-08, 0, -1.4901161e-08)
-mass = 0.75
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8812006e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.881201e-08, 0, -1.4901161e-08)
+mass = 1.25
 friction = 0.2
 linear_damp = 0.3
 angular_damp = 10.0
+angular_velocity = Vector3(-0.45712852, 1.745454e-06, 2.1272535e-07)
 bone_name = "Lower Leg.R"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -1550,7 +1538,7 @@ joint_constraints/z/angular_spring_enabled = false
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R" unique_id=455003632]
 transform = Transform3D(1, 0, -6.11067e-13, 0, 1, 0, 6.11067e-13, 0, 1, 0, 0.181204, 0)
@@ -1562,57 +1550,59 @@ shape = SubResource("SphereShape3D_qhqgy")
 target_position = Vector3(0, 0.1, 0)
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R" unique_id=544639645]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.25
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=843884923]
 transform = Transform3D(1, -7.41238e-22, 0, -7.41238e-22, 1, 0, 0, 0, 1, -1.49012e-08, 0.18287, -3.40666e-10)
 mesh = SubResource("CylinderMesh_60mlk")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint16" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1625888797 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint16" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1625888797 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint15" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=244776660 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint15" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=244776660 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint14" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=656564247 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint14" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=656564247 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint13" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1304186003 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint13" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1304186003 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, 0.07)
 is_generated = true
 
-[node name="FloaterPoint12" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=360944235 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint12" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=360944235 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint11" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1187147619 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint11" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1187147619 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint10" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1366249346 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint10" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1366249346 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint9" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1022629802 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint9" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R/Floater" unique_id=1022629802 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, 0.07)
 is_generated = true
 
 [node name="PhysicalBone Lower Leg_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=620197230]
-transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, 0.35016882, 1.875117e-08)
+transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, -0.6498312, 1.8812006e-08)
+top_level = true
 joint_type = 5
-joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.875117e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.8751173e-08, 0, -1.4901161e-08)
-mass = 0.75
+joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.8812006e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.881201e-08, 0, -1.4901161e-08)
+mass = 1.25
 friction = 0.2
 linear_damp = 0.3
 angular_damp = 10.0
+angular_velocity = Vector3(-0.45712832, -1.745605e-06, -1.4155256e-07)
 bone_name = "Lower Leg.L"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
@@ -1677,7 +1667,7 @@ joint_constraints/z/angular_spring_enabled = false
 joint_constraints/z/angular_spring_stiffness = 0.0
 joint_constraints/z/angular_spring_damping = 0.0
 joint_constraints/z/angular_equilibrium_point = 0.0
-script = ExtResource("5_y4r1p")
+script = ExtResource("4_islal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L" unique_id=335007284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181, 0)
@@ -1689,86 +1679,57 @@ shape = SubResource("SphereShape3D_qhqgy")
 target_position = Vector3(0, 0.1, 0)
 
 [node name="Floater" type="Node3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L" unique_id=1651742823]
-script = ExtResource("6_3v2ag")
+script = ExtResource("5_qlhqv")
 relative_density = 0.25
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
 [node name="FloaterMesh" type="MeshInstance3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=2067459345]
 transform = Transform3D(1, -7.41238e-22, 0, -7.41238e-22, 1, 0, 0, 0, 1, -1.49012e-08, 0.18287, -3.40666e-10)
 mesh = SubResource("CylinderMesh_60mlk")
-script = ExtResource("7_jej6c")
+script = ExtResource("6_urkt2")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=518048227 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint8" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=518048227 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1274909684 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint7" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1274909684 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1304023556 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint6" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1304023556 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.03287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=343751270 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint5" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=343751270 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.03287, 0.07)
 is_generated = true
 
-[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1139494832 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint4" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1139494832 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1312839636 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint3" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1312839636 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, -0.07)
 is_generated = true
 
-[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1242680427 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint2" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1242680427 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.33287, -3.40666e-10)
 is_generated = true
 
-[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1746877530 instance=ExtResource("8_jej6c")]
+[node name="FloaterPoint" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L/Floater" unique_id=1746877530 instance=ExtResource("7_x21k3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.33287, 0.07)
 is_generated = true
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1606827633]
-unique_name_in_owner = true
-transform = Transform3D(1, -3.80366e-15, 1.65525e-07, 1.06581e-14, 1, 0, -1.65525e-07, 0, 1, 0, 0.71524, 0)
-rotation_order = 1
-cull_mask = 1048573
-near = 0.1
-far = 2000.0
-
-[node name="InteractRayCast" type="RayCast3D" parent="Camera3D" unique_id=1197222850]
-unique_name_in_owner = true
-transform = Transform3D(1, -2.15845e-08, -1.06581e-14, -1.06581e-14, -3.99551e-22, -1, 2.15845e-08, 1, -6.29601e-22, 4.70089e-08, 0, -0.283999)
-target_position = Vector3(0, -2.5, 0)
-collision_mask = 2
-hit_back_faces = false
-collide_with_areas = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1738627505]
 root_node = NodePath("../AnimatedGuy")
-"libraries/Guy - Animated" = ExtResource("4_dqkch")
+"libraries/Guy - Animated" = ExtResource("10_5gf44")
 blend_times = [&"Guy - Animated/Idle", &"Guy - Animated/Idle", 0.5, &"Guy - Animated/Idle", &"Guy - Animated/Walk", 0.5, &"Guy - Animated/Walk", &"Guy - Animated/Idle", 0.5, &"Guy - Animated/Walk", &"Guy - Animated/Walk", 0.5]
 
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=902262209]
-root_node = NodePath("%AnimatedGuy")
-tree_root = SubResource("AnimationNodeBlendTree_qlg0r")
-advance_expression_base_node = NodePath("..")
-anim_player = NodePath("../AnimationPlayer")
-parameters/TimeScale/scale = 1.0
-
-[node name="HealthComponent" parent="." unique_id=716729429 node_paths=PackedStringArray("vital_bones", "non_vital_bones") instance=ExtResource("8_smehm")]
+[node name="HealthComponent" parent="." unique_id=716729429 node_paths=PackedStringArray("vital_bones", "non_vital_bones") instance=ExtResource("12_5rvqu")]
 vital_bones = [NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head")]
 non_vital_bones = [NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_L")]
 damage_acceleration_threshold = 0.055
-
-[node name="HungerComponent" parent="." unique_id=1168550989 node_paths=PackedStringArray("health_component") instance=ExtResource("15_oprun")]
-health_component = NodePath("../HealthComponent")
-
-[node name="Ghost" parent="." unique_id=838141487 instance=ExtResource("14_f1ej7")]
-visible = false
 
 [connection signal="body_entered" from="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/LeftGrabArea3D" to="." method="_on_left_grab_area_3d_body_entered"]
 [connection signal="body_entered" from="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/RightGrabArea3D" to="." method="_on_right_grab_area_3d_body_entered"]

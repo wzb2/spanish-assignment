@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cl87o577f5aup"]
 
 [ext_resource type="Script" uid="uid://bstgq58j0hxuu" path="res://levels/world.gd" id="1_xw7nq"]
+[ext_resource type="PackedScene" uid="uid://dr3hnnvvf5v5l" path="res://scenes/dummy.tscn" id="2_s1rbi"]
+[ext_resource type="Texture2D" uid="uid://boooqs0hnlgo7" path="res://images/other math critter.png" id="3_jp2kq"]
 [ext_resource type="PackedScene" uid="uid://c3pm2kf5m56vo" path="res://models/plane.glb" id="4_65juv"]
 [ext_resource type="Script" uid="uid://d3v6q68b8qljm" path="res://addons/proton_scatter/src/scatter.gd" id="5_rvvqk"]
 [ext_resource type="Script" uid="uid://dwj82uvv4dbkm" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="6_o0h44"]
@@ -18,52 +20,53 @@
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
-size = Vector3(1000, 1, 1000)
+size = Vector3(5000, 1, 5000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4l3xp"]
 albedo_color = Color(0.50980395, 0.7137255, 0.36078432, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o0h44"]
 material = SubResource("StandardMaterial3D_4l3xp")
-size = Vector3(1000, 1, 1000)
+size = Vector3(10000, 1, 10000)
 
-[sub_resource type="Resource" id="Resource_5xn7m"]
+[sub_resource type="Resource" id="Resource_jp2kq"]
 script = ExtResource("8_jp2kq")
 amount = 1000
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_e0j10"]
+[sub_resource type="Resource" id="Resource_vslsc"]
 script = ExtResource("9_vslsc")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(1, 360, 1)
 scale = Vector3(2, 2, 2)
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_0jpq5"]
+[sub_resource type="Resource" id="Resource_xw7nq"]
 script = ExtResource("10_xw7nq")
 offset_step = 0.2
 consecutive_step_multiplier = 0.75
+use_computeshader = false
 restrict_height = true
 
-[sub_resource type="Resource" id="Resource_c45hi"]
+[sub_resource type="Resource" id="Resource_6pk81"]
 script = ExtResource("11_6pk81")
 ray_length = 5.0
 ray_offset = 5.0
 remove_points_on_miss = false
 
-[sub_resource type="Resource" id="Resource_hmxa1"]
+[sub_resource type="Resource" id="Resource_430os"]
 script = ExtResource("6_o0h44")
-stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_5xn7m"), SubResource("Resource_e0j10"), SubResource("Resource_0jpq5"), SubResource("Resource_c45hi")])
+stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_jp2kq"), SubResource("Resource_vslsc"), SubResource("Resource_xw7nq"), SubResource("Resource_6pk81")])
 
 [sub_resource type="Resource" id="Resource_sf4ix"]
 script = ExtResource("14_8dsq4")
 size = Vector3(62.255135, 1, 116.127846)
 metadata/_custom_type_script = "uid://be6omltk7vn7s"
 
-[sub_resource type="Curve3D" id="Curve3D_rvvqk"]
+[sub_resource type="Curve3D" id="Curve3D_o0h44"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -26.22487, 1.9073486e-06, -4.9061203, 0, 0, 0, 0, 0, 0, -25.28145, -1.9073486e-06, 0.5691336, 0, 0, 0, 0, 0, 0, -28.65095, 0, -1.7880454, 0, 0, 0, 0, 0, 0, -34.436947, 0, -1.3449063, 0, 0, 0, 0, 0, 0, -42.202328, 0, -0.599144, 0, 0, 0, 0, 0, 0, -45.812305, 0, 8.624937, 0, 0, 0, 0, 0, 0, -54.75975, 0, 13.633268, 0, 0, 0, 0, 0, 0, -64.960976, 0, 5.9306555, 0, 0, 0, 0, 0, 0, -63.427307, 0, -3.9762607, 0, 0, 0, 0, 0, 0, -70.00032, 0, -14.565411, 0, 0, 0, 0, 0, 0, -62.045845, 0, -24.694633, 0, 0, 0, 0, 0, 0, -54.947086, 0, -30.024572, 0, 0, 0, 0, 0, 0, -50.364803, 0, -27.546034, 0, 0, 0, 0, 0, 0, -49.847878, 0, -21.727165, 0, 0, 0, 0, 0, 0, -54.774208, 0, -19.397032, 0, 0, 0, 0, 0, 0, -60.679222, 0, -16.57819, 0, 0, 0, 0, 0, 0, -56.94027, 0, -23.254877, 0, 0, 0, 0, 0, 0, -57.53931, 0, -24.793446, 0, 0, 0, 0, 0, 0, -53.397903, 0, -25.12234, 0, 0, 0, 0, 0, 0, -69.63303, 0, -19.429209, 0, 0, 0, 0, 0, 0, -57.850002, 0, -28.916088, 0, 0, 0, 0, 0, 0, -58.694397, 0, -30.330004, 0, 0, 0, 0, 0, 0, -61.2249, 0, -34.756104, 0, 0, 0, 0, 0, 0, -67.166954, 0, -39.33117, 0, 0, 0, 0, 0, 0, -76.666985, 0, -38.975983, 0, 0, 0, 0, 0, 0, -86.74944, 0, -34.958065, 0, 0, 0, 0, 0, 0, -85.49766, 0, -39.457127, 0, 0, 0, 0, 0, 0, -81.1032, 0, -39.390026, 0, 0, 0, 0, 0, 0, -149.41971, 7.6293945e-06, 9.203194),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -26.22487, 1.9073486e-06, -4.9061203, 0, 0, 0, 0, 0, 0, -25.28145, -1.9073486e-06, 0.5691336, 0, 0, 0, 0, 0, 0, -28.65095, 0, -1.7880454, 0, 0, 0, 0, 0, 0, -34.436947, 0, -1.3449063, 0, 0, 0, 0, 0, 0, -42.202328, 0, -0.599144, 0, 0, 0, 0, 0, 0, -49.7061, 0, -1.5697784, 0, 0, 0, 0, 0, 0, -56.16215, 0, -0.105895996, 0, 0, 0, 0, 0, 0, -59.82997, 0, -2.7136898, 0, 0, 0, 0, 0, 0, -63.427307, 0, -3.9762607, 0, 0, 0, 0, 0, 0, -70.00032, 0, -14.565411, 0, 0, 0, 0, 0, 0, -62.045845, 0, -24.694633, 0, 0, 0, 0, 0, 0, -54.947086, 0, -30.024572, 0, 0, 0, 0, 0, 0, -50.364803, 0, -27.546034, 0, 0, 0, 0, 0, 0, -49.847878, 0, -21.727165, 0, 0, 0, 0, 0, 0, -54.774208, 0, -19.397032, 0, 0, 0, 0, 0, 0, -60.679222, 0, -16.57819, 0, 0, 0, 0, 0, 0, -56.94027, 0, -23.254877, 0, 0, 0, 0, 0, 0, -57.53931, 0, -24.793446, 0, 0, 0, 0, 0, 0, -53.397903, 0, -25.12234, 0, 0, 0, 0, 0, 0, -69.63303, 0, -19.429209, 0, 0, 0, 0, 0, 0, -57.850002, 0, -28.916088, 0, 0, 0, 0, 0, 0, -58.694397, 0, -30.330004, 0, 0, 0, 0, 0, 0, -61.2249, 0, -34.756104, 0, 0, 0, 0, 0, 0, -67.166954, 0, -39.33117, 0, 0, 0, 0, 0, 0, -76.666985, 0, -38.975983, 0, 0, 0, 0, 0, 0, -86.74944, 0, -34.958065, 0, 0, 0, 0, 0, 0, -85.49766, 0, -39.457127, 0, 0, 0, 0, 0, 0, -81.1032, 0, -39.390026, 0, 0, 0, 0, 0, 0, -88.80452, 0, -37.550217),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 29
@@ -72,7 +75,7 @@ point_count = 29
 script = ExtResource("15_84omo")
 closed = false
 thickness = 7.0
-curve = SubResource("Curve3D_rvvqk")
+curve = SubResource("Curve3D_o0h44")
 metadata/_custom_type_script = "uid://c1loybq7rxdri"
 
 [node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("spawn_orgin_marker")]
@@ -80,7 +83,15 @@ script = ExtResource("1_xw7nq")
 spawn_orgin_marker = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1150581307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1432705, 1.29434, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0782776, 1.29434, -2)
+
+[node name="Dummy" parent="." unique_id=1885059936 instance=ExtResource("2_s1rbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2247849, 0)
+face_texture = ExtResource("3_jp2kq")
+face_texture_scale = Vector3(1.5, 1.5, 1.5)
+text = "Hola"
+packed_bone_positions = PackedVector3Array(0, 1.9917421, 0, 0, 2.170497, 0, 0, 2.3720803, 0, 0, 2.5570865, 0, 0, 2.7527835, 0, -0.15736951, 2.449337, -7.114666e-08, -0.40419292, 2.4278352, 1.7814591e-06, 0.15736951, 2.449337, -7.114666e-08, 0.40419394, 2.4278352, -3.821378e-06, -0.14999999, 1.7308459, 1.0897948e-12, 0.14999999, 1.7308459, 1.0897948e-12, -0.5328868, 2.427835, 5.2084843e-08, 0.5328868, 2.427835, 5.2084843e-08, -0.14999999, 1.5749537, 1.8811997e-08, 0.14999999, 1.5749537, 1.8811997e-08)
+packed_bone_rotations = PackedVector3Array(1.5707964, 0, 0, 3.57636e-21, -1.5707964, -1.5707964, 1.5707964, 0, 0, 1.5707964, 3.679989e-08, 0, 1.5707964, 3.6799946e-08, 0, -0.17999254, 1.5707964, 1.5040979, 3.0716222e-07, 1.5707966, 1.5707957, -0.17999254, -1.5707964, -1.5040979, 3.034361e-07, -1.5707964, -1.5707957, -1.5707964, 1.5707965, 0, -1.5707964, -1.5707965, 0, -3.9798536e-13, 1.8628565e-09, 1.5707964, -5.165843e-07, -1.1036218e-07, -1.5707957, 0, -1.5707963, 3.1415927, 0, 1.5707963, 3.1415927)
 
 [node name="ProtonScatterCache" type="Node" parent="." unique_id=587278032]
 script = ExtResource("23_ujtx7")
@@ -130,8 +141,8 @@ font_size = 400
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D" unique_id=632808018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
-light_energy = 5.0
-omni_range = 20.0
+light_energy = 3.0
+omni_range = 15.0
 
 [node name="plane" parent="." unique_id=207164142 instance=ExtResource("4_65juv")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.250378, 0.96265125, -12.899706)
@@ -139,7 +150,8 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.2
 [node name="ProtonScatter" type="Node3D" parent="." unique_id=1881091739]
 script = ExtResource("5_rvvqk")
 render_mode = 1
-modifier_stack = SubResource("Resource_hmxa1")
+force_rebuild_on_load = false
+modifier_stack = SubResource("Resource_430os")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d3v6q68b8qljm"
@@ -185,22 +197,24 @@ font_size = 400
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D2" unique_id=3508154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
-light_energy = 5.0
-omni_range = 20.0
+light_energy = 3.0
+omni_range = 15.0
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D2" unique_id=207668200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2006226, -3.6, 0)
 size = Vector3(7.401245, 1, 20)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D2" unique_id=1781752707]
-transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.587967, 0)
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.488, 0)
 operation = 2
-size = Vector3(10, 1, 2)
+size = Vector3(10, 1.1, 2)
 
 [node name="Sprite3D" type="Sprite3D" parent="CSGBox3D2" unique_id=157463820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, -31.617928)
+modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 pixel_size = 0.05
 axis = 1
+shaded = true
 texture = ExtResource("16_o0h44")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1345936112]
@@ -229,20 +243,111 @@ font_size = 400
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D3" unique_id=971734357]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
-light_energy = 5.0
-omni_range = 20.0
+light_energy = 3.0
+omni_range = 15.0
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D3" unique_id=176727421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2006226, -3.6, 0)
 size = Vector3(7.401245, 1, 20)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D3" unique_id=1484694557]
-transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.587967, 0)
+transform = Transform3D(0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0, 1, 6, -2.488, 0)
 operation = 2
-size = Vector3(10, 1, 2)
+size = Vector3(10, 1.1, 2)
 
 [node name="Sprite3D" type="Sprite3D" parent="CSGBox3D3" unique_id=995285589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, -31.617928)
+modulate = Color(0.7581918, 0.7581918, 0.7581917, 1)
 pixel_size = 0.05
 axis = 1
+shaded = true
 texture = ExtResource("16_o0h44")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=137751012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 4, -182)
+use_collision = true
+size = Vector3(20, 10, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D4" unique_id=1772693451]
+operation = 2
+size = Vector3(18, 9, 18)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D4" unique_id=380064288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.7828093, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D4" unique_id=446915172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2.783, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D4" unique_id=176293097]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.097816, 2.893571, 0)
+text = "El Restaurante"
+font_size = 400
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D4" unique_id=965035682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
+light_energy = 3.0
+omni_range = 15.0
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1025244041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.68666, 4, -182)
+use_collision = true
+size = Vector3(1, 11, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D5" unique_id=291620765]
+operation = 2
+size = Vector3(18, 9, 18)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D5" unique_id=1319169948]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.61376953, 5.893571, 0)
+text = "Las Fiestas"
+font_size = 400
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D5" unique_id=239709370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
+omni_range = 10.0
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1561689069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170.95078, 8.325996, -195.56334)
+double_sided = false
+text = "Las Jarramplas"
+font_size = 300
+
+[node name="Label3D2" type="Label3D" parent="." unique_id=1277126345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184.10477, 8.325996, -195.56334)
+double_sided = false
+text = "La Tomatina"
+font_size = 300
+
+[node name="Label3D3" type="Label3D" parent="." unique_id=2060744989]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -187.96808, 8.325996, -171.35667)
+double_sided = false
+text = "Cinco De Mayo"
+font_size = 300
+
+[node name="Label3D4" type="Label3D" parent="." unique_id=1918785378]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -172.61487, 8.325996, -171.35667)
+double_sided = false
+text = "Dia De San Fermin"
+font_size = 300
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=641226953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.92467, 4, -182)
+use_collision = true
+size = Vector3(1, 11, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D6" unique_id=131835366]
+operation = 2
+size = Vector3(18, 9, 18)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D6" unique_id=792815347]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.61376953, 5.893571, 0)
+text = "El Fin Del Año"
+font_size = 400
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D6" unique_id=1999016647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
+omni_range = 10.0
