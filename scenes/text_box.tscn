@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://8d5flu5e06y1"]
+
+[ext_resource type="Script" uid="uid://bix7arlivekfx" path="res://scripts/text_box.gd" id="1_wscpg"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wscpg"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r25yp"]
+bg_color = Color(0.00784314, 0.00784314, 0.00784314, 0.811765)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="TextBox" type="Node3D" unique_id=572551993]
+script = ExtResource("1_wscpg")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=206514774]
+transform = Transform3D(1.50466, 0, 0, 0, 1.70852, 0, 0, 0, 1, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_wscpg")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1028278397]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(500, 200)
+render_target_update_mode = 1
+
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport" unique_id=1911945549]
+offset_right = 500.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r25yp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport/Panel" unique_id=662618088]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.5
+offset_top = -87.5
+offset_right = 233.5
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Sprite3D/SubViewport/Panel/VBoxContainer" unique_id=1588612715]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.927782, 0.97951, 0.801073, 1)
+theme_override_font_sizes/font_size = 20
+text = "Title"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="Sprite3D/SubViewport/Panel/VBoxContainer" unique_id=932173486]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Description fuoih riohioghwuio j  thowihrjg awr gh0wjg wa 0t9w8 iegop giwhao ugiwop y"
+autowrap_mode = 2
