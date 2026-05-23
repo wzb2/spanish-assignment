@@ -4,13 +4,13 @@ class_name Player
 
 const MOVEMENT_SPEED: float = 18
 const GHOST_MOVEMENT_SPEED: float = 0.05
-const AIR_SPEED: float = 8
-const DAMPING: Vector3 = Vector3(0.95, 1, 0.95)
+const AIR_SPEED: float = 8*0
+const DAMPING: Vector3 = Vector3(0.999, 1, 0.999)
 const MOUSE_SENSITIVITY: float = 0.00003
 
 const JUMP_VELOCITY: Vector3 = Vector3(0, 3, 0)
 
-const JUMP_VELOCITY_MULTIPLIER: Vector3 = Vector3(4, 0, 4)
+const JUMP_VELOCITY_MULTIPLIER: Vector3 = Vector3(1, 0, 1)
 
 const WALK_ANIMATION_THRESHOLD_VEL: float = 0.1
 const METERS_PER_STEP: float = 0.5
@@ -31,7 +31,7 @@ const MAX_MOUSE_MOVEMENT_FOR_BIG_ROTATION: float = 0.08
 
 const EYE_RESET_RATE: float = 0.05
 
-const MOVING_FAST_THRESHOLD: float = 4.5
+const MOVING_FAST_THRESHOLD: float = 40000.5
 
 const SAFE_ITEM_DROP_LENGTH_PERCENTAGE: float = 0.3
 

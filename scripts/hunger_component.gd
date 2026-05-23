@@ -6,7 +6,7 @@ class_name HungerComponent
 
 @export var max_food: float = 100
 
-@export var starvation_per_second: float = 0.2
+@export var starvation_per_second: float = 0.1
 
 @export_range(0, 1) var min_food_percentage_to_heal: float = 0.75
 @export_range(0, 1) var max_health_percentage_to_heal: float = 1

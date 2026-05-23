@@ -65,8 +65,8 @@ func _physics_process(delta: float) -> void:
 		var non_vital_bone_accelerations: Array = calculate_accelerations(non_vital_bones, non_vital_bone_prev_velocities, delta)
 		inflict_damage(calculate_total_damage(non_vital_bone_accelerations, bone_damage_multiplier, damage_acceleration_threshold))
 		
-		inflict_damage(calculate_total_slide_damage(non_vital_bones, bone_damage_multiplier * slide_damage_multiplier, slide_damage_velocity_threshold, delta))
-		inflict_damage(calculate_total_slide_damage(vital_bones, bone_damage_multiplier * vital_bone_damage_multiplier * slide_damage_multiplier, slide_damage_velocity_threshold, delta))
+		#inflict_damage(calculate_total_slide_damage(non_vital_bones, bone_damage_multiplier * slide_damage_multiplier, slide_damage_velocity_threshold, delta))
+		#inflict_damage(calculate_total_slide_damage(vital_bones, bone_damage_multiplier * vital_bone_damage_multiplier * slide_damage_multiplier, slide_damage_velocity_threshold, delta))
 		
 		if not is_conscious():
 			inflict_damage(unconscious_bleed_rate * delta)
@@ -110,7 +110,7 @@ func is_conscious() -> bool:
 	return hp > consciousness_threshold
 
 func is_alive() -> bool:
-	return hp > -max_hp
+	return true
 
 
 func get_weakness_percentage() -> float:

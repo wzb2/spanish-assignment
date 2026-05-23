@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cmdwa3nbdq0xt"]
+
+[ext_resource type="Script" uid="uid://il4y7hp572r0" path="res://scripts/train.gd" id="1_68jl8"]
+[ext_resource type="Script" uid="uid://bfehyp5xp0qqp" path="res://scripts/player_detection_area.gd" id="2_d43s7"]
+
+[sub_resource type="Curve" id="Curve_d43s7"]
+_data = [Vector2(0, 0.05365336), 0.0, 0.0, 0, 0, Vector2(0.14866582, 1), 0.0, 0.0, 0, 0, Vector2(0.85260475, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.051900864), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d43s7"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:constant_linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_f48oq"]
+size = Vector3(2.5, 0.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68jl8"]
+size = Vector3(2.5, 0.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b7q7"]
+size = Vector3(2, 3, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d43s7"]
+size = Vector3(2, 3, 1)
+
+[node name="Train" type="AnimatableBody3D" unique_id=979415964]
+script = ExtResource("1_68jl8")
+speed_curve = SubResource("Curve_d43s7")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2037912929]
+replication_config = SubResource("SceneReplicationConfig_d43s7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2099504256]
+mesh = SubResource("BoxMesh_f48oq")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=201034756]
+shape = SubResource("BoxShape3D_68jl8")
+
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=157706852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1747816, 0)
+linear_damp = 0.0
+script = ExtResource("2_d43s7")
+metadata/_custom_type_script = "uid://bfehyp5xp0qqp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=810546075]
+shape = SubResource("BoxShape3D_6b7q7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=852615079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.324821, -2.288586)
+shape = SubResource("BoxShape3D_d43s7")

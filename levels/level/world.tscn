@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://chxdthcim6caj" path="res://images/runway.png" id="14_084d6"]
 [ext_resource type="Script" uid="uid://c1loybq7rxdri" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="15_84omo"]
 [ext_resource type="Texture2D" uid="uid://c61ndhkfblcf4" path="res://images/Train tracks.png" id="16_o0h44"]
+[ext_resource type="PackedScene" uid="uid://cmdwa3nbdq0xt" path="res://scenes/train.tscn" id="19_vslsc"]
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
@@ -29,35 +30,35 @@ albedo_color = Color(0.50980395, 0.7137255, 0.36078432, 1)
 material = SubResource("StandardMaterial3D_4l3xp")
 size = Vector3(10000, 1, 10000)
 
-[sub_resource type="Resource" id="Resource_jp2kq"]
+[sub_resource type="Resource" id="Resource_vslsc"]
 script = ExtResource("8_jp2kq")
 amount = 1000
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_vslsc"]
+[sub_resource type="Resource" id="Resource_xw7nq"]
 script = ExtResource("9_vslsc")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(1, 360, 1)
 scale = Vector3(2, 2, 2)
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_xw7nq"]
+[sub_resource type="Resource" id="Resource_6pk81"]
 script = ExtResource("10_xw7nq")
 offset_step = 0.2
 consecutive_step_multiplier = 0.75
 use_computeshader = false
 restrict_height = true
 
-[sub_resource type="Resource" id="Resource_6pk81"]
+[sub_resource type="Resource" id="Resource_430os"]
 script = ExtResource("11_6pk81")
 ray_length = 5.0
 ray_offset = 5.0
 remove_points_on_miss = false
 
-[sub_resource type="Resource" id="Resource_430os"]
+[sub_resource type="Resource" id="Resource_ujtx7"]
 script = ExtResource("6_o0h44")
-stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_jp2kq"), SubResource("Resource_vslsc"), SubResource("Resource_xw7nq"), SubResource("Resource_6pk81")])
+stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_vslsc"), SubResource("Resource_xw7nq"), SubResource("Resource_6pk81"), SubResource("Resource_430os")])
 
 [sub_resource type="Resource" id="Resource_sf4ix"]
 script = ExtResource("14_8dsq4")
@@ -83,7 +84,7 @@ script = ExtResource("1_xw7nq")
 spawn_orgin_marker = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1150581307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0782776, 1.29434, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.92172, 11.627857, -29)
 
 [node name="Dummy" parent="." unique_id=1885059936 instance=ExtResource("2_s1rbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2247849, 0)
@@ -91,7 +92,6 @@ face_texture = ExtResource("3_jp2kq")
 face_texture_scale = Vector3(1.5, 1.5, 1.5)
 text = "Hola"
 packed_bone_positions = PackedVector3Array(0, 1.9917421, 0, 0, 2.170497, 0, 0, 2.3720803, 0, 0, 2.5570865, 0, 0, 2.7527835, 0, -0.15736951, 2.449337, -7.114666e-08, -0.40419292, 2.4278352, 1.7814591e-06, 0.15736951, 2.449337, -7.114666e-08, 0.40419394, 2.4278352, -3.821378e-06, -0.14999999, 1.7308459, 1.0897948e-12, 0.14999999, 1.7308459, 1.0897948e-12, -0.5328868, 2.427835, 5.2084843e-08, 0.5328868, 2.427835, 5.2084843e-08, -0.14999999, 1.5749537, 1.8812008e-08, 0.14999999, 1.5749537, 1.8812008e-08)
-packed_bone_rotations = PackedVector3Array(1.5707964, 0, 0, 3.57636e-21, -1.5707964, -1.5707964, 1.5707964, 0, 0, 1.5707964, 3.6799804e-08, 0, 1.5707964, 3.679986e-08, 0, -0.17999254, 1.5707964, 1.5040979, 3.0716222e-07, 1.5707966, 1.5707957, -0.17999254, -1.5707964, -1.5040979, 3.034361e-07, -1.5707964, -1.5707957, -1.5707964, 1.5707965, 0, -1.5707964, -1.5707965, 0, -3.9798536e-13, 1.8628565e-09, 1.5707964, -5.165843e-07, -1.1036218e-07, -1.5707957, 0, -1.5707963, 3.1415927, 0, 1.5707963, 3.1415927)
 
 [node name="ProtonScatterCache" type="Node" parent="." unique_id=587278032]
 script = ExtResource("23_ujtx7")
@@ -151,7 +151,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.2
 script = ExtResource("5_rvvqk")
 render_mode = 1
 force_rebuild_on_load = false
-modifier_stack = SubResource("Resource_430os")
+modifier_stack = SubResource("Resource_ujtx7")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d3v6q68b8qljm"
@@ -351,3 +351,6 @@ font_size = 400
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D6" unique_id=1999016647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44401073, 0)
 omni_range = 10.0
+
+[node name="Train" parent="." unique_id=979415964 instance=ExtResource("19_vslsc")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -99.97278, 0.7116004, -40.773926)
