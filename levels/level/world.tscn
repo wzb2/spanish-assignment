@@ -84,7 +84,7 @@ script = ExtResource("1_xw7nq")
 spawn_orgin_marker = NodePath("Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1150581307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.92172, 11.627857, -29)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.078148, 11.627857, -0.8596821)
 
 [node name="Dummy" parent="." unique_id=1885059936 instance=ExtResource("2_s1rbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2247849, 0)

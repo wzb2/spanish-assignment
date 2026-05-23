@@ -6,7 +6,7 @@ signal start_game
 
 @onready var start_area: PlayerDetectionArea = $StartArea
 
-const READY_TIME_TO_START: float = 2.0
+const READY_TIME_TO_START: float = 1.0
 var current_ready_time: float = 0
 
 func _process(delta: float) -> void:

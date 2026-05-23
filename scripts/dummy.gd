@@ -46,4 +46,5 @@ func update_stuff() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	add_movement_bone_velocity(Vector3.ZERO)
 	current_angular_spring_stiffness = default_angular_spring_stiffness * (1.0 - health_component.get_weakness_percentage()) * (1.0 - health_component.get_shock_percentage())
