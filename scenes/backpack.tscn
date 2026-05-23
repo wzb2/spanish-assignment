@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://v50tjuu3aj6q"]
+[gd_scene format=3 uid="uid://v50tjuu3aj6q"]
 
 [ext_resource type="Script" uid="uid://oxrrioi5m67r" path="res://scripts/backpack.gd" id="1_q7lps"]
 [ext_resource type="Script" uid="uid://cu0e3f7xuuf7l" path="res://scripts/container_area.gd" id="2_8usr3"]
@@ -41,12 +41,10 @@ radial_segments = 16
 
 [sub_resource type="Resource" id="Resource_yov5u"]
 script = ExtResource("4_yov5u")
-amount = 0
 metadata/_custom_type_script = "uid://dqjccdqo5t2mc"
 
 [sub_resource type="Resource" id="Resource_45c70"]
 script = ExtResource("4_yov5u")
-amount = 0
 metadata/_custom_type_script = "uid://dqjccdqo5t2mc"
 
 [sub_resource type="Resource" id="Resource_ujist"]
@@ -57,7 +55,6 @@ metadata/_custom_type_script = "uid://dqjccdqo5t2mc"
 
 [sub_resource type="Resource" id="Resource_x37ci"]
 script = ExtResource("4_yov5u")
-amount = 0
 metadata/_custom_type_script = "uid://dqjccdqo5t2mc"
 
 [sub_resource type="Resource" id="Resource_owf8y"]
@@ -68,87 +65,87 @@ metadata/_custom_type_script = "uid://b2cgua2ewrowh"
 [sub_resource type="BoxShape3D" id="BoxShape3D_45c70"]
 size = Vector3(0.7, 0.4, 0.9)
 
-[node name="Backpack" type="RigidBody3D" node_paths=PackedStringArray("mesh_instances", "interact_area")]
-mass = 0.7
+[node name="Backpack" type="RigidBody3D" unique_id=584861397 node_paths=PackedStringArray("mesh_instances", "interact_area")]
+mass = 0.3
 continuous_cd = true
 script = ExtResource("1_q7lps")
 mesh_instances = [NodePath("MeshInstance3D"), NodePath("MeshInstance3D/MeshInstance3D"), NodePath("MeshInstance3D/MeshInstance3D2")]
 interact_area = NodePath("ContainerArea")
 metadata/_custom_type_script = "uid://uaoxovu60sij"
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2083055313]
 replication_config = SubResource("SceneReplicationConfig_fytde")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=139434478]
 shape = SubResource("BoxShape3D_q7lps")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=962245171]
 mesh = SubResource("BoxMesh_5gcru")
 surface_material_override/0 = SubResource("StandardMaterial3D_45c70")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=833403380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.137414, 0.205926)
 mesh = SubResource("BoxMesh_45c70")
 surface_material_override/0 = SubResource("StandardMaterial3D_ujist")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=429365310]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.110161, -0.352763)
 mesh = SubResource("CylinderMesh_ujist")
 surface_material_override/0 = SubResource("StandardMaterial3D_ujist")
 
-[node name="ContainerArea" type="Area3D" parent="."]
+[node name="ContainerArea" type="Area3D" parent="." unique_id=968154923]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_8usr3")
 inventory = SubResource("Resource_owf8y")
 metadata/_custom_type_script = "uid://cu0e3f7xuuf7l"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainerArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainerArea" unique_id=736405581]
 shape = SubResource("BoxShape3D_45c70")
 
-[node name="Floater" type="Node3D" parent="."]
+[node name="Floater" type="Node3D" parent="." unique_id=1120699767]
 script = ExtResource("6_owf8y")
 relative_density = 0.1
 metadata/_custom_type_script = "uid://bckobx7fm17y8"
 
-[node name="FloaterMesh" type="MeshInstance3D" parent="Floater"]
+[node name="FloaterMesh" type="MeshInstance3D" parent="Floater" unique_id=470946428]
 mesh = SubResource("BoxMesh_5gcru")
 script = ExtResource("7_45c70")
 metadata/_custom_type_script = "uid://beckuqbvjtgr7"
 
-[node name="FloaterPoint16" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint16" parent="Floater" unique_id=741866264 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.15, -0.4)
 is_generated = true
 
-[node name="FloaterPoint15" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint15" parent="Floater" unique_id=257277537 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.15, 0.4)
 is_generated = true
 
-[node name="FloaterPoint14" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint14" parent="Floater" unique_id=617212141 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.15, -0.4)
 is_generated = true
 
-[node name="FloaterPoint13" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint13" parent="Floater" unique_id=121311517 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.15, 0.4)
 is_generated = true
 
-[node name="FloaterPoint12" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint12" parent="Floater" unique_id=389943339 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.15, -0.4)
 is_generated = true
 
-[node name="FloaterPoint11" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint11" parent="Floater" unique_id=2128271613 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.15, 0.4)
 is_generated = true
 
-[node name="FloaterPoint10" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint10" parent="Floater" unique_id=839668491 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.15, -0.4)
 is_generated = true
 
-[node name="FloaterPoint" parent="Floater" instance=ExtResource("8_x37ci")]
+[node name="FloaterPoint" parent="Floater" unique_id=1929577740 instance=ExtResource("8_x37ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.15, 0.4)
 is_generated = true
 
-[node name="GrassPusher" type="Node3D" parent="."]
+[node name="GrassPusher" type="Node3D" parent="." unique_id=2038942505]
 script = ExtResource("8_45c70")
 radius = 0.7
 metadata/_custom_type_script = "uid://jyqyhvpbcn1g"

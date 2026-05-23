@@ -25,6 +25,11 @@ class_name Dummy
 @onready var text_label: Label3D = $"PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/Label3D"
 @onready var health_component: HealthComponent = $HealthComponent
 
+@onready var mouth: MeshInstance3D = $PhysicsGuy/Armature/Skeleton3D/Mouth
+@onready var pupils: MeshInstance3D = $PhysicsGuy/Armature/Skeleton3D/Pupils
+@onready var head: MeshInstance3D = $PhysicsGuy/Armature/Skeleton3D/Head
+@onready var head_cover: MeshInstance3D = $"PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/MeshInstance3D"
+
 func _ready() -> void:
 	super._ready()
 	update_stuff()
@@ -33,8 +38,16 @@ func _ready() -> void:
 func update_stuff() -> void:
 	if face_texture:
 		face_sprite.texture = face_texture
+		mouth.hide()
+		head.hide()
+		pupils.hide()
+		head_cover.show()
 	else:
 		face_sprite.texture = null
+		mouth.show()
+		head.show()
+		pupils.show()
+		head_cover.hide()
 	
 	if text:
 		text_label.text = text
