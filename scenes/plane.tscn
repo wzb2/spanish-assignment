@@ -914,9 +914,10 @@ skeleton = NodePath("")
 [node name="AeroJetThrusterComponent" type="Node3D" parent="." unique_id=193020011]
 unique_name_in_owner = true
 script = ExtResource("11_bsfla")
-intake_fan_max_velocity = 100.0
-exhaust_velocity = 100.0
+intake_fan_max_velocity = 90.0
+exhaust_velocity = 90.0
 throttle_control_config = SubResource("Resource_lyt3a")
+max_thrust_force = 1000.0
 metadata/_custom_type_script = "uid://j11128f5e4xl"
 
 [node name="big_plane" type="Node3D" parent="." unique_id=1329327926]
@@ -1064,7 +1065,7 @@ mass = 0.001
 gravity_scale = 0.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.2, 0)
-angular_damp = 30.0
+angular_damp = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ControlPanel/Joint/Yoke" unique_id=741258269]
 shape = SubResource("CylinderShape3D_bsfla")
