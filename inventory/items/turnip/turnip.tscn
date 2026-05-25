@@ -1,0 +1,123 @@
+[gd_scene format=4 uid="uid://q764wrkuk0wh"]
+
+[ext_resource type="Script" uid="uid://dnkcpsa6btnbx" path="res://inventory/items/turnip/turnip.gd" id="1_7f6gl"]
+[ext_resource type="Resource" uid="uid://bmwxekn5vevl4" path="res://inventory/items/turnip/turnip.tres" id="2_ion3t"]
+[ext_resource type="Shader" uid="uid://07mt1mqgqfn7" path="res://scripts/shaders/grass.gdshader" id="4_2yy7x"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lsbtm"]
+properties/0/path = NodePath(".:current_hand")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:synced_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:synced_rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yashr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ttc2g"]
+material = SubResource("StandardMaterial3D_yashr")
+radius = 0.1
+height = 0.2
+radial_segments = 16
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lupdo"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lsbtm"]
+radius = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oldj0"]
+render_priority = 0
+shader = ExtResource("4_2yy7x")
+shader_parameter/top_color = Color(0, 0.223, 0, 1)
+shader_parameter/bottom_color = Color(0.341, 1, 0.447, 1)
+shader_parameter/bend = 0.1
+shader_parameter/dip_percentage = 0.4
+shader_parameter/color_variation = Color(0.9, 0.9, 0.2, 1)
+shader_parameter/noise_scale = 5.0
+shader_parameter/noise_factor_multiplier = 0.3
+shader_parameter/wind_direction = Vector2(-1, 0)
+shader_parameter/wind_texture_scale = 20.0
+shader_parameter/wind_speed = 0.1
+shader_parameter/wind_strength = 0.1
+shader_parameter/still_sway_speed = 4.5
+shader_parameter/still_sway_strength = 0.1
+shader_parameter/push_strength = 5.0
+shader_parameter/push_object_positions = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/push_object_radii = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/num_push_objects = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_55a5h"]
+_surfaces = [{
+"aabb": AABB(-0.074999996, -5.6623426e-09, -3.2783514e-09, 0.15, 1, 1e-05),
+"format": 34359742465,
+"index_count": 21,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAFAAQABgAHAAUACAAHAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("mEtgPagsij7ufCSxmZmZvX6OwrF5SWExm5mZPYGOwjFeSWGxoEtgvagsij4JfSQx0MIRPUuIBj/+ydWw4sIRvUuIBj80ytUwGxyOPJTJRD8Lb1CwUhyOvJTJRD94b1AwgfiVswAAgD+z9lsn")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o1alx"]
+resource_name = "grass_Plane"
+_surfaces = [{
+"aabb": AABB(-0.074999996, -5.6623426e-09, -3.2783514e-09, 0.15, 1, 1e-05),
+"attribute_data": PackedByteArray("tywKPqzpOj8AAIA/AACAPwAAAAAAAIA/4HRdP6zpOj9YiIY+cu/yPuK7PD9y7/I+wMnEPrDZbD5Kmx0/sNlsPgcAAD8AAAAA"),
+"format": 34359742487,
+"index_count": 21,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAADAAAABAAFAAMABgAFAAQABgAHAAUACAAHAAYA"),
+"material": SubResource("ShaderMaterial_oldj0"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("mEtgPagsij7ufCSxmZmZvX6OwrF5SWExm5mZPYGOwjFeSWGxoEtgvagsij4JfSQx0MIRPUuIBj/+ydWw4sIRvUuIBj80ytUwGxyOPJTJRD8Lb1CwUhyOvJTJRD94b1AwgfiVswAAgD+z9lsn/////wAA/7//////AAD/v/////8AAP+//////wAA/7//////AAD/v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_55a5h")
+
+[sub_resource type="MultiMesh" id="MultiMesh_4wlit"]
+transform_format = 1
+instance_count = 16
+mesh = SubResource("ArrayMesh_o1alx")
+buffer = PackedFloat32Array(-0.23005015, 0.05822422, 0.4334305, 0.0025698831, 0.028920097, 0.49069518, -0.050566975, 0, -0.43636644, 0.0018252116, -0.23185365, 0.0024702887, -0.3800316, 0.02554895, -0.39507642, -0.0010326039, 0.019705659, 0.5481804, 0.016494686, 0, 0.39541093, -0.002763827, -0.38053212, -0.0013626635, -0.36203662, 0.08571994, 0.30485806, 0.0049898964, 0.017308839, 0.46770355, -0.11095354, 0, -0.3162068, -0.07254225, -0.35511652, -0.004391444, -0.33546084, -0.05752266, 0.22980258, -0.0028825111, -0.076205604, 0.40340972, -0.010264461, 0, -0.22430065, -0.051027425, -0.34020206, -0.0019578272, -0.07129601, 0.050118264, -0.633799, -0.003944873, -0.04542644, 0.63574004, 0.055381775, 0, 0.63415253, 0.051174812, -0.067289084, -0.0003117746, -0.3106542, -0.049910303, -0.041634236, -0.0002468616, -0.05115886, 0.31316686, 0.0063038976, 0, 0.04009014, 0.0128813535, -0.3145748, 0.004673331, 0.38240042, -0.09368514, 0.42274106, -0.0032500995, 0.042092405, 0.56937057, 0.08810454, 0, -0.4309468, -0.027518623, 0.38372463, -0.0020710693, 0.48315805, -0.07907058, 0.058342814, 0.003585769, 0.08486653, 0.48333716, -0.04775555, 0, -0.049534976, 0.056839798, 0.48725075, 0.004897059, -0.6315199, 0.09435371, 0.08774497, -0.003516317, 0.09083875, 0.63731724, -0.031531926, 0, -0.09137901, -0.018528836, -0.6377505, -0.001907682, -0.39919418, 0.0023384527, 0.013633382, 0.0041169235, 0.0025165456, 0.39939225, 0.005180697, 0, -0.013601636, 0.0052634836, -0.39916742, -0.00053184154, -0.17565015, 0.04222495, -0.5518064, 0.004490837, -0.08570748, 0.56987286, 0.0708897, 0, 0.54674256, 0.10289886, -0.1661643, 0.0012511974, -0.03482414, -0.026602276, 0.6535127, -0.0048363525, -0.11706175, 0.6441246, 0.019982178, 0, -0.64349294, -0.11573702, -0.039001472, 0.0027105613, 0.5001605, -0.052037455, 0.0022777938, -0.004110016, 0.051520754, 0.4974818, 0.052260138, 0, -0.007661385, -0.051745664, 0.5001373, 0.0044638943, 0.52907556, -0.005958685, -0.060799293, 0.002970885, -0.0025564292, 0.52742755, -0.07393703, 0, 0.061037075, 0.073740855, 0.52391773, 2.6904978e-05, -0.2982463, 0.026388122, -0.060182218, 0.0018801597, 0.031022687, 0.30310473, -0.020837327, 0, 0.057929482, -0.026462587, -0.2986854, -0.0006609736, -0.088702574, 0.018805794, -0.32622182, 0.004502691, -0.021568865, 0.33695358, 0.025289213, 0, 0.3260508, 0.027406247, -0.08707618, 0.0006169081)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nwd1x"]
+size = Vector2(0.01, 0.01)
+
+[node name="Turnip" type="RigidBody3D" unique_id=1002125278 node_paths=PackedStringArray("mesh_instances", "interact_area")]
+mass = 0.01
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.1, 0)
+script = ExtResource("1_7f6gl")
+item_resource = ExtResource("2_ion3t")
+use_button_hold_time = 1.0
+mesh_instances = [NodePath("MeshInstance3D")]
+interact_area = NodePath("Area3D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=7861132]
+replication_config = SubResource("SceneReplicationConfig_lsbtm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1846129162]
+mesh = SubResource("SphereMesh_ttc2g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1353780554]
+shape = SubResource("SphereShape3D_lupdo")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=492339991]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2009585033]
+shape = SubResource("SphereShape3D_lsbtm")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1144759484]
+multimesh = SubResource("MultiMesh_4wlit")
+
+[node name="LeafPlane" type="MeshInstance3D" parent="." unique_id=2042113780]
+mesh = SubResource("PlaneMesh_nwd1x")

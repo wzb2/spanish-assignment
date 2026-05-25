@@ -20,6 +20,7 @@ func update_floater_points() -> void:
 	floater_points = get_children().filter(func(child: Node) -> bool: return child is FloaterPoint)
 
 func _ready() -> void:
+	queue_free()
 	assert(parent is RigidBody3D or parent is PhysicalBone3D, "Floater not parented to RigidBody3D or PhysicalBone3D. Path: " + str(get_path()))
 	
 	if not Engine.is_editor_hint():

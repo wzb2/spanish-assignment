@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://bmwxekn5vevl4"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_8l1wc"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4u5rk"]
+size = Vector2(50, 50)
+
+[resource]
+script = ExtResource("1_8l1wc")
+physical_item_path = "res://inventory/items/turnip/turnip.tscn"
+name = "El Nabo"
+description = "Es delicioso y muy aerodinámico. "
+texture = SubResource("PlaceholderTexture2D_4u5rk")
+stack_size = 3
+path = "uid://bmwxekn5vevl4"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

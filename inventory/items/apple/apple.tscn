@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d8s5pudce3ne" path="res://inventory/items/apple/apple.gd" id="1_yashr"]
 [ext_resource type="Resource" uid="uid://fhb7tthyx4wo" path="res://inventory/items/apple/apple.tres" id="2_ttc2g"]
-[ext_resource type="Script" uid="uid://bckobx7fm17y8" path="res://scripts/floater.gd" id="3_lupdo"]
-[ext_resource type="Script" uid="uid://beckuqbvjtgr7" path="res://scripts/floater_mesh.gd" id="4_lsbtm"]
-[ext_resource type="PackedScene" uid="uid://tsvbndyft63a" path="res://scenes/floater_point.tscn" id="5_8h01e"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lsbtm"]
 properties/0/path = NodePath(".:current_hand")
@@ -33,12 +30,6 @@ radius = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_lsbtm"]
 radius = 0.15
 
-[sub_resource type="SphereMesh" id="SphereMesh_lsbtm"]
-radius = 0.1
-height = 0.2
-radial_segments = 4
-rings = 1
-
 [node name="Apple" type="RigidBody3D" unique_id=1002125278 node_paths=PackedStringArray("mesh_instances", "interact_area")]
 mass = 0.01
 script = ExtResource("1_yashr")
@@ -62,37 +53,3 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2009585033]
 shape = SubResource("SphereShape3D_lsbtm")
-
-[node name="Floater" type="Node3D" parent="." unique_id=1588784488]
-script = ExtResource("3_lupdo")
-relative_density = 0.2
-metadata/_custom_type_script = "uid://bckobx7fm17y8"
-
-[node name="FloaterMesh" type="MeshInstance3D" parent="Floater" unique_id=1868772874]
-mesh = SubResource("SphereMesh_lsbtm")
-script = ExtResource("4_lsbtm")
-metadata/_custom_type_script = "uid://beckuqbvjtgr7"
-
-[node name="FloaterPoint16" parent="Floater" unique_id=1763865761 instance=ExtResource("5_8h01e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-is_generated = true
-
-[node name="FloaterPoint15" parent="Floater" unique_id=1375830965 instance=ExtResource("5_8h01e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 6.12303e-18, -1.83691e-17)
-is_generated = true
-
-[node name="FloaterPoint14" parent="Floater" unique_id=1969077902 instance=ExtResource("5_8h01e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22461e-17, 6.12303e-18, -0.1)
-is_generated = true
-
-[node name="FloaterPoint13" parent="Floater" unique_id=470460541 instance=ExtResource("5_8h01e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 6.12303e-18, 6.12303e-18)
-is_generated = true
-
-[node name="FloaterPoint12" parent="Floater" unique_id=394020598 instance=ExtResource("5_8h01e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.12303e-18, 0.1)
-is_generated = true
-
-[node name="FloaterPoint11" parent="Floater" unique_id=1051333838 instance=ExtResource("5_8h01e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-is_generated = true

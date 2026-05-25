@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dvrqrvg83t42t"]
+
+[ext_resource type="Script" uid="uid://bmfbiqvc10p7o" path="res://scripts/box.gd" id="1_3inec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3inec"]
+albedo_color = Color(0.52, 0.32066667, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ks2v0"]
+material = SubResource("StandardMaterial3D_3inec")
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c2ln5"]
+size = Vector3(1.8, 0.5, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_telwu"]
+albedo_color = Color(0.52, 0.32066667, 0, 1)
+
+[node name="Box" type="CSGMesh3D" unique_id=945349251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_ks2v0")
+script = ExtResource("1_3inec")
+spawn_count = 20
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1324631520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+operation = 2
+mesh = SubResource("BoxMesh_c2ln5")
+material = SubResource("StandardMaterial3D_telwu")

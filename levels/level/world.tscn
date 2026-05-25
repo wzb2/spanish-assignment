@@ -20,9 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://c61ndhkfblcf4" path="res://images/Train tracks.png" id="16_o0h44"]
 [ext_resource type="PackedScene" uid="uid://cmdwa3nbdq0xt" path="res://scenes/train.tscn" id="19_vslsc"]
 [ext_resource type="Script" uid="uid://c42gs3rnpx3yg" path="res://multiplayer/spawn_placeholder.gd" id="20_6pk81"]
+[ext_resource type="PackedScene" uid="uid://dvrqrvg83t42t" path="res://scenes/box.tscn" id="20_84omo"]
 [ext_resource type="PackedScene" uid="uid://v50tjuu3aj6q" path="res://scenes/backpack.tscn" id="21_430os"]
+[ext_resource type="PackedScene" uid="uid://q764wrkuk0wh" path="res://inventory/items/turnip/turnip.tscn" id="21_e0j10"]
+[ext_resource type="PackedScene" uid="uid://dxngx2j6d5hgy" path="res://inventory/items/apple/apple.tscn" id="22_0jpq5"]
 [ext_resource type="PackedScene" uid="uid://caxjo27xycgvc" path="res://scenes/mocherillo.tscn" id="22_430os"]
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
+[ext_resource type="PackedScene" uid="uid://cao4fubtoqwe3" path="res://scenes/flight_attendant.tscn" id="24_8dsq4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
 size = Vector3(5000, 1, 5000)
@@ -34,35 +38,35 @@ albedo_color = Color(0.50980395, 0.7137255, 0.36078432, 1)
 material = SubResource("StandardMaterial3D_4l3xp")
 size = Vector3(10000, 1, 10000)
 
-[sub_resource type="Resource" id="Resource_ujtx7"]
+[sub_resource type="Resource" id="Resource_c45hi"]
 script = ExtResource("8_jp2kq")
 amount = 1000
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_8dsq4"]
+[sub_resource type="Resource" id="Resource_hmxa1"]
 script = ExtResource("9_vslsc")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(1, 360, 1)
 scale = Vector3(2, 2, 2)
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_84omo"]
+[sub_resource type="Resource" id="Resource_b5xmf"]
 script = ExtResource("10_xw7nq")
 offset_step = 0.2
 consecutive_step_multiplier = 0.75
 use_computeshader = false
 restrict_height = true
 
-[sub_resource type="Resource" id="Resource_5xn7m"]
+[sub_resource type="Resource" id="Resource_ljmvl"]
 script = ExtResource("11_6pk81")
 ray_length = 5.0
 ray_offset = 5.0
 remove_points_on_miss = false
 
-[sub_resource type="Resource" id="Resource_e0j10"]
+[sub_resource type="Resource" id="Resource_muo8d"]
 script = ExtResource("6_o0h44")
-stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_ujtx7"), SubResource("Resource_8dsq4"), SubResource("Resource_84omo"), SubResource("Resource_5xn7m")])
+stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_c45hi"), SubResource("Resource_hmxa1"), SubResource("Resource_b5xmf"), SubResource("Resource_ljmvl")])
 
 [sub_resource type="Resource" id="Resource_sf4ix"]
 script = ExtResource("14_8dsq4")
@@ -161,6 +165,7 @@ text = "Unidad Dos:
 Una Rutina Diaria"
 
 [node name="TextBox" parent="CSGBox3D" unique_id=572551993 instance=ExtResource("6_ujtx7")]
+description = "En este unidad, nosotros aprendíamos vocabulario sobre viajar por avion. Nosotros aprendíamos sovre el presente progresivo y el preterito también. El examen de escritura fue sobre un viaje loco, y el examen do hablar fue un conversación con la profesora sobre el viaje loco. "
 
 [node name="plane" parent="." unique_id=207164142 instance=ExtResource("4_65juv")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.250378, 0.96265125, -12.899706)
@@ -169,7 +174,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.2
 script = ExtResource("5_rvvqk")
 render_mode = 1
 force_rebuild_on_load = false
-modifier_stack = SubResource("Resource_e0j10")
+modifier_stack = SubResource("Resource_muo8d")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d3v6q68b8qljm"
@@ -325,6 +330,7 @@ text = "Unidad Cuatro:
 En El Restaurante"
 
 [node name="TextBox" parent="CSGBox3D4" unique_id=95170241 instance=ExtResource("6_ujtx7")]
+description = "En este unidad, nosotros aprendíamos vocabulario sobre los restaurantes. Nosotros aprendíamos sobre \"se pasivo\" y supurlativos también. El examen de escritura fue una reseña de un restaurante y el examen de hablar fue una presentación de la reseña. "
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1025244041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.68666, 4, -182)
@@ -353,26 +359,34 @@ Que Se Celebra"
 [node name="TextBox" parent="CSGBox3D5" unique_id=1513821124 instance=ExtResource("6_ujtx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.317429, 0, 0)
 
-[node name="Label3D" type="Label3D" parent="." unique_id=1561689069]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170.95078, 8.325996, -195.56334)
+[node name="Box" parent="CSGBox3D5" unique_id=945349251 instance=ExtResource("20_84omo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.321136, -3.8019385, -16.325485)
+spawn_scene = ExtResource("21_e0j10")
+
+[node name="Box2" parent="CSGBox3D5" unique_id=1528779048 instance=ExtResource("20_84omo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.269104, -3.8019385, -16.325485)
+spawn_scene = ExtResource("22_0jpq5")
+
+[node name="Label3D3" type="Label3D" parent="CSGBox3D5" unique_id=1561689069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.264114, 4.3259964, -13.563339)
 double_sided = false
 text = "Las Jarramplas"
 font_size = 300
 
-[node name="Label3D2" type="Label3D" parent="." unique_id=1277126345]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184.10477, 8.325996, -195.56334)
+[node name="Label3D4" type="Label3D" parent="CSGBox3D5" unique_id=1277126345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.418106, 4.3259964, -13.563339)
 double_sided = false
 text = "La Tomatina"
 font_size = 300
 
-[node name="Label3D3" type="Label3D" parent="." unique_id=2060744989]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -187.96808, 8.325996, -171.35667)
+[node name="Label3D5" type="Label3D" parent="CSGBox3D5" unique_id=2060744989]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -29.281418, 4.3259964, 10.643326)
 double_sided = false
 text = "Cinco De Mayo"
 font_size = 300
 
-[node name="Label3D4" type="Label3D" parent="." unique_id=1918785378]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -172.61487, 8.325996, -171.35667)
+[node name="Label3D6" type="Label3D" parent="CSGBox3D5" unique_id=1918785378]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.928207, 4.3259964, 10.643326)
 double_sided = false
 text = "Dia De San Fermin"
 font_size = 300
@@ -397,6 +411,7 @@ omni_range = 10.0
 
 [node name="TextBox" parent="CSGBox3D6" unique_id=1116978235 instance=ExtResource("6_ujtx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 9)
+description = "Este año de la clase de español era muy bueno. Los proyectos eran divertido y la tarea no muy díficil. La tarea de leer eran la peor parte de la clase. Uno de mis partes favoritos de este año fue cuándo un toro perseguío a la clase. Nosotros aprendíamos español también. "
 
 [node name="TextBox2" parent="CSGBox3D6" unique_id=1796092197 instance=ExtResource("6_ujtx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.710007, 0, 0)
@@ -418,3 +433,6 @@ transform = Transform3D(-0.63693976, 0, 0.77091354, 0, 1, 0, -0.77091354, 0, -0.
 
 [node name="TextBox" parent="." unique_id=1753843563 instance=ExtResource("6_ujtx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.17625, 3.333723, -24.158966)
+
+[node name="Flight Attendant" parent="." unique_id=931750472 instance=ExtResource("24_8dsq4")]
+transform = Transform3D(-0.3516946, 0, 0.9361148, 0, 1, 0, -0.9361148, 0, -0.3516946, 10.82727, 1.5288664, -5.4973373)

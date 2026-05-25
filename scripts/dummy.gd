@@ -30,6 +30,8 @@ class_name Dummy
 @onready var head: MeshInstance3D = $PhysicsGuy/Armature/Skeleton3D/Head
 @onready var head_cover: MeshInstance3D = $"PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/MeshInstance3D"
 
+@onready var level: Level = get_tree().current_scene
+
 func _ready() -> void:
 	super._ready()
 	update_stuff()
@@ -41,13 +43,13 @@ func update_stuff() -> void:
 		mouth.hide()
 		head.hide()
 		pupils.hide()
-		head_cover.show()
+		head_cover.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	else:
 		face_sprite.texture = null
 		mouth.show()
 		head.show()
 		pupils.show()
-		head_cover.hide()
+		head_cover.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	
 	if text:
 		text_label.text = text
@@ -60,4 +62,5 @@ func update_stuff() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	add_movement_bone_velocity(Vector3.ZERO)
+	animated_skeleton.global_rotation.y = -PI*0.5-Vector2(root_bone.global_position.x, root_bone.global_position.z).angle_to_point(Vector2(level.local_player.root_bone.global_position.x, level.local_player.root_bone.global_position.z))
 	current_angular_spring_stiffness = default_angular_spring_stiffness * (1.0 - health_component.get_weakness_percentage()) * (1.0 - health_component.get_shock_percentage())

@@ -8,8 +8,8 @@ size = Vector2(50, 50)
 [resource]
 script = ExtResource("1_4u5rk")
 physical_item_path = "res://inventory/items/apple/apple.tscn"
-name = "Manzana"
-description = "delicioso"
+name = "El Tomate"
+description = "Es delicioso y muy aerodinámico. "
 texture = SubResource("PlaceholderTexture2D_4u5rk")
 stack_size = 3
 path = "uid://fhb7tthyx4wo"

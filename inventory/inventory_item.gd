@@ -2,7 +2,7 @@ extends Resource
 
 class_name InventoryItem
 
-@export var physical_item_path: String
+@export_file var physical_item_path: String
 @export var name: String
 @export_multiline var description: String
 @export var texture: Texture
