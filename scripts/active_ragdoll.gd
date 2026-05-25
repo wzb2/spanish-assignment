@@ -58,8 +58,11 @@ func add_movement_bone_velocity(velocity: Vector3) -> void:
 	var feet_on_floor: Array[ShapeCast3D] = feet_shapecasts.filter(func(f: ShapeCast3D) -> bool: return shapecast_is_on_floor(f))
 	for i: ShapeCast3D in feet_on_floor:
 		var collider: Object = i.get_collider(0)
+		
 		if collider is RigidBody3D:
-			collider.linear_velocity -= velocity / collider.mass
+			#collider.linear_velocity -= velocity / collider.mass
+			for b: PhysicalBone3D in movement_bones:
+				b.linear_velocity -= (b.linear_velocity - collider.linear_velocity) * DAMP
 		elif collider is AnimatableBody3D:
 			for b: PhysicalBone3D in movement_bones:
 				b.linear_velocity -= (b.linear_velocity - collider.constant_linear_velocity) * DAMP

@@ -110,7 +110,7 @@ func is_conscious() -> bool:
 	return hp > consciousness_threshold
 
 func is_alive() -> bool:
-	return true
+	return is_conscious()
 
 
 func get_weakness_percentage() -> float:

@@ -3,9 +3,9 @@ extends ActiveRagdoll
 class_name Player
 
 const MOVEMENT_SPEED: float = 18
-const GHOST_MOVEMENT_SPEED: float = 0.05
+const GHOST_MOVEMENT_SPEED: float = 0.075
 const AIR_SPEED: float = 8*0
-const DAMPING: Vector3 = Vector3(0.999, 1, 0.999)
+const DAMPING: Vector3 = Vector3(1, 1, 1)
 const MOUSE_SENSITIVITY: float = 0.00003
 
 const JUMP_VELOCITY: Vector3 = Vector3(0, 3, 0)

@@ -26,20 +26,31 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="WorldOptionButton" type="OptionButton" parent="VBoxContainer" unique_id=108998843]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1964952979]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "El Sitio Web"
+
+[node name="WorldOptionButton" type="OptionButton" parent="VBoxContainer" unique_id=108998843]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
 selected = 0
 item_count = 1
 popup/item_0/text = "Test"
 popup/item_0/id = 0
 
 [node name="Join" type="Button" parent="VBoxContainer" unique_id=1661308866]
+visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "Join"
 
 [node name="JoinCode" type="LineEdit" parent="VBoxContainer" unique_id=467349833]
+visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "BCHKAKAKBLGFDG"
 placeholder_text = "Enter join code"
 context_menu_enabled = false
@@ -48,23 +59,27 @@ caret_blink = true
 
 [node name="Host" type="Button" parent="VBoxContainer" unique_id=379557575]
 layout_mode = 2
-text = "Host"
+theme_override_font_sizes/font_size = 26
+text = "Comenzar"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1043463365]
 layout_mode = 2
 alignment = 1
 
 [node name="LocalButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2070173418]
+visible = false
 layout_mode = 2
 toggle_mode = true
 text = "Local"
 
 [node name="LANButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=279403857]
+visible = false
 layout_mode = 2
 toggle_mode = true
 text = "LAN"
 
 [node name="PublicButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=624545645]
+visible = false
 layout_mode = 2
 toggle_mode = true
 text = "Public"

@@ -16,13 +16,13 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_f48oq"]
-size = Vector3(2.5, 0.5, 5)
+size = Vector3(2.7, 0.5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_68jl8"]
-size = Vector3(2.5, 0.5, 5)
+size = Vector3(2.7, 0.5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6b7q7"]
-size = Vector3(2, 3, 5)
+size = Vector3(2.6, 3, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d43s7"]
 size = Vector3(2, 3, 1)

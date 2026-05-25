@@ -25,6 +25,7 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/game_manager.gd"
 UPNPManager="*res://multiplayer/UPNP_manager.gd"
 MultiplayerManager="*res://multiplayer/multiplayer_manager.gd"
+AeroUnits="*uid://5vah4ayrdxci"
 
 [debug]
 
@@ -43,7 +44,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_aerodynamic_physics/plugin.cfg", "res://addons/proton_scatter/plugin.cfg")
 
 [global_group]
 
@@ -117,6 +118,7 @@ crouch={
 3d_render/layer_2="Invisible To Self"
 3d_physics/layer_1="Solid"
 3d_physics/layer_2="Interact"
+3d_physics/layer_15="Atmosphere Areas"
 
 [physics]
 
@@ -125,6 +127,7 @@ common/physics_ticks_per_second=120
 common/physics_jitter_fix=0.0
 3d/physics_engine="Jolt Physics"
 jolt_physics_3d/simulation/position_steps=15
+3d/solver/solver_iterations=20
 common/physics_interpolation=true
 jolt_physics_3d/simulation/areas_detect_static_bodies=true
 

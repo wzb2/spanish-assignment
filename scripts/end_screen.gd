@@ -15,10 +15,10 @@ func all_players_dead() -> bool:
 			return false
 	return true
 
-func _process(_delta: float) -> void:
-	if multiplayer.is_server():
-		if all_players_dead() and not game_ended:
-			end_game.rpc(false)
+#func _process(_delta: float) -> void:
+	#if multiplayer.is_server():
+		#if all_players_dead() and not game_ended:
+			#end_game.rpc(false)
 
 
 @rpc("call_local")
