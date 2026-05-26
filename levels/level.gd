@@ -67,9 +67,12 @@ func _on_lobby_start_game() -> void:
 @rpc("call_local")
 func load_game_on_client() -> void:
 	GameManager.loading_state = "Starting instantiate world thread"
+	print("Starting instantiate world thread")
 	
 	var instantiate_world_thread: Thread = Thread.new()
-	instantiate_world_thread.start(instantiate_world.bind())
+	var err: int = instantiate_world_thread.start(instantiate_world.bind())
+	
+	print(err)
 	
 	while instantiate_world_thread.is_alive():
 		#print("waiting for world instantiate")
