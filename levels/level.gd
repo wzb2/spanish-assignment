@@ -66,22 +66,27 @@ func _on_lobby_start_game() -> void:
 
 @rpc("call_local")
 func load_game_on_client() -> void:
-	GameManager.loading_state = "Starting instantiate world thread"
-	print("Starting instantiate world thread")
+	GameManager.loading_state = "Loading world"
+	#GameManager.loading_state = "Starting instantiate world thread"
+	#print("Starting instantiate world thread")
+	#
+	#var instantiate_world_thread: Thread = Thread.new()
+	#var err: int = instantiate_world_thread.start(instantiate_world.bind())
+	#
+	#print(err)
+	#
+	#while instantiate_world_thread.is_alive():
+		##print("waiting for world instantiate")
+		#var progress: Array = [-1]
+		#var status: int = ResourceLoader.load_threaded_get_status(MultiplayerManager.world_path, progress)
+		#GameManager.loading_state = "Loading world, status: " + str(status) + ", progress: " + str(progress[0])
+		#await get_tree().process_frame
+	#
+	#world = instantiate_world_thread.wait_to_finish()
 	
-	var instantiate_world_thread: Thread = Thread.new()
-	var err: int = instantiate_world_thread.start(instantiate_world.bind())
+	GameManager.loading_state = "Instantiating world"
 	
-	print(err)
-	
-	while instantiate_world_thread.is_alive():
-		#print("waiting for world instantiate")
-		var progress: Array = [-1]
-		var status: int = ResourceLoader.load_threaded_get_status(MultiplayerManager.world_path, progress)
-		GameManager.loading_state = "Loading world, status: " + str(status) + ", progress: " + str(progress[0])
-		await get_tree().process_frame
-	
-	world = instantiate_world_thread.wait_to_finish()
+	world = load(MultiplayerManager.world_path).instantiate()
 	
 	add_child(world)
 	
