@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://il4y7hp572r0" path="res://scripts/train.gd" id="1_68jl8"]
 [ext_resource type="Script" uid="uid://bfehyp5xp0qqp" path="res://scripts/player_detection_area.gd" id="2_d43s7"]
+[ext_resource type="PackedScene" uid="uid://byst4byne7gmo" path="res://scenes/conductor.tscn" id="3_6b7q7"]
 
 [sub_resource type="Curve" id="Curve_d43s7"]
 _data = [Vector2(0, 0.05365336), 0.0, 0.0, 0, 0, Vector2(0.14866582, 1), 0.0, 0.0, 0, 0, Vector2(0.85260475, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.051900864), 0.0, 0.0, 0, 0]
@@ -53,3 +54,6 @@ shape = SubResource("BoxShape3D_6b7q7")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=852615079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.324821, -2.288586)
 shape = SubResource("BoxShape3D_d43s7")
+
+[node name="Conductor" parent="." unique_id=1885059936 instance=ExtResource("3_6b7q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3591969, -1.1710114)

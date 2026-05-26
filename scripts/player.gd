@@ -24,7 +24,7 @@ const ARM_VERTICAL_ROTATION_OFFSET: float = deg_to_rad(20)
 const DEFAULT_LEFT_ARM_GRAB_ANGLE: Quaternion = Quaternion(-1, -0.033, -0.09, 0.995)
 const DEFAULT_RIGHT_ARM_GRAB_ANGLE: Quaternion = Quaternion(-1, 0.033, 0.09, 0.995)
 
-const CAMERA_ORIGIN_SMOOTHING_WEIGHT: float = 0.3
+const CAMERA_ORIGIN_SMOOTHING_WEIGHT: float = 0.6
 const CAMERA_ROTATION_SMOOTHING_WEIGHT: float = 0.15
 
 const MAX_MOUSE_MOVEMENT_FOR_BIG_ROTATION: float = 0.08

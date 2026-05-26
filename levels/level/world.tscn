@@ -264,6 +264,7 @@ text = "Unidad Tres:
 En Tren"
 
 [node name="TextBox" parent="CSGBox3D2" unique_id=909526317 instance=ExtResource("6_ujtx7")]
+description = "En la unidad de los trenes, nosotros escribimos un cuento sobre cambiar de tren. Nosotros apredamos sobre trenes y la sala de espera y verbos. "
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1345936112]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -99, 4, -183)
@@ -375,6 +376,7 @@ Que Se Celebra"
 
 [node name="TextBox" parent="CSGBox3D5" unique_id=1513821124 instance=ExtResource("6_ujtx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.317429, 0, 0)
+description = "En la unidad de los celebraciones, nosotros aprendimos sobre las fiestas de español, y la historia de las fiestas de español. Nosotros escribimos un slideshow sobre una fiesta de español y adoramos una actividad sobre la fiesta. Nosotros aprendemos los verbos imperfectos."
 
 [node name="Box" parent="CSGBox3D5" unique_id=945349251 instance=ExtResource("20_84omo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.321136, -3.8019385, -16.325485)
@@ -459,7 +461,6 @@ transform = Transform3D(-0.3516946, 0, 0.9361148, 0, 1, 0, -0.9361148, 0, -0.351
 
 [node name="Plane" parent="." unique_id=1253838908 instance=ExtResource("27_e0j10")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.008662, 2.070659, -10.287701)
-collision_layer = 16385
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=433062918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.495148, 0.59336376, -7.3434)

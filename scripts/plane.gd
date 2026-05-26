@@ -26,15 +26,13 @@ func _ready() -> void:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	super._integrate_forces(state)
 	
-	pitch = (yoke.position.y)*2
+	pitch = (yoke.position.y)
 	roll = (yoke.position.x)*2
-	throttle = max(throttle_stick.position.x * 2, 0)
+	throttle = clamp(throttle_stick.position.x * 2, 0, 1)
 	
 	aero_control_component.set_control_input("throttle", throttle)
 	aero_control_component.set_control_input("pitch", pitch)
 	aero_control_component.set_control_input("roll", roll)
-	
-	print(pitch, "   ", roll)
 	
 	if throttle > current_propeller_rotation_percentage:
 		current_propeller_rotation_percentage = lerp(current_propeller_rotation_percentage, throttle, PROPELLER_ACCERLERATION)
