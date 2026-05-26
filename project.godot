@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
-UPNPManager="*res://multiplayer/UPNP_manager.gd"
+UPNPManager="res://multiplayer/UPNP_manager.gd"
 MultiplayerManager="*res://multiplayer/multiplayer_manager.gd"
 AeroUnits="*uid://5vah4ayrdxci"
 

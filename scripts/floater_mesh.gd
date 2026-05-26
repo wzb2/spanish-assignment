@@ -51,7 +51,8 @@ func generate_floater_points_func() -> void:
 				floater_point.owner = get_tree().edited_scene_root
 	
 	print("Generated ", len(vertices), " floater points. ")
-	EditorInterface.mark_scene_as_unsaved()
+	if Engine.is_editor_hint():
+		EditorInterface.mark_scene_as_unsaved()
 
 
 func _get_configuration_warnings() -> PackedStringArray:

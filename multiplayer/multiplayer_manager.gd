@@ -45,17 +45,17 @@ func host() -> void:
 	var ip = ""
 	
 	match mode:
-		Mode.PUBLIC:
-			ip = await UPNPManager.run_in_thread(UPNPManager.get_public_ip)
-			if ip:
-				var error: int = await UPNPManager.run_in_thread(UPNPManager.open_port)
-				if not error == OK:
-					host_attempt_failed.emit()
-					return
-			else:
-				print("Could not connect to router. Is UPnP enabled? ")
-				host_attempt_failed.emit()
-				return
+		#Mode.PUBLIC:
+			#ip = await UPNPManager.run_in_thread(UPNPManager.get_public_ip)
+			#if ip:
+				#var error: int = await UPNPManager.run_in_thread(UPNPManager.open_port)
+				#if not error == OK:
+					#host_attempt_failed.emit()
+					#return
+			#else:
+				#print("Could not connect to router. Is UPnP enabled? ")
+				#host_attempt_failed.emit()
+				#return
 		Mode.LAN:
 			var ips: Array = Array(IP.get_local_addresses()).filter(func(i: String) -> bool: return JoinCode.is_valid_ipv4(i) and i.begins_with("192.168."))
 			ips.append_array(Array(IP.get_local_addresses()).filter(func(i: String) -> bool: return JoinCode.is_valid_ipv4(i) and i.begins_with("10.")))
@@ -75,8 +75,8 @@ func host() -> void:
 	
 	get_tree().change_scene_to_file(GAME_PATH)
 	
-	var server_peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
-	server_peer.create_server(port, MAX_CLIENTS)
+	var server_peer: WebSocketMultiplayerPeer = WebSocketMultiplayerPeer.new()
+	server_peer.create_server(port)
 	
 	multiplayer.multiplayer_peer = server_peer
 	
@@ -110,7 +110,7 @@ func close_server() -> void:
 	assert(multiplayer.is_server(), "Tried to close server as client")
 	multiplayer.multiplayer_peer.close()
 	get_tree().paused = false
-	UPNPManager.close_port()
+	#UPNPManager.close_port()
 	get_tree().change_scene_to_file(MAIN_MENU_PATH)
 
 
