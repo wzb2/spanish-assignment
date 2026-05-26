@@ -75,10 +75,10 @@ func host() -> void:
 	
 	get_tree().change_scene_to_file(GAME_PATH)
 	
-	var server_peer: WebSocketMultiplayerPeer = WebSocketMultiplayerPeer.new()
-	server_peer.create_server(port)
+	#var server_peer: WebSocketMultiplayerPeer = WebSocketMultiplayerPeer.new()
+	#server_peer.create_server(port)
 	
-	multiplayer.multiplayer_peer = server_peer
+	#multiplayer.multiplayer_peer = server_peer
 	
 	multiplayer.peer_connected.connect(_player_connected)
 	multiplayer.peer_disconnected.connect(_player_disconnected)
