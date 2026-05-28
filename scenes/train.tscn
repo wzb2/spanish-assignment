@@ -2,11 +2,17 @@
 
 [ext_resource type="Script" uid="uid://il4y7hp572r0" path="res://scripts/train.gd" id="1_68jl8"]
 [ext_resource type="Script" uid="uid://bfehyp5xp0qqp" path="res://scripts/player_detection_area.gd" id="2_d43s7"]
+[ext_resource type="PackedScene" uid="uid://bd6d7n0vtg0m7" path="res://models/TrainCar.glb" id="2_muh0j"]
 [ext_resource type="PackedScene" uid="uid://byst4byne7gmo" path="res://scenes/conductor.tscn" id="3_6b7q7"]
 
 [sub_resource type="Curve" id="Curve_d43s7"]
 _data = [Vector2(0, 0.05365336), 0.0, 0.0, 0, 0, Vector2(0.14866582, 1), 0.0, 0.0, 0, 0, Vector2(0.85260475, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.051900864), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr42t"]
+cull_mode = 1
+albedo_color = Color(0.85, 0.17, 0.17, 1)
+roughness = 0.5
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d43s7"]
 properties/0/path = NodePath(".:position")
@@ -16,6 +22,9 @@ properties/1/path = NodePath(".:constant_linear_velocity")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_muh0j"]
+data = PackedVector3Array(-1.361, -1.5, -2.2775, -1.361, 1.5, -2.2775, -1.361, -1.5, 2.2775, -1.361, -1.5, -2.2775, -1.361, -1.5, 2.2775, 1.361, -1.5, -2.2775, -1.361, -1.5, -2.2775, 1.361, -1.5, -2.2775, -1.361, 1.5, -2.2775, -1.361, -1.5, 2.2775, -1.361, 1.5, 2.2775, -1.25, -1.1305094, 2.2775, -1.361, -1.5, 2.2775, -1.25, -1.1305094, 2.2775, 1.361, -1.5, 2.2775, -1.361, -1.5, 2.2775, -1.361, 1.5, -2.2775, -1.361, 1.5, 2.2775, -1.361, 1.5, 2.2775, -1.25, 1.3694906, 2.2775, -1.25, -1.1305094, 2.2775, -1.361, 1.5, -2.2775, 1.361, 1.5, 2.2775, -1.361, 1.5, 2.2775, -1.361, 1.5, 2.2775, 1.25, 1.3694906, 2.2775, -1.25, 1.3694906, 2.2775, -1.361, -1.5, 2.2775, 1.361, -1.5, 2.2775, 1.361, -1.5, -2.2775, 1.361, -1.5, 2.2775, -1.25, -1.1305094, 2.2775, 1.25, -1.1305094, 2.2775, 1.361, -1.5, -2.2775, 1.361, -1.5, 2.2775, 1.361, 1.5, 2.2775, 1.361, -1.5, 2.2775, 1.25, -1.1305094, 2.2775, 1.361, 1.5, 2.2775, -1.361, 1.5, -2.2775, 1.361, -1.5, -2.2775, 1.361, 1.5, -2.2775, -1.361, 1.5, -2.2775, 1.361, 1.5, -2.2775, 1.361, 1.5, 2.2775, 1.361, -1.5, -2.2775, 1.361, 1.5, 2.2775, 1.361, 1.5, -2.2775, -1.361, 1.5, 2.2775, 1.361, 1.5, 2.2775, 1.25, 1.3694906, 2.2775, 1.361, 1.5, 2.2775, 1.25, -1.1305094, 2.2775, 1.25, 1.3694906, 2.2775, -1.25, -1.1305094, -2.1791, 1.25, -1.1305094, -2.1791, -1.25, -1.1305094, 2.2775, -1.25, -1.1305094, -2.1791, -1.25, 1.3694906, -2.1791, 1.25, -1.1305094, -2.1791, -1.25, -1.1305094, -2.1791, -1.25, -1.1305094, 2.2775, -1.25, 1.3694906, 2.2775, -1.25, -1.1305094, -2.1791, -1.25, 1.3694906, 2.2775, -1.25, 1.3694906, -2.1791, -1.25, 1.3694906, -2.1791, -1.25, 1.3694906, 2.2775, 1.25, 1.3694906, 2.2775, 1.25, -1.1305094, -2.1791, 1.25, 1.3694906, -2.1791, 1.25, -1.1305094, 2.2775, 1.25, -1.1305094, -2.1791, 1.25, -1.1305094, 2.2775, -1.25, -1.1305094, 2.2775, -1.25, 1.3694906, -2.1791, 1.25, 1.3694906, -2.1791, 1.25, -1.1305094, -2.1791, -1.25, 1.3694906, -2.1791, 1.25, 1.3694906, 2.2775, 1.25, 1.3694906, -2.1791, 1.25, 1.3694906, -2.1791, 1.25, 1.3694906, 2.2775, 1.25, -1.1305094, 2.2775)
+
 [sub_resource type="BoxMesh" id="BoxMesh_f48oq"]
 size = Vector3(2.7, 0.5, 5)
 
@@ -23,17 +32,35 @@ size = Vector3(2.7, 0.5, 5)
 size = Vector3(2.7, 0.5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6b7q7"]
-size = Vector3(3, 3, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d43s7"]
-size = Vector3(2, 3, 1)
+size = Vector3(3, 3, 9.495605)
 
 [node name="Train" type="AnimatableBody3D" unique_id=979415964]
 script = ExtResource("1_68jl8")
 speed_curve = SubResource("Curve_d43s7")
 
+[node name="TrainCar" parent="." unique_id=39223857 instance=ExtResource("2_muh0j")]
+transform = Transform3D(-2.1855692e-10, 0.005, -2.1855695e-10, -1.8352614e-24, -2.1855695e-10, -0.005, -0.005, -2.1855692e-10, 9.553427e-18, 0, -0.613, -4.845)
+
+[node name="Node1" parent="TrainCar/Node0" parent_id_path=PackedInt32Array(39223857, 1538882216) index="0" unique_id=984629571]
+surface_material_override/0 = SubResource("StandardMaterial3D_fr42t")
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2037912929]
 replication_config = SubResource("SceneReplicationConfig_d43s7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1702530938]
+transform = Transform3D(1, 0, -8.351873e-23, 0, 1, 0, -8.351872e-23, -2.1175824e-22, 1, 0, 1.229, -4.84)
+visible = false
+size = Vector3(2.722, 3, 4.555)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=260943859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9214298e-24, 0.11949062, 0.07089996)
+operation = 2
+use_collision = true
+size = Vector3(2.5, 2.5, 4.5)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="." unique_id=1278242135]
+transform = Transform3D(1, 0, -8.351873e-23, 0, 1, 0, -8.351872e-23, -2.1175824e-22, 1, 0, 1.229, -4.84)
+shape = SubResource("ConcavePolygonShape3D_muh0j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2099504256]
 mesh = SubResource("BoxMesh_f48oq")
@@ -49,11 +76,10 @@ script = ExtResource("2_d43s7")
 metadata/_custom_type_script = "uid://bfehyp5xp0qqp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=810546075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2478027)
 shape = SubResource("BoxShape3D_6b7q7")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=852615079]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.324821, -2.288586)
-shape = SubResource("BoxShape3D_d43s7")
 
 [node name="Conductor" parent="." unique_id=1885059936 instance=ExtResource("3_6b7q7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3591969, -1.1710114)
+
+[editable path="TrainCar"]

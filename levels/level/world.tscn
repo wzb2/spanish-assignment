@@ -4,19 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://dr3hnnvvf5v5l" path="res://scenes/dummy.tscn" id="2_s1rbi"]
 [ext_resource type="Texture2D" uid="uid://boooqs0hnlgo7" path="res://images/other math critter.png" id="3_jp2kq"]
 [ext_resource type="Script" uid="uid://d3v6q68b8qljm" path="res://addons/proton_scatter/src/scatter.gd" id="5_rvvqk"]
-[ext_resource type="Script" uid="uid://dwj82uvv4dbkm" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="6_o0h44"]
 [ext_resource type="PackedScene" uid="uid://8d5flu5e06y1" path="res://scenes/text_box.tscn" id="6_ujtx7"]
-[ext_resource type="Script" uid="uid://b87luduuaqmd6" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="7_s1rbi"]
-[ext_resource type="Script" uid="uid://brrputee4vvtb" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="8_jp2kq"]
-[ext_resource type="Script" uid="uid://bm7yn4t6lklw" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="9_vslsc"]
-[ext_resource type="Script" uid="uid://i186nqen8gdj" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="10_xw7nq"]
-[ext_resource type="Script" uid="uid://dr15d4mufef52" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="11_6pk81"]
+[ext_resource type="Script" uid="uid://dwj82uvv4dbkm" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="8_ujtx7"]
+[ext_resource type="Script" uid="uid://b87luduuaqmd6" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="9_8dsq4"]
+[ext_resource type="Script" uid="uid://brrputee4vvtb" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="10_5xn7m"]
+[ext_resource type="Script" uid="uid://bm7yn4t6lklw" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="11_e0j10"]
+[ext_resource type="Script" uid="uid://i186nqen8gdj" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="12_0jpq5"]
 [ext_resource type="Script" uid="uid://ckfwapgax0pk0" path="res://addons/proton_scatter/src/scatter_item.gd" id="12_430os"]
+[ext_resource type="Script" uid="uid://dr15d4mufef52" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="13_c45hi"]
 [ext_resource type="Script" uid="uid://y6fm1s6evjxi" path="res://addons/proton_scatter/src/scatter_shape.gd" id="13_ujtx7"]
-[ext_resource type="Script" uid="uid://be6omltk7vn7s" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="14_8dsq4"]
 [ext_resource type="Texture2D" uid="uid://chxdthcim6caj" path="res://images/runway.png" id="14_084d6"]
-[ext_resource type="Script" uid="uid://c1loybq7rxdri" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="15_84omo"]
+[ext_resource type="Resource" uid="uid://c5sme4nfa8qxr" path="res://levels/level/box_shape.tres" id="16_0jpq5"]
 [ext_resource type="Texture2D" uid="uid://c61ndhkfblcf4" path="res://images/Train tracks.png" id="16_o0h44"]
+[ext_resource type="Resource" uid="uid://cybmi2oeuh71i" path="res://levels/level/path_shape.tres" id="17_c45hi"]
 [ext_resource type="PackedScene" uid="uid://cmdwa3nbdq0xt" path="res://scenes/train.tscn" id="19_vslsc"]
 [ext_resource type="Script" uid="uid://c42gs3rnpx3yg" path="res://multiplayer/spawn_placeholder.gd" id="20_6pk81"]
 [ext_resource type="PackedScene" uid="uid://dvrqrvg83t42t" path="res://scenes/box.tscn" id="20_84omo"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://caxjo27xycgvc" path="res://scenes/mocherillo.tscn" id="22_430os"]
 [ext_resource type="Script" uid="uid://bvs42qalh6tb" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="23_ujtx7"]
 [ext_resource type="PackedScene" uid="uid://cao4fubtoqwe3" path="res://scenes/flight_attendant.tscn" id="24_8dsq4"]
+[ext_resource type="PackedScene" uid="uid://dffcgfj15o0jn" path="res://scenes/waiter.tscn" id="27_0jpq5"]
 [ext_resource type="PackedScene" uid="uid://dmbdtxr2kgbaf" path="res://scenes/plane.tscn" id="27_e0j10"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
@@ -38,54 +39,35 @@ albedo_color = Color(0.50980395, 0.7137255, 0.36078432, 1)
 material = SubResource("StandardMaterial3D_4l3xp")
 size = Vector3(10000, 1, 10000)
 
-[sub_resource type="Resource" id="Resource_e0j10"]
-script = ExtResource("8_jp2kq")
+[sub_resource type="Resource" id="Resource_c45hi"]
+script = ExtResource("10_5xn7m")
 amount = 600
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_0jpq5"]
-script = ExtResource("9_vslsc")
+[sub_resource type="Resource" id="Resource_hmxa1"]
+script = ExtResource("11_e0j10")
 position = Vector3(0.15, 0.15, 0.15)
-rotation = Vector3(1, 360, 1)
+rotation = Vector3(2, 360, 2)
 scale = Vector3(2, 2, 2)
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_c45hi"]
-script = ExtResource("10_xw7nq")
+[sub_resource type="Resource" id="Resource_sf4ix"]
+script = ExtResource("12_0jpq5")
 offset_step = 0.2
 consecutive_step_multiplier = 0.75
 use_computeshader = false
 restrict_height = true
 
-[sub_resource type="Resource" id="Resource_hmxa1"]
-script = ExtResource("11_6pk81")
+[sub_resource type="Resource" id="Resource_b5xmf"]
+script = ExtResource("13_c45hi")
 ray_length = 5.0
 ray_offset = 5.0
 remove_points_on_miss = false
 
-[sub_resource type="Resource" id="Resource_b5xmf"]
-script = ExtResource("6_o0h44")
-stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_e0j10"), SubResource("Resource_0jpq5"), SubResource("Resource_c45hi"), SubResource("Resource_hmxa1")])
-
-[sub_resource type="Resource" id="Resource_sf4ix"]
-script = ExtResource("14_8dsq4")
-size = Vector3(62.255135, 1, 75.86197)
-metadata/_custom_type_script = "uid://be6omltk7vn7s"
-
-[sub_resource type="Curve3D" id="Curve3D_o0h44"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -26.22487, 1.9073486e-06, -4.9061203, 0, 0, 0, 0, 0, 0, -25.28145, -1.9073486e-06, 0.5691336, 0, 0, 0, 0, 0, 0, -28.65095, 0, -1.7880454, 0, 0, 0, 0, 0, 0, -34.436947, 0, -1.3449063, 0, 0, 0, 0, 0, 0, -42.202328, 0, -0.599144, 0, 0, 0, 0, 0, 0, -49.7061, 0, -1.5697784, 0, 0, 0, 0, 0, 0, -56.16215, 0, -0.105895996, 0, 0, 0, 0, 0, 0, -59.82997, 0, -2.7136898, 0, 0, 0, 0, 0, 0, -63.427307, 0, -3.9762607, 0, 0, 0, 0, 0, 0, -70.00032, 0, -14.565411, 0, 0, 0, 0, 0, 0, -62.045845, 0, -24.694633, 0, 0, 0, 0, 0, 0, -54.947086, 0, -30.024572, 0, 0, 0, 0, 0, 0, -50.364803, 0, -27.546034, 0, 0, 0, 0, 0, 0, -49.847878, 0, -21.727165, 0, 0, 0, 0, 0, 0, -54.774208, 0, -19.397032, 0, 0, 0, 0, 0, 0, -60.679222, 0, -16.57819, 0, 0, 0, 0, 0, 0, -56.94027, 0, -23.254877, 0, 0, 0, 0, 0, 0, -57.53931, 0, -24.793446, 0, 0, 0, 0, 0, 0, -53.397903, 0, -25.12234, 0, 0, 0, 0, 0, 0, -69.63303, 0, -19.429209, 0, 0, 0, 0, 0, 0, -57.850002, 0, -28.916088, 0, 0, 0, 0, 0, 0, -58.694397, 0, -30.330004, 0, 0, 0, 0, 0, 0, -61.2249, 0, -34.756104, 0, 0, 0, 0, 0, 0, -67.166954, 0, -39.33117, 0, 0, 0, 0, 0, 0, -76.666985, 0, -38.975983, 0, 0, 0, 0, 0, 0, -86.74944, 0, -34.958065, 0, 0, 0, 0, 0, 0, -85.49766, 0, -39.457127, 0, 0, 0, 0, 0, 0, -81.1032, 0, -39.390026, 0, 0, 0, 0, 0, 0, -88.80452, 0, -37.550217),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 29
-
 [sub_resource type="Resource" id="Resource_vhhrm"]
-script = ExtResource("15_84omo")
-closed = false
-thickness = 7.0
-curve = SubResource("Curve3D_o0h44")
-metadata/_custom_type_script = "uid://c1loybq7rxdri"
+script = ExtResource("8_ujtx7")
+stack = Array[ExtResource("9_8dsq4")]([SubResource("Resource_c45hi"), SubResource("Resource_hmxa1"), SubResource("Resource_sf4ix"), SubResource("Resource_b5xmf")])
 
 [sub_resource type="BoxMesh" id="BoxMesh_e0j10"]
 size = Vector3(3, 1, 1)
@@ -197,25 +179,26 @@ description = "En este unidad, nosotros aprendíamos vocabulario sobre viajar po
 [node name="ProtonScatter" type="Node3D" parent="." unique_id=1881091739]
 script = ExtResource("5_rvvqk")
 render_mode = 1
+keep_static_colliders = true
 force_rebuild_on_load = false
-modifier_stack = SubResource("Resource_b5xmf")
+modifier_stack = SubResource("Resource_vhhrm")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d3v6q68b8qljm"
 
-[node name="ScatterItem" type="Node3D" parent="ProtonScatter" unique_id=582639030]
+[node name="ScatterItem" type="Node3D" parent="ProtonScatter" unique_id=648031832]
 script = ExtResource("12_430os")
 path = "uid://vnxf34507pow"
 
-[node name="ScatterShape" type="Node3D" parent="ProtonScatter" unique_id=1730535818]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -56.462585, 0, -16.998453)
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter" unique_id=894498000]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -56.459984, 0, -16.221865)
 script = ExtResource("13_ujtx7")
-shape = SubResource("Resource_sf4ix")
+shape = ExtResource("16_0jpq5")
 
-[node name="ProtonScatterShape" type="Node3D" parent="ProtonScatter" unique_id=427606921]
+[node name="ProtonScatterShape" type="Node3D" parent="ProtonScatter" unique_id=1626933353]
 script = ExtResource("13_ujtx7")
 negative = true
-shape = SubResource("Resource_vhhrm")
+shape = ExtResource("17_c45hi")
 metadata/_custom_type_script = "uid://y6fm1s6evjxi"
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1764540375]
@@ -271,6 +254,7 @@ text = "Unidad Tres:
 En Tren"
 
 [node name="TextBox" parent="CSGBox3D2" unique_id=909526317 instance=ExtResource("6_ujtx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3112946, 0, 3.276596)
 description = "En la unidad de los trenes, nosotros escribimos un cuento sobre cambiar de tren. Nosotros apredamos sobre trenes y la sala de espera y verbos. "
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1345936112]
@@ -459,6 +443,7 @@ transform = Transform3D(-0.63693976, 0, 0.77091354, 0, 1, 0, -0.77091354, 0, -0.
 
 [node name="TextBox" parent="." unique_id=1753843563 instance=ExtResource("6_ujtx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.17625, 3.333723, -24.158966)
+description = "En esta unidad, nosotros hablamos alrededor de la rutina diaria y el camping. Nosotros todos aprendimos reflexivo. "
 
 [node name="Flight Attendant" parent="." unique_id=931750472 instance=ExtResource("24_8dsq4")]
 transform = Transform3D(-0.3516946, 0, 0.9361148, 0, 1, 0, -0.9361148, 0, -0.3516946, 5.8323364, 1.3128645, -6.995099)
@@ -491,7 +476,7 @@ mesh = SubResource("ArrayMesh_ljmvl")
 skeleton = NodePath("../..")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=38961760]
-transform = Transform3D(-0.29594138, 0, 0.9552062, 0, 1, 0, -0.9552062, 0, -0.29594138, -63.267143, 0.654999, -1.4365438)
+transform = Transform3D(-0.29594138, 0, 0.9552062, 0, 1, 0, -0.9552062, 0, -0.29594138, -56.981716, 0.654999, 4.7815056)
 double_sided = false
 text = "El Camping ➡️"
 font_size = 70
@@ -499,3 +484,6 @@ font_size = 70
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Label3D" unique_id=1100139724]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -0.236, -0.06)
 mesh = SubResource("BoxMesh_c45hi")
+
+[node name="Waiter" parent="." unique_id=713593051 instance=ExtResource("27_0jpq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.8035, 1.0503349, -178.98097)
