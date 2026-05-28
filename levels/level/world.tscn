@@ -40,7 +40,7 @@ size = Vector3(10000, 1, 10000)
 
 [sub_resource type="Resource" id="Resource_e0j10"]
 script = ExtResource("8_jp2kq")
-amount = 1000
+amount = 600
 restrict_height = true
 reference_frame = 1
 
@@ -70,7 +70,7 @@ stack = Array[ExtResource("7_s1rbi")]([SubResource("Resource_e0j10"), SubResourc
 
 [sub_resource type="Resource" id="Resource_sf4ix"]
 script = ExtResource("14_8dsq4")
-size = Vector3(62.255135, 1, 116.127846)
+size = Vector3(62.255135, 1, 75.86197)
 metadata/_custom_type_script = "uid://be6omltk7vn7s"
 
 [sub_resource type="Curve3D" id="Curve3D_o0h44"]
@@ -106,6 +106,13 @@ _surfaces = [{
 "vertex_count": 48,
 "vertex_data": PackedByteArray("AADAvwAAAL8AAAC/AADAv/e9674AAAC/AADAvwAAAL8AAAA/AADAvwAAAL8AAAC/8WWwPwAAAD8AAAC/AADAv/e9674AAAC/AADAvwAAAL8AAAA/AADAv/e9674AAAC/AADAv/e9674AAAA/AADAvwAAAL8AAAC/AADAvwAAAL8AAAA/AADAPwAAAL8AAAA/AADAvwAAAL8AAAA/AADAv/e9674AAAA/8WWwPwAAAD8AAAA/AADAvwAAAL8AAAC/AADAPwAAAL8AAAA/AADAPwAAAL8AAAC/AADAvwAAAL8AAAC/AADAPwAAAL8AAAC/8WWwPwAAAD8AAAC/AADAPwAAAL8AAAC/AADAPwAAAL8AAAA/AADAPwAAAD8AAAC/AADAvwAAAL8AAAA/AADAPwAAAD8AAAA/AADAPwAAAL8AAAA/AADAPwAAAL8AAAC/AADAPwAAAD8AAAC/8WWwPwAAAD8AAAC/AADAPwAAAD8AAAC/8WWwPwAAAD8AAAA/8WWwPwAAAD8AAAC/AADAvwAAAL8AAAA/8WWwPwAAAD8AAAA/AADAPwAAAD8AAAA/AADAPwAAAL8AAAA/AADAPwAAAD8AAAA/AADAPwAAAD8AAAC/AADAPwAAAD8AAAC/AADAPwAAAD8AAAA/8WWwPwAAAD8AAAA/AADAv/e9674AAAA/AADAv/e9674AAAC/8WWwPwAAAD8AAAA/8WWwPwAAAD8AAAC/8WWwPwAAAD8AAAA/AADAv/e9674AAAC/AAD/f/9//78AAP9//3//vwAA/3//f/+//////wAA/7//////AAD/v/////8AAP+/AAD/f/9//78AAP9//3//vwAA/3//f/+//38AAP///7//fwAA////v/9/AAD///+//3//f/7//7//f/9//v//v/9//3////+//38AAP///7//fwAA////v/9/AAD///+//////wAA/7//////AAD/v/////8AAP+/////f/////////9//////////3///////3//f/7//7//f/9/////v/9//3////+//////wAA/7//////AAD/v/////8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3//f/7//7//f/9/////v/9//3////+/////f/////////9//////////3///////3///wAA/7//f///AAD/v/9///8AAP+/+F/43/jf/C/4X/jf+N/8L/hf+N/43/wv+F/43/jf/C/4X/jf+N/8L/hf+N/43/wv")
 }]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhhrm"]
+albedo_color = Color(0.52, 0.32066667, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c45hi"]
+material = SubResource("StandardMaterial3D_vhhrm")
+size = Vector3(2.7, 1, 0.1)
 
 [node name="World" type="Node3D" unique_id=2145048326 node_paths=PackedStringArray("spawn_orgin_marker")]
 script = ExtResource("1_xw7nq")
@@ -201,7 +208,7 @@ script = ExtResource("12_430os")
 path = "uid://vnxf34507pow"
 
 [node name="ScatterShape" type="Node3D" parent="ProtonScatter" unique_id=1730535818]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -56.462585, 0, 0)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -56.462585, 0, -16.998453)
 script = ExtResource("13_ujtx7")
 shape = SubResource("Resource_sf4ix")
 
@@ -482,3 +489,13 @@ shape = SubResource("ConcavePolygonShape3D_vhhrm")
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1963520835]
 mesh = SubResource("ArrayMesh_ljmvl")
 skeleton = NodePath("../..")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=38961760]
+transform = Transform3D(-0.29594138, 0, 0.9552062, 0, 1, 0, -0.9552062, 0, -0.29594138, -63.267143, 0.654999, -1.4365438)
+double_sided = false
+text = "El Camping ➡️"
+font_size = 70
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Label3D" unique_id=1100139724]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -0.236, -0.06)
+mesh = SubResource("BoxMesh_c45hi")
