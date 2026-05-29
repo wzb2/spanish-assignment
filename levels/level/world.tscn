@@ -494,16 +494,16 @@ mesh = SubResource("BoxMesh_c45hi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.8035, 1.0503349, -178.98097)
 
 [node name="RollOfToiletPaper" parent="." unique_id=1147731207 instance=ExtResource("29_vhhrm")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -52.941017, 0.97601676, -21.861233)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -52.941017, 0.30651355, -21.861233)
 
 [node name="SackOfSleep2" parent="." unique_id=295044957 instance=ExtResource("30_ljmvl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.941017, 0.97601676, -23.435547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.41078, 0.08618271, -25.46366)
 
 [node name="Tent2" parent="." unique_id=779083454 instance=ExtResource("32_qkka1")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -52.941017, 1.437017, -25.662973)
 
 [node name="ToothBrush2" parent="." unique_id=1411142185 instance=ExtResource("33_5wgw0")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -52.941017, 0.6767566, -20.891182)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -52.941017, 0.0072534084, -20.891182)
 
 [node name="Suitcase2" parent="." unique_id=2032051143 instance=ExtResource("33_vhhrm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.43683, 4, -7.25795)
