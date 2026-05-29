@@ -341,11 +341,11 @@ transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4
 shape = SubResource("CapsuleShape3D_tuyoq")
 
 [node name="Physical Bone Neck" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1958455968]
-transform = Transform3D(1, 2.998668e-08, 0, 0, 0, -1, -2.998668e-08, 1, 0, 0, 0.33230162, 0)
+transform = Transform3D(1, 2.974474e-08, 0, 0, 0, -1, -2.974474e-08, 1, 0, 0, 0.33230162, 0)
 top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04841446)
-body_offset = Transform3D(1, -2.0843183e-07, 0, 0, 0, -1.0000001, 2.0843183e-07, 1, 0, 0, 0.04841447, 0)
+body_offset = Transform3D(1, -2.0867377e-07, 0, 0, 0, -1.0000001, 2.0867377e-07, 1, 0, 0, 0.04841447, 0)
 mass = 0.02
 friction = 0.3
 angular_velocity = Vector3(0.19833295, -3.2298616e-13, -5.046659e-15)
@@ -420,11 +420,11 @@ transform = Transform3D(1, 0, 4.05009e-12, -4.05009e-12, 0, 1, 0, -1, 0, 0, 0, 0
 shape = SubResource("CapsuleShape3D_fjrip")
 
 [node name="Physical Bone Head" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1533160753 node_paths=PackedStringArray("immune_health_component")]
-transform = Transform3D(1, 2.9986737e-08, 0, 0, 0, -1, -2.9986737e-08, 1, 0, 0, 0.5279988, 0)
+transform = Transform3D(1, 2.9744797e-08, 0, 0, 0, -1, -2.9744797e-08, 1, 0, 0, 0.5279988, 0)
 top_level = true
 joint_type = 2
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14728199)
-body_offset = Transform3D(1, -2.0843183e-07, 0, 0, 0, -1.0000001, 2.0843183e-07, 1, 0, 0, 0.147282, 0)
+body_offset = Transform3D(1, -2.0867377e-07, 0, 0, 0, -1.0000001, 2.0867377e-07, 1, 0, 0, 0.147282, 0)
 mass = 0.02
 friction = 0.3
 angular_velocity = Vector3(0.19833289, 0, 0)
@@ -755,11 +755,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179, 0)
 shape = SubResource("CapsuleShape3D_a8ls1")
 
 [node name="PhysicalBone Lower Leg_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=57479567]
-transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, -0.6498312, 1.9663648e-08)
+transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, -0.6498312, 1.9693891e-08)
 top_level = true
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9663648e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.9663652e-08, 0, -1.4901161e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9693891e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.9693895e-08, 0, -1.4901161e-08)
 mass = 2.0
 friction = 0.0
 angular_velocity = Vector3(-0.84522486, -6.184646e-07, 5.0695456e-07)
@@ -839,11 +839,11 @@ shape = SubResource("SphereShape3D_qhqgy")
 target_position = Vector3(0, 0.1, 0)
 
 [node name="PhysicalBone Lower Leg_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=620197230]
-transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, -0.6498312, 1.9663648e-08)
+transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, -0.6498312, 1.9693891e-08)
 top_level = true
 joint_type = 5
-joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.9663648e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.9663652e-08, 0, -1.4901161e-08)
+joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.9693891e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.9693895e-08, 0, -1.4901161e-08)
 mass = 2.0
 friction = 0.0
 angular_velocity = Vector3(-0.8452238, 5.858251e-07, -2.486199e-07)
