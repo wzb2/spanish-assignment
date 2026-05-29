@@ -28,6 +28,11 @@
 [ext_resource type="PackedScene" uid="uid://cao4fubtoqwe3" path="res://scenes/flight_attendant.tscn" id="24_8dsq4"]
 [ext_resource type="PackedScene" uid="uid://dffcgfj15o0jn" path="res://scenes/waiter.tscn" id="27_0jpq5"]
 [ext_resource type="PackedScene" uid="uid://dmbdtxr2kgbaf" path="res://scenes/plane.tscn" id="27_e0j10"]
+[ext_resource type="PackedScene" uid="uid://cy1fr10hs1wlf" path="res://models/RollOfToiletPaper.glb" id="29_vhhrm"]
+[ext_resource type="PackedScene" uid="uid://bl78rig3ismoj" path="res://models/SackOfSleep.glb" id="30_ljmvl"]
+[ext_resource type="PackedScene" uid="uid://bq35ib3uyknwb" path="res://models/Tent.glb" id="32_qkka1"]
+[ext_resource type="PackedScene" uid="uid://1tfprd8x4qir" path="res://models/ToothBrush.glb" id="33_5wgw0"]
+[ext_resource type="PackedScene" uid="uid://bmkgmx8m2aav0" path="res://scenes/suitcase.tscn" id="33_vhhrm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvvqk"]
 size = Vector3(5000, 1, 5000)
@@ -39,35 +44,35 @@ albedo_color = Color(0.50980395, 0.7137255, 0.36078432, 1)
 material = SubResource("StandardMaterial3D_4l3xp")
 size = Vector3(10000, 1, 10000)
 
-[sub_resource type="Resource" id="Resource_c45hi"]
+[sub_resource type="Resource" id="Resource_vhhrm"]
 script = ExtResource("10_5xn7m")
 amount = 600
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_hmxa1"]
+[sub_resource type="Resource" id="Resource_ljmvl"]
 script = ExtResource("11_e0j10")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
 scale = Vector3(2, 2, 2)
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_sf4ix"]
+[sub_resource type="Resource" id="Resource_muo8d"]
 script = ExtResource("12_0jpq5")
 offset_step = 0.2
 consecutive_step_multiplier = 0.75
 use_computeshader = false
 restrict_height = true
 
-[sub_resource type="Resource" id="Resource_b5xmf"]
+[sub_resource type="Resource" id="Resource_qkka1"]
 script = ExtResource("13_c45hi")
 ray_length = 5.0
 ray_offset = 5.0
 remove_points_on_miss = false
 
-[sub_resource type="Resource" id="Resource_vhhrm"]
+[sub_resource type="Resource" id="Resource_5wgw0"]
 script = ExtResource("8_ujtx7")
-stack = Array[ExtResource("9_8dsq4")]([SubResource("Resource_c45hi"), SubResource("Resource_hmxa1"), SubResource("Resource_sf4ix"), SubResource("Resource_b5xmf")])
+stack = Array[ExtResource("9_8dsq4")]([SubResource("Resource_vhhrm"), SubResource("Resource_ljmvl"), SubResource("Resource_muo8d"), SubResource("Resource_qkka1")])
 
 [sub_resource type="BoxMesh" id="BoxMesh_e0j10"]
 size = Vector3(3, 1, 1)
@@ -181,7 +186,7 @@ script = ExtResource("5_rvvqk")
 render_mode = 1
 keep_static_colliders = true
 force_rebuild_on_load = false
-modifier_stack = SubResource("Resource_vhhrm")
+modifier_stack = SubResource("Resource_5wgw0")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 metadata/_custom_type_script = "uid://d3v6q68b8qljm"
@@ -487,3 +492,21 @@ mesh = SubResource("BoxMesh_c45hi")
 
 [node name="Waiter" parent="." unique_id=713593051 instance=ExtResource("27_0jpq5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.8035, 1.0503349, -178.98097)
+
+[node name="RollOfToiletPaper" parent="." unique_id=1147731207 instance=ExtResource("29_vhhrm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -52.941017, 0.97601676, -21.861233)
+
+[node name="SackOfSleep2" parent="." unique_id=295044957 instance=ExtResource("30_ljmvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.941017, 0.97601676, -23.435547)
+
+[node name="Tent2" parent="." unique_id=779083454 instance=ExtResource("32_qkka1")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -52.941017, 1.437017, -25.662973)
+
+[node name="ToothBrush2" parent="." unique_id=1411142185 instance=ExtResource("33_5wgw0")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -52.941017, 0.6767566, -20.891182)
+
+[node name="Suitcase2" parent="." unique_id=2032051143 instance=ExtResource("33_vhhrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.43683, 4, -7.25795)
+
+[node name="Suitcase" parent="." unique_id=1176744737 instance=ExtResource("33_vhhrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -5)

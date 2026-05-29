@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bmkgmx8m2aav0"]
+
+[ext_resource type="PackedScene" uid="uid://dobtdq8mdk04a" path="res://models/SuitCase.glb" id="1_4nbrf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nbrf"]
+albedo_color = Color(0.2805, 0.51, 0.46792498, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sjqu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nbrf"]
+size = Vector3(0.6, 1.2, 1)
+
+[node name="Suitcase" type="RigidBody3D" unique_id=2032051143]
+
+[node name="SuitCase" parent="." unique_id=1712345768 instance=ExtResource("1_4nbrf")]
+
+[node name="SuitCase1" parent="SuitCase" index="0" unique_id=1134568935]
+surface_material_override/0 = SubResource("StandardMaterial3D_4nbrf")
+
+[node name="SuitCase2" parent="SuitCase" index="1" unique_id=1401185795]
+surface_material_override/0 = SubResource("StandardMaterial3D_1sjqu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1720045726]
+shape = SubResource("BoxShape3D_4nbrf")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=342072805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9881458, 0)
+billboard = 2
+text = "La Maleta"
+
+[editable path="SuitCase"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c07h677gqwo8h"
-path="res://.godot/imported/MetalDetector.glb-6250445b48adb5570e6e2795f495e39b.scn"
+uid="uid://dobtdq8mdk04a"
+path="res://.godot/imported/SuitCase.glb-6bd450af429408830724b9a0004132aa.scn"
 
 [deps]
 
-source_file="res://models/MetalDetector.glb"
-dest_files=["res://.godot/imported/MetalDetector.glb-6250445b48adb5570e6e2795f495e39b.scn"]
+source_file="res://models/SuitCase.glb"
+dest_files=["res://.godot/imported/SuitCase.glb-6bd450af429408830724b9a0004132aa.scn"]
 
 [params]
 
