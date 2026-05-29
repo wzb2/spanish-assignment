@@ -50,9 +50,8 @@ func get_total_mass() -> float:
 		mass += b.mass
 	return mass
 
-const DAMP: float = 0.02
 
-func add_movement_bone_velocity(velocity: Vector3) -> void:
+func add_movement_bone_velocity(velocity: Vector3, damp: float = 0.02) -> void:
 	for b: PhysicalBone3D in movement_bones:
 		b.linear_velocity += velocity
 	var feet_on_floor: Array[ShapeCast3D] = feet_shapecasts.filter(func(f: ShapeCast3D) -> bool: return shapecast_is_on_floor(f))
@@ -62,13 +61,13 @@ func add_movement_bone_velocity(velocity: Vector3) -> void:
 		if collider is RigidBody3D:
 			#collider.linear_velocity -= velocity / collider.mass
 			for b: PhysicalBone3D in movement_bones:
-				b.linear_velocity -= (b.linear_velocity - collider.linear_velocity) * DAMP
+				b.linear_velocity -= (b.linear_velocity - collider.linear_velocity) * damp
 		elif collider is AnimatableBody3D:
 			for b: PhysicalBone3D in movement_bones:
-				b.linear_velocity -= (b.linear_velocity - collider.constant_linear_velocity) * DAMP
+				b.linear_velocity -= (b.linear_velocity - collider.constant_linear_velocity) * damp
 		else:
 			for b: PhysicalBone3D in movement_bones:
-				b.linear_velocity -= (b.linear_velocity) * DAMP
+				b.linear_velocity -= (b.linear_velocity) * damp
 
 func multiply_movement_bone_velocity(velocity: Vector3) -> void:
 	for b in movement_bones:

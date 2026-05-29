@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://dwvsr6ppvilj6"]
 
-[ext_resource type="Script" uid="uid://cxdd65aa3cowd" path="res://scripts/dummy.gd" id="1_h75ne"]
+[ext_resource type="Script" uid="uid://hui5bvw4n7xg" path="res://scripts/toro.gd" id="1_iq44h"]
+[ext_resource type="Texture2D" uid="uid://dmpli3sqnx3ft" path="res://images/toro.png" id="2_boah8"]
 [ext_resource type="PackedScene" uid="uid://dmjc8ocde5hsg" path="res://models/Guy.glb" id="2_iq44h"]
 [ext_resource type="Script" uid="uid://bajgrihi0owix" path="res://scripts/damagable_bone.gd" id="3_mn55e"]
 [ext_resource type="Script" uid="uid://jyqyhvpbcn1g" path="res://scripts/grass_pusher.gd" id="4_boah8"]
 [ext_resource type="Texture2D" uid="uid://b7a1w1jxratsj" path="res://models/Guy_Red Base Color.png" id="5_0ix8r"]
+[ext_resource type="Script" uid="uid://cf8xewcnhgwev" path="res://scripts/pointy_bone.gd" id="6_0ix8r"]
 [ext_resource type="AnimationLibrary" uid="uid://fa6bavnau8b2" path="res://models/Guy - Animated.glb" id="6_as3x4"]
 [ext_resource type="PackedScene" uid="uid://7am5rw1fjool" path="res://models/horns.glb" id="6_iq44h"]
+[ext_resource type="Script" uid="uid://vwa00jlqqm7a" path="res://scripts/targeting_component.gd" id="7_mn55e"]
 [ext_resource type="PackedScene" uid="uid://cb6gax4oiwj00" path="res://scenes/health_component.tscn" id="7_plh5j"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oprun"]
@@ -49,6 +52,9 @@ height = 0.6
 radial_segments = 16
 rings = 8
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_boah8"]
+data = PackedVector3Array(0.1026, -0.0211, 0.8215, 0.1026, 0.0211, 0.8637, 0.1026, -0.0211, 0.8637, 0.1026, -0.0211, 0.8215, 0.1026, 0.0211, 0.8215, 0.1026, 0.0211, 0.8637, 0.6911, -0.12539999, 1.0086, 0.1026, -0.0211, 0.8637, 0.1026, 0.0211, 0.8637, 0.6911, -0.12539999, 0.7578, 0.1026, -0.0211, 0.8215, 0.1026, -0.0211, 0.8637, 0.6911, -0.12539999, 0.7578, 0.1026, -0.0211, 0.8637, 0.6911, -0.12539999, 1.0086, 0.6911, 0.12539999, 0.7578, 0.1026, -0.0211, 0.8215, 0.6911, -0.12539999, 0.7578, 0.6911, 0.12539999, 0.7578, 0.1026, 0.0211, 0.8215, 0.1026, -0.0211, 0.8215, 0.6911, 0.12539999, 1.0086, 0.1026, 0.0211, 0.8637, 0.1026, 0.0211, 0.8215, 0.6911, 0.12539999, 1.0086, 0.1026, 0.0211, 0.8215, 0.6911, 0.12539999, 0.7578, 0.6911, -0.12539999, 1.0086, 0.1026, 0.0211, 0.8637, 0.6911, 0.12539999, 1.0086, 0.7715, 0.12539999, 0.7421, 0.6911, 0.12539999, 0.7578, 0.6911, -0.12539999, 0.7578, 0.7715, -0.12539999, 0.7421, 0.6911, -0.12539999, 0.7578, 0.6911, -0.12539999, 1.0086, 0.7715, 0.12539999, 0.7421, 0.6911, -0.12539999, 0.7578, 0.7715, -0.12539999, 0.7421, 1.0066, -0.12539999, 0.97179997, 0.6911, -0.12539999, 1.0086, 0.6911, 0.12539999, 1.0086, 0.7715, -0.12539999, 0.7421, 0.6911, -0.12539999, 1.0086, 1.0066, -0.12539999, 0.97179997, 1.0066, 0.12539999, 0.97179997, 0.6911, 0.12539999, 1.0086, 0.6911, 0.12539999, 0.7578, 1.0066, 0.12539999, 0.97179997, 0.6911, 0.12539999, 0.7578, 0.7715, 0.12539999, 0.7421, 1.0066, -0.12539999, 0.97179997, 0.6911, 0.12539999, 1.0086, 1.0066, 0.12539999, 0.97179997, 0.84319997, 0.0729, 0.5566, 0.7715, 0.12539999, 0.7421, 0.7715, -0.12539999, 0.7421, 0.84319997, -0.0729, 0.5566, 0.7715, -0.12539999, 0.7421, 1.0066, -0.12539999, 0.97179997, 0.84319997, 0.0729, 0.5566, 0.7715, -0.12539999, 0.7421, 0.84319997, -0.0729, 0.5566, 1.1017, -0.0729, 0.5566, 1.0066, -0.12539999, 0.97179997, 1.0066, 0.12539999, 0.97179997, 0.84319997, -0.0729, 0.5566, 1.0066, -0.12539999, 0.97179997, 1.1017, -0.0729, 0.5566, 1.1017, 0.0729, 0.5566, 1.0066, 0.12539999, 0.97179997, 0.7715, 0.12539999, 0.7421, 1.1017, 0.0729, 0.5566, 0.7715, 0.12539999, 0.7421, 0.84319997, 0.0729, 0.5566, 1.1017, -0.0729, 0.5566, 1.0066, 0.12539999, 0.97179997, 1.1017, 0.0729, 0.5566, 0.85459995, 0.1454, 0.116299994, 0.84319997, 0.0729, 0.5566, 0.84319997, -0.0729, 0.5566, 0.85459995, -0.1454, 0.116299994, 0.84319997, -0.0729, 0.5566, 1.1017, -0.0729, 0.5566, 0.85459995, 0.1454, 0.116299994, 0.84319997, -0.0729, 0.5566, 0.85459995, -0.1454, 0.116299994, 1.1453999, -0.1454, 0.116299994, 1.1017, -0.0729, 0.5566, 1.1017, 0.0729, 0.5566, 0.85459995, -0.1454, 0.116299994, 1.1017, -0.0729, 0.5566, 1.1453999, -0.1454, 0.116299994, 1.1453999, 0.1454, 0.116299994, 1.1017, 0.0729, 0.5566, 0.84319997, 0.0729, 0.5566, 1.1453999, 0.1454, 0.116299994, 0.84319997, 0.0729, 0.5566, 0.85459995, 0.1454, 0.116299994, 1.1453999, -0.1454, 0.116299994, 1.1017, 0.0729, 0.5566, 1.1453999, 0.1454, 0.116299994, 0.85459995, 0.1454, -0.116399996, 0.85459995, 0.1454, 0.116299994, 0.85459995, -0.1454, 0.116299994, 0.85459995, -0.1454, -0.116399996, 0.85459995, -0.1454, 0.116299994, 1.1453999, -0.1454, 0.116299994, 0.85459995, 0.1454, -0.116399996, 0.85459995, -0.1454, 0.116299994, 0.85459995, -0.1454, -0.116399996, 1.1453999, -0.1454, -0.116399996, 1.1453999, -0.1454, 0.116299994, 1.1453999, 0.1454, 0.116299994, 0.85459995, -0.1454, -0.116399996, 1.1453999, -0.1454, 0.116299994, 1.1453999, -0.1454, -0.116399996, 1.1453999, 0.1454, -0.116399996, 1.1453999, 0.1454, 0.116299994, 0.85459995, 0.1454, 0.116299994, 1.1453999, 0.1454, -0.116399996, 0.85459995, 0.1454, 0.116299994, 0.85459995, 0.1454, -0.116399996, 1.1453999, -0.1454, -0.116399996, 1.1453999, 0.1454, 0.116299994, 1.1453999, 0.1454, -0.116399996, 0.84319997, 0.0729, -0.5567, 0.85459995, 0.1454, -0.116399996, 0.85459995, -0.1454, -0.116399996, 0.84319997, -0.0729, -0.5567, 0.85459995, -0.1454, -0.116399996, 1.1453999, -0.1454, -0.116399996, 0.84319997, 0.0729, -0.5567, 0.85459995, -0.1454, -0.116399996, 0.84319997, -0.0729, -0.5567, 1.1017, -0.0729, -0.5567, 1.1453999, -0.1454, -0.116399996, 1.1453999, 0.1454, -0.116399996, 0.84319997, -0.0729, -0.5567, 1.1453999, -0.1454, -0.116399996, 1.1017, -0.0729, -0.5567, 1.1017, 0.0729, -0.5567, 1.1453999, 0.1454, -0.116399996, 0.85459995, 0.1454, -0.116399996, 1.1017, 0.0729, -0.5567, 0.85459995, 0.1454, -0.116399996, 0.84319997, 0.0729, -0.5567, 1.1017, -0.0729, -0.5567, 1.1453999, 0.1454, -0.116399996, 1.1017, 0.0729, -0.5567, 0.7715, 0.12539999, -0.7421, 0.84319997, 0.0729, -0.5567, 0.84319997, -0.0729, -0.5567, 0.7715, -0.12539999, -0.7421, 0.84319997, -0.0729, -0.5567, 1.1017, -0.0729, -0.5567, 0.7715, 0.12539999, -0.7421, 0.84319997, -0.0729, -0.5567, 0.7715, -0.12539999, -0.7421, 1.0066, -0.12539999, -0.97179997, 1.1017, -0.0729, -0.5567, 1.1017, 0.0729, -0.5567, 0.7715, -0.12539999, -0.7421, 1.1017, -0.0729, -0.5567, 1.0066, -0.12539999, -0.97179997, 1.0066, 0.12539999, -0.97179997, 1.1017, 0.0729, -0.5567, 0.84319997, 0.0729, -0.5567, 1.0066, 0.12539999, -0.97179997, 0.84319997, 0.0729, -0.5567, 0.7715, 0.12539999, -0.7421, 1.0066, -0.12539999, -0.97179997, 1.1017, 0.0729, -0.5567, 1.0066, 0.12539999, -0.97179997, 0.6911, 0.12539999, -0.7578, 0.7715, 0.12539999, -0.7421, 0.7715, -0.12539999, -0.7421, 0.6911, -0.12539999, -0.7578, 0.7715, -0.12539999, -0.7421, 1.0066, -0.12539999, -0.97179997, 0.6911, 0.12539999, -0.7578, 0.7715, -0.12539999, -0.7421, 0.6911, -0.12539999, -0.7578, 0.6911, -0.12539999, -1.0086, 1.0066, -0.12539999, -0.97179997, 1.0066, 0.12539999, -0.97179997, 0.6911, -0.12539999, -0.7578, 1.0066, -0.12539999, -0.97179997, 0.6911, -0.12539999, -1.0086, 0.6911, 0.12539999, -1.0086, 1.0066, 0.12539999, -0.97179997, 0.7715, 0.12539999, -0.7421, 0.6911, 0.12539999, -1.0086, 0.7715, 0.12539999, -0.7421, 0.6911, 0.12539999, -0.7578, 0.6911, -0.12539999, -1.0086, 1.0066, 0.12539999, -0.97179997, 0.6911, 0.12539999, -1.0086, 0.1026, 0.0211, -0.8637, 0.6911, 0.12539999, -1.0086, 0.6911, 0.12539999, -0.7578, 0.1026, -0.0211, -0.8215, 0.6911, -0.12539999, -0.7578, 0.6911, -0.12539999, -1.0086, 0.1026, -0.0211, -0.8637, 0.6911, -0.12539999, -1.0086, 0.6911, 0.12539999, -1.0086, 0.1026, -0.0211, -0.8215, 0.6911, -0.12539999, -1.0086, 0.1026, -0.0211, -0.8637, 0.1026, -0.0211, -0.8637, 0.6911, 0.12539999, -1.0086, 0.1026, 0.0211, -0.8637, 0.1026, 0.0211, -0.8215, 0.6911, -0.12539999, -0.7578, 0.1026, -0.0211, -0.8215, 0.1026, 0.0211, -0.8215, 0.1026, -0.0211, -0.8215, 0.1026, -0.0211, -0.8637, 0.1026, 0.0211, -0.8215, 0.6911, 0.12539999, -0.7578, 0.6911, -0.12539999, -0.7578, 0.1026, 0.0211, -0.8215, 0.1026, -0.0211, -0.8637, 0.1026, 0.0211, -0.8637, 0.1026, 0.0211, -0.8637, 0.6911, 0.12539999, -0.7578, 0.1026, 0.0211, -0.8215)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur7pv"]
 radius = 0.0240216
 height = 0.240216
@@ -77,9 +83,6 @@ height = 0.311785
 radius = 0.08
 height = 0.35
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qlg0r"]
-radius = 0.085
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a8ls1"]
 radius = 0.08
 height = 0.35
@@ -95,8 +98,10 @@ radius = 0.09
 radius = 0.08
 height = 0.32
 
-[node name="Conductor" type="Node3D" unique_id=1885059936 node_paths=PackedStringArray("animated_skeleton", "physics_skeleton", "physics_skeleton_simulator", "root_bone", "movement_bones", "feet_shapecasts")]
-script = ExtResource("1_h75ne")
+[node name="Toro" type="Node3D" unique_id=1885059936 node_paths=PackedStringArray("animated_skeleton", "physics_skeleton", "physics_skeleton_simulator", "root_bone", "movement_bones", "feet_shapecasts")]
+script = ExtResource("1_iq44h")
+face_texture = ExtResource("2_boah8")
+face_texture_scale = Vector3(0.3, 0.2, 0.3)
 text = "El Toro"
 animated_skeleton = NodePath("AnimatedGuy/Armature/Skeleton3D")
 physics_skeleton = NodePath("PhysicsGuy/Armature/Skeleton3D")
@@ -118,6 +123,8 @@ visible = false
 [node name="Skeleton3D" parent="AnimatedGuy/Armature" index="0"]
 bones/0/position = Vector3(0, 0.6740296, 0)
 bones/0/rotation = Quaternion(0.004363311, 0, 0, 0.99999046)
+bones/3/rotation = Quaternion(-0.060072, 0.003569, 0.059199, 0.996431)
+bones/4/rotation = Quaternion(-0.351025, 0, 0, 0.936366)
 bones/7/rotation = Quaternion(-0.025600243, 0.02136233, 0.76736957, 0.6403377)
 bones/10/rotation = Quaternion(-0.025600243, -0.02136233, -0.76736957, 0.6403377)
 bones/13/rotation = Quaternion(-0.7071068, 1.6463612e-10, 0.7071068, -1.6463615e-10)
@@ -333,18 +340,12 @@ script = ExtResource("3_mn55e")
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 0, 0.0280327)
 shape = SubResource("CapsuleShape3D_tuyoq")
 
-[node name="BackpackPositionMarker" type="Marker3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest" unique_id=925696266]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.296817, 0.18433)
-
-[node name="BackpackJoint" type="Generic6DOFJoint3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest" unique_id=480017981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.188291, 0)
-
 [node name="Physical Bone Neck" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1958455968]
-transform = Transform3D(1, 3.230366e-08, 0, 0, 0, -1, -3.230366e-08, 1, 0, 0, 0.33230162, 0)
+transform = Transform3D(1, 2.998668e-08, 0, 0, 0, -1, -2.998668e-08, 1, 0, 0, 0.33230162, 0)
 top_level = true
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04841446)
-body_offset = Transform3D(1, -2.0611485e-07, 0, 0, 0, -1.0000001, 2.0611485e-07, 1, 0, 0, 0.04841447, 0)
+body_offset = Transform3D(1, -2.0843183e-07, 0, 0, 0, -1.0000001, 2.0843183e-07, 1, 0, 0, 0.04841447, 0)
 mass = 0.02
 friction = 0.3
 angular_velocity = Vector3(0.19833295, -3.2298616e-13, -5.046659e-15)
@@ -418,12 +419,12 @@ script = ExtResource("3_mn55e")
 transform = Transform3D(1, 0, 4.05009e-12, -4.05009e-12, 0, 1, 0, -1, 0, 0, 0, 0.0411741)
 shape = SubResource("CapsuleShape3D_fjrip")
 
-[node name="Physical Bone Head" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1533160753]
-transform = Transform3D(1, 3.2303717e-08, 0, 0, 0, -1, -3.2303717e-08, 1, 0, 0, 0.5279988, 0)
+[node name="Physical Bone Head" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1533160753 node_paths=PackedStringArray("immune_health_component")]
+transform = Transform3D(1, 2.9986737e-08, 0, 0, 0, -1, -2.9986737e-08, 1, 0, 0, 0.5279988, 0)
 top_level = true
 joint_type = 2
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14728199)
-body_offset = Transform3D(1, -2.0611485e-07, 0, 0, 0, -1.0000001, 2.0611485e-07, 1, 0, 0, 0.147282, 0)
+body_offset = Transform3D(1, -2.0843183e-07, 0, 0, 0, -1.0000001, 2.0843183e-07, 1, 0, 0, 0.147282, 0)
 mass = 0.02
 friction = 0.3
 angular_velocity = Vector3(0.19833289, 0, 0)
@@ -433,7 +434,8 @@ joint_constraints/twist_span = 180.0
 joint_constraints/bias = 0.3
 joint_constraints/softness = 0.8
 joint_constraints/relaxation = 1.0
-script = ExtResource("3_mn55e")
+script = ExtResource("6_0ix8r")
+immune_health_component = NodePath("../../../../../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=1658198501]
 transform = Transform3D(1, 0, 1.35003e-11, -1.35003e-11, 0, 1, 0, -1, 0, 0, 0, -0.144192)
@@ -453,6 +455,16 @@ mesh = SubResource("SphereMesh_xdkte")
 
 [node name="horns" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=120155580 instance=ExtResource("6_iq44h")]
 transform = Transform3D(-2.1855694e-08, 6.181722e-13, -0.5, 2.6999175e-20, 0.5, 6.181722e-13, 0.5, 0, -2.1855694e-08, 0, 0, -0.641155)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/horns" unique_id=738657450]
+shape = SubResource("ConcavePolygonShape3D_boah8")
+
+[node name="TargetingComponent" type="Marker3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head" unique_id=51032242]
+transform = Transform3D(1, 2.728484e-12, 0, -2.728484e-12, 1, 0, 0, 0, 1, 1.3051183e-08, -0.4055612, -0.19795167)
+script = ExtResource("7_mn55e")
+notice_range = 15.0
+max_notice_range = 15.0
+metadata/_custom_type_script = "uid://vwa00jlqqm7a"
 
 [node name="Physical Bone Shoulder_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1219766535]
 transform = Transform3D(-0.1786242, -0.01193154, 0.98384506, 0.9816575, 0.06557222, 0.17902224, -0.066648915, 0.9977765, -9.7507545e-08, -0.15736952, 0.22455192, -7.547352e-08)
@@ -720,32 +732,6 @@ script = ExtResource("3_mn55e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.47035e-08, 0.178919, 9.98583e-10)
 shape = SubResource("CapsuleShape3D_oprun")
 
-[node name="LeftGrabJoint" type="Generic6DOFJoint3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R" unique_id=2141230192]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.49012e-08, 0.357665, -2.31003e-10)
-angular_limit_x/upper_angle = 1.0472
-angular_limit_x/lower_angle = -1.0472
-angular_limit_y/upper_angle = 1.0472
-angular_limit_y/lower_angle = -1.0472
-angular_limit_z/upper_angle = 1.0472
-angular_limit_z/lower_angle = -1.0472
-angular_spring_x/enabled = true
-angular_spring_x/stiffness = 1.0
-angular_spring_x/damping = 0.1
-angular_spring_y/enabled = true
-angular_spring_y/stiffness = 1.0
-angular_spring_y/damping = 0.1
-angular_spring_z/enabled = true
-angular_spring_z/stiffness = 1.0
-angular_spring_z/damping = 0.1
-
-[node name="LeftGrabArea3D" type="Area3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R" unique_id=860728947]
-unique_name_in_owner = true
-transform = Transform3D(1, -3.68691e-22, 0, -3.68734e-22, 1, 1.07914e-13, 0, -1.07914e-13, 1, 0, 0.306899, -2.87445e-10)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/LeftGrabArea3D" unique_id=819652653]
-shape = SubResource("SphereShape3D_qlg0r")
-
 [node name="PhysicalBone Forearm_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=936978860]
 transform = Transform3D(6.951153e-07, 1, -1.1036218e-07, -1, 6.951154e-07, 5.165843e-07, 5.1658435e-07, 1.1036182e-07, 1, 0.5328868, 0.20305014, 5.208478e-08)
 top_level = true
@@ -768,38 +754,12 @@ script = ExtResource("3_mn55e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179, 0)
 shape = SubResource("CapsuleShape3D_a8ls1")
 
-[node name="RightGrabJoint" type="Generic6DOFJoint3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L" unique_id=920948084]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.358, 0)
-angular_limit_x/upper_angle = 1.0472
-angular_limit_x/lower_angle = -1.0472
-angular_limit_y/upper_angle = 1.0472
-angular_limit_y/lower_angle = -1.0472
-angular_limit_z/upper_angle = 1.0472
-angular_limit_z/lower_angle = -1.0472
-angular_spring_x/enabled = true
-angular_spring_x/stiffness = 1.0
-angular_spring_x/damping = 0.1
-angular_spring_y/enabled = true
-angular_spring_y/stiffness = 1.0
-angular_spring_y/damping = 0.1
-angular_spring_z/enabled = true
-angular_spring_z/stiffness = 1.0
-angular_spring_z/damping = 0.1
-
-[node name="RightGrabArea3D" type="Area3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L" unique_id=1006404490]
-unique_name_in_owner = true
-transform = Transform3D(1, -3.68691e-22, 0, -3.68734e-22, 1, 1.07914e-13, 0, -1.07914e-13, 1, 0, 0.306899, -2.87445e-10)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/RightGrabArea3D" unique_id=735142630]
-shape = SubResource("SphereShape3D_qlg0r")
-
 [node name="PhysicalBone Lower Leg_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=57479567]
-transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, -0.6498312, 1.9374026e-08)
+transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, -0.6498312, 1.9663648e-08)
 top_level = true
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9374026e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.937403e-08, 0, -1.4901161e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9663648e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.9663652e-08, 0, -1.4901161e-08)
 mass = 2.0
 friction = 0.0
 angular_velocity = Vector3(-0.84522486, -6.184646e-07, 5.0695456e-07)
@@ -879,11 +839,11 @@ shape = SubResource("SphereShape3D_qhqgy")
 target_position = Vector3(0, 0.1, 0)
 
 [node name="PhysicalBone Lower Leg_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=620197230]
-transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, -0.6498312, 1.9374026e-08)
+transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, -0.6498312, 1.9663648e-08)
 top_level = true
 joint_type = 5
-joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.9374026e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.937403e-08, 0, -1.4901161e-08)
+joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.9663648e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.9663652e-08, 0, -1.4901161e-08)
 mass = 2.0
 friction = 0.0
 angular_velocity = Vector3(-0.8452238, 5.858251e-07, -2.486199e-07)
@@ -970,10 +930,11 @@ blend_times = [&"Guy - Animated/Idle", &"Guy - Animated/Idle", 0.5, &"Guy - Anim
 [node name="HealthComponent" parent="." unique_id=716729429 node_paths=PackedStringArray("vital_bones", "non_vital_bones") instance=ExtResource("7_plh5j")]
 vital_bones = [NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Neck"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Chest"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Hip"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head")]
 non_vital_bones = [NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Lower Leg_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Leg_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_L"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Upper Arm_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Back"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_R"), NodePath("../PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Shoulder_L")]
-damage_acceleration_threshold = 0.055
-
-[connection signal="body_entered" from="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_R/LeftGrabArea3D" to="." method="_on_left_grab_area_3d_body_entered"]
-[connection signal="body_entered" from="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/PhysicalBone Forearm_L/RightGrabArea3D" to="." method="_on_right_grab_area_3d_body_entered"]
+damage_acceleration_threshold = 0.058
+pointy_thing_damage_force_threshold = 0.03
+bone_damage_multiplier = 50.0
+pointy_damage_multiplier = 0.0
 
 [editable path="AnimatedGuy"]
 [editable path="PhysicsGuy"]
+[editable path="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Head/horns"]
