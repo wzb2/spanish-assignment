@@ -9,6 +9,6 @@ func _physics_process(delta: float) -> void:
 		if collider is DamagableBone:
 			if immune_health_component:
 				if not immune_health_component.non_vital_bones.has(collider) or immune_health_component.vital_bones.has(collider):
-					collider.hit.emit(collider.linear_velocity.length() * 0.07)
+					collider.hit.emit((linear_velocity - collider.linear_velocity).length() * 0.05)
 			else:
-				collider.hit.emit(collider.linear_velocity.length() * 0.07)
+				collider.hit.emit((linear_velocity - collider.linear_velocity).length() * 0.05)
