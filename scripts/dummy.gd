@@ -61,6 +61,22 @@ func update_stuff() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	add_movement_bone_velocity(Vector3.ZERO)
+	
+	const damp: float = 0.02
+	
+	var feet_on_floor: Array[ShapeCast3D] = feet_shapecasts.filter(func(f: ShapeCast3D) -> bool: return shapecast_is_on_floor(f))
+	for i: ShapeCast3D in feet_on_floor:
+		var collider: Object = i.get_collider(0)
+		
+		if collider is RigidBody3D:
+			#collider.linear_velocity -= velocity / collider.mass
+			for b: PhysicalBone3D in movement_bones:
+				b.linear_velocity -= (b.linear_velocity - collider.linear_velocity) * damp
+		elif collider is AnimatableBody3D:
+			for b: PhysicalBone3D in movement_bones:
+				b.linear_velocity -= (b.linear_velocity - collider.constant_linear_velocity) * damp
+		else:
+			for b: PhysicalBone3D in movement_bones:
+				b.linear_velocity -= (b.linear_velocity) * damp
 	animated_skeleton.global_rotation.y = -PI*0.5-Vector2(root_bone.global_position.x, root_bone.global_position.z).angle_to_point(Vector2(level.local_player.root_bone.global_position.x, level.local_player.root_bone.global_position.z))
 	current_angular_spring_stiffness = default_angular_spring_stiffness * (1.0 - health_component.get_weakness_percentage()) * (1.0 - health_component.get_shock_percentage())

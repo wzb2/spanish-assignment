@@ -8,7 +8,7 @@ size = Vector2(100, 100)
 [resource]
 script = ExtResource("1_uglvg")
 physical_item_path = "res://inventory/items/sword/sword.tscn"
-name = "Sword"
+name = "La Espada"
 description = "stabby"
 texture = SubResource("PlaceholderTexture2D_uglvg")
 path = "uid://dg2asm0pjukgr"

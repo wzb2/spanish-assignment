@@ -107,13 +107,13 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	_delta = delta
 	
-	if multiplayer.is_server():
-		# Pack bone poses
-		packed_bone_positions.clear()
-		packed_bone_rotations.clear()
-		for b in physics_bones:
-			packed_bone_positions.append(b.global_position)
-			packed_bone_rotations.append(b.global_rotation)
+	#if multiplayer.is_server():
+		## Pack bone poses
+		#packed_bone_positions.clear()
+		#packed_bone_rotations.clear()
+		#for b in physics_bones:
+			#packed_bone_positions.append(b.global_position)
+			#packed_bone_rotations.append(b.global_rotation)
 	
 
 func hookes_law(displacement: Vector3, current_velocity: Vector3, stiffness: float, damping: float) -> Vector3:

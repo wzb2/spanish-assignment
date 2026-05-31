@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://ciqclo0j08i84"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_b2tai"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_23euj"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_b2tai")
+physical_item_path = "uid://0p4001xst8dl"
+name = "El Rollo de Papel Higiénico"
+texture = SubResource("PlaceholderTexture2D_23euj")
+stack_size = 4
+path = "uid://ciqclo0j08i84"
+metadata/_custom_type_script = "uid://o60xlygft8kf"

@@ -230,14 +230,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 visible = false
 
 [node name="Skeleton3D" parent="AnimatedGuy/Armature" index="0"]
-bones/0/position = Vector3(0, 0.670311, 0)
+bones/0/position = Vector3(0, 0.6735522, 0)
 bones/0/rotation = Quaternion(0.004363311, 0, 0, 0.99999046)
-bones/7/rotation = Quaternion(-0.025229886, 0.02185051, 0.7513001, 0.65911627)
-bones/10/rotation = Quaternion(-0.025229886, -0.02185051, -0.7513001, 0.65911627)
-bones/13/rotation = Quaternion(-0.7067253, -0.023223426, 0.7067253, 0.023223426)
-bones/14/rotation = Quaternion(9.661281e-10, 1.5863868e-08, 0.06078856, 0.99815077)
-bones/15/rotation = Quaternion(0.7067253, -0.023223434, 0.7067253, -0.023223441)
-bones/16/rotation = Quaternion(9.661281e-10, -1.5863868e-08, -0.060788564, 0.99815077)
+bones/7/rotation = Quaternion(-0.02557849, 0.021391958, 0.7664197, 0.6414742)
+bones/10/rotation = Quaternion(-0.02557849, -0.021391958, -0.7664197, 0.6414742)
+bones/13/rotation = Quaternion(-0.70710635, -0.0008237203, 0.70710635, 0.0008237203)
+bones/14/rotation = Quaternion(3.2208777e-11, 1.5893226e-08, 0.0020265693, 0.999998)
+bones/15/rotation = Quaternion(0.70710635, -0.00082372065, 0.70710635, -0.00082372065)
+bones/16/rotation = Quaternion(3.2208767e-11, -1.5893226e-08, -0.0020265693, 0.999998)
 
 [node name="PhysicsGuy" parent="." unique_id=428910971 instance=ExtResource("3_qhqgy")]
 unique_name_in_owner = true
@@ -448,10 +448,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.296817, 0.18433)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.188291, 0)
 
 [node name="Physical Bone Neck" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1958455968]
-transform = Transform3D(1, 3.5864474e-08, 0, 0, 0, -1, -3.5864474e-08, 1, 0, 0, 1.3323016, 0)
+transform = Transform3D(1, 3.5741692e-08, 0, 0, 0, -1, -3.5741692e-08, 1, 0, 0, 1.3323016, 0)
 joint_type = 5
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04841446)
-body_offset = Transform3D(1, -2.0255403e-07, 0, 0, 0, -1.0000001, 2.0255403e-07, 1, 0, 0, 0.04841447, 0)
+body_offset = Transform3D(1, -2.0267682e-07, 0, 0, 0, -1.0000001, 2.0267682e-07, 1, 0, 0, 0.04841447, 0)
 mass = 0.25
 friction = 0.3
 bone_name = "Neck"
@@ -525,10 +525,10 @@ transform = Transform3D(1, 0, 4.05009e-12, -4.05009e-12, 0, 1, 0, -1, 0, 0, 0, 0
 shape = SubResource("CapsuleShape3D_fjrip")
 
 [node name="Physical Bone Head" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1533160753]
-transform = Transform3D(1, 3.586453e-08, 0, 0, 0, -1, -3.586453e-08, 1, 0, 0, 1.5279988, 0)
+transform = Transform3D(1, 3.574175e-08, 0, 0, 0, -1, -3.574175e-08, 1, 0, 0, 1.5279988, 0)
 joint_type = 2
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14728199)
-body_offset = Transform3D(1, -2.0255403e-07, 0, 0, 0, -1.0000001, 2.0255403e-07, 1, 0, 0, 0.147282, 0)
+body_offset = Transform3D(1, -2.0267682e-07, 0, 0, 0, -1.0000001, 2.0267682e-07, 1, 0, 0, 0.147282, 0)
 mass = 0.25
 friction = 0.3
 bone_name = "Head_2"
@@ -880,10 +880,10 @@ transform = Transform3D(1, -3.68691e-22, 0, -3.68734e-22, 1, 1.07914e-13, 0, -1.
 shape = SubResource("SphereShape3D_qlg0r")
 
 [node name="PhysicalBone Lower Leg_R" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=57479567]
-transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, 0.35016882, 1.8928924e-08)
+transform = Transform3D(-6.507105e-08, 0, -1, 0, -1, 0, -1, 0, 6.507105e-08, -0.14999999, 0.35016882, 1.8944272e-08)
 joint_type = 5
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8928924e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.8928928e-08, 0, -1.4901161e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8944272e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, 8.195638e-08, 0, 1, 0, -2.2351742e-08, 0, 1.0000001, -1.8944275e-08, 0, -1.4901161e-08)
 mass = 0.75
 friction = 0.0
 bone_name = "Lower Leg.R"
@@ -962,10 +962,10 @@ shape = SubResource("SphereShape3D_qhqgy")
 target_position = Vector3(0, 0.1, 0)
 
 [node name="PhysicalBone Lower Leg_L" type="PhysicalBone3D" parent="PhysicsGuy/Armature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=620197230]
-transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, 0.35016882, 1.8928924e-08)
+transform = Transform3D(-6.507105e-08, 0, 1, 0, -1, 0, 1, 0, 6.507105e-08, 0.14999999, 0.35016882, 1.8944272e-08)
 joint_type = 5
-joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.8928924e-08, 0, 1.4901159e-08)
-body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.8928928e-08, 0, -1.4901161e-08)
+joint_offset = Transform3D(0.999999, 0, 0, 0, 0.999998, 0, 0, 0, 0.999998, -1.8944272e-08, 0, 1.4901159e-08)
+body_offset = Transform3D(1.0000001, 0, -8.195638e-08, 0, 1, 0, 2.2351742e-08, 0, 1.0000001, 1.8944275e-08, 0, -1.4901161e-08)
 mass = 0.75
 friction = 0.0
 bone_name = "Lower Leg.L"

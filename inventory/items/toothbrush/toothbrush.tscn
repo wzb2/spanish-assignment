@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dd6lpvafsma05"]
+
+[ext_resource type="Script" uid="uid://c54ky4ms6iljx" path="res://inventory/items/toothbrush/toothbrush.gd" id="1_jw12b"]
+[ext_resource type="Resource" uid="uid://fnoy08robnbi" path="res://inventory/items/toothbrush/toothbrush.tres" id="2_ioory"]
+[ext_resource type="PackedScene" uid="uid://1tfprd8x4qir" path="res://models/ToothBrush.glb" id="3_o04aw"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gkp5b"]
+properties/0/path = NodePath(".:current_hand")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:synced_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:synced_rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o04aw"]
+size = Vector3(4.528496, 0.704785, 0.8300948)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s34d1"]
+size = Vector3(5, 1.3, 1.3)
+
+[node name="Toothbrush" type="RigidBody3D" unique_id=165407614 node_paths=PackedStringArray("mesh_instances", "interact_area")]
+mass = 0.01
+continuous_cd = true
+script = ExtResource("1_jw12b")
+item_resource = ExtResource("2_ioory")
+mesh_instances = [NodePath("ToothBrush2/ToothBrush")]
+interact_area = NodePath("Area3D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1922526864]
+replication_config = SubResource("SceneReplicationConfig_gkp5b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1133124439]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.07623781, 0.019356506, 0)
+shape = SubResource("BoxShape3D_o04aw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=888935169]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1990876700]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.07623781, 0.019356506, 0)
+shape = SubResource("BoxShape3D_s34d1")
+
+[node name="ToothBrush2" parent="." unique_id=1411142185 instance=ExtResource("3_o04aw")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[editable path="ToothBrush2"]

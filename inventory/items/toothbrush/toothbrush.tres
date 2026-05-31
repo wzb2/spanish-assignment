@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://fnoy08robnbi"]
+
+[ext_resource type="Script" uid="uid://o60xlygft8kf" path="res://inventory/inventory_item.gd" id="1_bt5pk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_23euj"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_bt5pk")
+physical_item_path = "uid://dd6lpvafsma05"
+name = "El Cepillo de Dientes"
+texture = SubResource("PlaceholderTexture2D_23euj")
+stack_size = 4
+path = "uid://fnoy08robnbi"
+metadata/_custom_type_script = "uid://o60xlygft8kf"
