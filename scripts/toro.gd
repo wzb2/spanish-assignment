@@ -44,7 +44,7 @@ func movement() -> void:
 	# check if is on floor
 	on_floor = is_on_floor()
 	#print(root_bone.linear_velocity.length())
-	var strength_multiplier: float = (1.0 - min(health_component.get_weakness_percentage(), 1))
+	var strength_multiplier: float = (1.0 - min(health_component.get_weakness_percentage(), 1) * 0.3)
 	
 	var acceleration: Vector3 = movement_vector.normalized() * (movement_speed if on_floor else FLOATING_MOVEMENT_SPEED) * strength_multiplier * _delta
 	

@@ -120,4 +120,5 @@ shape = SubResource("SphereShape3D_lsbtm")
 multimesh = SubResource("MultiMesh_4wlit")
 
 [node name="LeafPlane" type="MeshInstance3D" parent="." unique_id=2042113780]
+visible = false
 mesh = SubResource("PlaneMesh_nwd1x")
