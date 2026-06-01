@@ -11,6 +11,7 @@ var max_speed: float = 10
 @onready var starting_pos: Vector3 = global_position
 var going: bool = false
 @onready var target_pos: Vector3 = starting_pos + global_basis.z * distance
+@onready var smoke: GPUParticles3D = $GPUParticles3D
 
 const READY_TIME: float = 2
 var time_ready: float = 0
@@ -24,6 +25,7 @@ func _physics_process(delta: float) -> void:
 			
 		if time_ready > READY_TIME and not going:
 			going = true
+			smoke.emitting = true
 		elif going:
 			var dist_from_start: float = (global_position - starting_pos).length()
 			var total_dist: float = (target_pos - starting_pos).length()
@@ -34,6 +36,7 @@ func _physics_process(delta: float) -> void:
 			if dist_from_start > total_dist:
 				constant_linear_velocity = Vector3.ZERO
 				going = false
+				smoke.emitting = false
 				target_pos = starting_pos
 				starting_pos = global_position
 				time_ready = -20

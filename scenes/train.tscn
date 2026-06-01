@@ -91,6 +91,24 @@ size = Vector3(1, 0.2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6b7q7"]
 size = Vector3(3, 3, 9.495605)
 
+[sub_resource type="Curve" id="Curve_muh0j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.58373207, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1hdh"]
+curve = SubResource("Curve_muh0j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_muh0j"]
+lifetime_randomness = 0.22
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.5
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_o1hdh")
+
+[sub_resource type="SphereMesh" id="SphereMesh_muh0j"]
+
 [node name="Train" type="AnimatableBody3D" unique_id=979415964]
 script = ExtResource("1_68jl8")
 speed_curve = SubResource("Curve_d43s7")
@@ -157,5 +175,13 @@ shape = SubResource("BoxShape3D_6b7q7")
 
 [node name="Conductor" parent="." unique_id=1885059936 instance=ExtResource("3_6b7q7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3591969, -1.1710114)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1650461860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3950768, 1.3806148)
+emitting = false
+amount = 16
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_muh0j")
+draw_pass_1 = SubResource("SphereMesh_muh0j")
 
 [editable path="Train"]

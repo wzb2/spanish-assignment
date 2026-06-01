@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cnkg3bx26ombb"]
+
+[ext_resource type="PackedScene" uid="uid://domhypcksr7fa" path="res://models/Table.glb" id="1_3koje"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sx2gp"]
+height = 19.212687
+radius = 20.672241
+
+[node name="Mesa" type="RigidBody3D" unique_id=829608921]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1630905984]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.46537432, 0)
+shape = SubResource("CylinderShape3D_sx2gp")
+
+[node name="Table" parent="." unique_id=1099149083 instance=ExtResource("1_3koje")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.06371939, 0)
+
+[editable path="Table"]
