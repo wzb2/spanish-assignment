@@ -45,3 +45,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1889832, 0)
 billboard = 1
 text = "Comenzar"
 font_size = 100
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1164163584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3779655, 2.2589607, -3.7112713)
+billboard = 2
+text = "WASD - Mover
+F - Interactuar
+E - El inventario
+Clic izquierdo/derecho - Agarrar con la mano izquierdo/derecho
+Clic izquierdo/derecho + F - Levantar un artículo a la mano izquierdo/derecho
+B - Ponerse la mochila"
+horizontal_alignment = 0
