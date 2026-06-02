@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ct0pkf3g3irad"]
+
+[ext_resource type="PackedScene" uid="uid://bjvss5pj4tcc0" path="res://models/table1.glb" id="1_q3o11"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8kg5"]
+size = Vector3(1.75, 0.957, 4.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3o11"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.40412292, 0.268321, 0.08378327, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biwwh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Mesa" type="RigidBody3D" unique_id=829608921]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1285479636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48363018, 0)
+shape = SubResource("BoxShape3D_f8kg5")
+
+[node name="table1" parent="." unique_id=340444256 instance=ExtResource("1_q3o11")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.8739195, 0)
+
+[node name="Cube" parent="table1" index="0" unique_id=2109492156]
+surface_material_override/0 = SubResource("StandardMaterial3D_q3o11")
+
+[node name="Cube_002" parent="table1" index="1" unique_id=1536968207]
+surface_material_override/0 = SubResource("StandardMaterial3D_biwwh")
+
+[node name="Cube_003" parent="table1" index="2" unique_id=1514660301]
+surface_material_override/0 = SubResource("StandardMaterial3D_biwwh")
+
+[node name="Cube_004" parent="table1" index="3" unique_id=1722042584]
+surface_material_override/0 = SubResource("StandardMaterial3D_biwwh")
+
+[node name="Cube_005" parent="table1" index="4" unique_id=873915605]
+surface_material_override/0 = SubResource("StandardMaterial3D_biwwh")
+
+[node name="Cube_006" parent="table1" index="5" unique_id=199944836]
+surface_material_override/0 = SubResource("StandardMaterial3D_biwwh")
+
+[node name="Cube_007" parent="table1" index="6" unique_id=363367261]
+surface_material_override/0 = SubResource("StandardMaterial3D_biwwh")
+
+[editable path="table1"]
